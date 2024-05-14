@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Dormeal</title>
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.1"></script>
+
+    <!-- Boxicons CSS for the Insta, Twiter, and Facebook -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Bootstrap CSS for the shit from boostrap-->
+    <link href="../static/bootstrap.min.css" rel="stylesheet" /> <!-- {{ url_for('static', filename='bootstrap.min.css.css') }}, assets/css/boostrap.min.css -->
+
+    <!-- Aos CSS for the Opening transitions -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+   
+    <!-- Custom CSS for what I've been chaning just with raw css -->
+    <link rel="stylesheet" href="../static/style.css"> <!-- {{ url_for('static', filename='style.css') }}, assets/css/style.css-->
+
+  </head>
+
+  <body>
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-4 d-block">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+          <img src="/static/images/logo.png" height="50" alt="..." /></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
+          <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+            <ul class="navbar-nav m-auto pt-2 pt-lg-0 font-base">
+              <li class="nav-item px-2" data-anchor="data-anchor"><a class="nav-link fw-medium active" aria-current="page" href="#home">Home</a></li>
+              <li class="nav-item px-2" data-anchor="data-anchor"><a class="nav-link" href="#aboutUs">About us</a></li>
+              <li class="nav-item px-2" data-anchor="data-anchor"><a class="nav-link" href="#howItWorks">How It Works</a></li>
+              <li class="nav-item px-2" data-anchor="data-anchor"><a class="nav-link" href="#faq">Faq</a></li>
+            </ul>
+            <form class="order-now"> 
+              <a href="order">Order Now</a>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <section id="home">
+        <div class="bg-holder"></div>
+        <!--/.bg-holder-->
+        <div class="container">
+            <div class="row align-items-center min-vh-30 min-vh-sm-80">
+                <div class="col-md-6 col-lg-7 text-md-start text-center" data-aos="fade-down" data-aos-duration="2000">
+                    <h1 class="text-light fs-6 fs-xl-8 font-cursive fw-normal mb-5">5 Dollar Delivery.<br />No Tips, Fees or Other BS</h1>
+                </div>
+                <div class="col-md-6 col-lg-7 text-md-start text-center" data-aos="fade-up" data-aos-duration="2000">
+                  <div class="form" id="form">
+                    <a href="order" id="order-now">Order Now
+                      <!-- <h7 style="font-size: 40px;"class="text-light font-cursive fw-normal mb-5">Order Now</h7> -->
+                    </a>
+                </div>
+                </div>
+                <!-- Separate container div for the image -->
+                <div class="col-md-6 col-lg-5 text-center" data-aos="fade-up" data-aos-duration="2000" style="margin-top: -25%;">
+                    <div class="phone-mockup-container">
+                      <img src="/static/images/home_image.png" alt="Home image" class="img-fluid" id="home_image">
+                    </div>
+                </div>
+                <!-- End of separate container div for the image -->
+            </div>
+        </div>
+    </section>
+    
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section id="aboutUs">
+        <div class="container">
+          <div class="row align-items-center">
+            <div data-aos="fade-down" data-aos-duration="2000" class="col-md-6 text-center mb-6 mb-md-0 order-0 order-md-1"><img class="w-100" src="/static/images/image.png" alt="..." /></div>
+            <div class="col-md-6 text-center text-md-start mb-6" data-aos="fade-up" data-aos-duration="2000">
+              <h4 class="text-danger">ABOUT US</h4>
+              <p class="my-5 fs-1 pe-xl-8 text-white">Our mission is straightforward: to support students in their academic journey by providing affordable, quality meals through our app. As students at Northeastern, we understand the financial strains and time constraints of university life firsthand. By partnering with the university's student resources, we're making dining more accessible while fostering a sense of community between students and local businesses. Our goal is to empower students to thrive academically, financially, and personally, one meal at a time. </p>
+              <div class="card card-span bg-soft-primary border-start border-primary border-5 mt-3">
+                <div class="card-body">
+                  <h4 class="lh-base px-lg-5 py-3 text-white">Ever craved something more flavorful than the dining hall options, without the hefty price tag of takeout? Us too. That's why we created our app – to bring tasty, affordable meals from local restaurants straight to campus.</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- end of .container-->
+      </section><!-- <section> close ============================-->
+      <!-- ============================================-->
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section id="howItWorks">
+        <div class="container">
+          <div class="row align-items-center">
+            <div data-aos="fade-right" data-aos-duration="2000" class="col-md-6 text-center mb-6 mb-md-0"><img class="w-100" src="/static/images/image (3).png" alt="..." /></div>
+            <div class="col-md-6 text-center text-md-start mb-6 px-4" data-aos="fade-left" data-aos-duration="2000">
+              <h4 class="text-danger text-uppercase">How it works</h4>
+              <p class="my-5 fs-1 pe-xl-7 text-white">Imagine this: you're a hungry student browsing our app, craving a delicious meal from a local restaurant. At the same time, fellow students are using the app, maybe grabbing their own meals or passing by restaurants. They see an opportunity to earn some quick cash by delivering orders nearby. When an order comes in, they swing by the restaurant, grab the meal, and deliver it right to your door. It's a win-win for everyone involved – convenient, tasty meals for students, and a flexible way to earn money for fellow students. That's the magic of our app – bringing our campus community together, one meal at a time.</p>
+            </div>
+          </div>
+        </div><!-- end of .container-->
+      </section><!-- <section> close ============================-->
+      <!-- ============================================-->
+
+      <section class="faq-holder" id="faq">
+        <!--/.bg-holder-->
+        <div class="container">
+          <div class="row flex-center">
+            <div class="col-md-6" data-aos="fade-right" data-aos-duration="2000">
+              <h4 class="text-danger text-uppercase">faq</h4>
+              <h1 class="font-cursive fw-normal mb-5 text-white">Your biggest questions <br class="d-none d-lg-block" />answered by<br class="d-none d-lg-block text-white" />us:</h1>
+            </div>
+            <div class="col-md-6" data-aos="fade-left" data-aos-duration="2000"><img class="w-100" src="/static/images/image (2).png" alt="..." /></div>
+          </div>
+          <div class="row flex-center py-4">
+            <div class="col-md-6" data-aos="fade-down" data-aos-duration="2000">
+              <div class="accordion" id="accordionExample1">
+                <div class="accordion-item mb-2 rounded overflow-hidden">
+                  <h2 class="accordion-header" id="heading1"><button class="accordion-button px-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1"><span class="mb-0 text-start fs-0 text-900 fw-medium">How do I place an order?</span></button></h2>
+                  <div class="accordion-collapse collapse" id="collapse1" aria-labelledby="heading1" data-bs-parent="#accordionExample">
+                    <div class="accordion-body bg-primary-gradient px-4">If you look at the bar at the top of the website you will see a button called 'Order Now', that will allow you to go through our order process.</div>
+                  </div>
+                </div>
+                <div class="accordion-item mb-2 rounded overflow-hidden">
+                  <h2 class="accordion-header" id="heading2"><button class="accordion-button px-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="true" aria-controls="collapse2"><span class="mb-0 text-start fs-0 text-900 fw-medium">Are there any delivery fees?</span></button></h2>
+                  <div class="accordion-collapse collapse" id="collapse2" aria-labelledby="heading2" data-bs-parent="#accordionExample">
+                    <div class="accordion-body bg-primary-gradient px-4">Yes, currently there is a simple $5 delivery fee which is much cheaper than other food delivery options.</div>
+                  </div>
+                </div>
+                <div class="accordion-item mb-2 rounded overflow-hidden">
+                  <h2 class="accordion-header" id="heading3"><button class="accordion-button px-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="true" aria-controls="collapse3"><span class="mb-0 text-start fs-0 text-900 fw-medium">Can I customize my meal or make special requests?</span></button></h2>
+                  <div class="accordion-collapse collapse" id="collapse3" aria-labelledby="heading3" data-bs-parent="#accordionExample">
+                    <div class="accordion-body bg-primary-gradient px-4">You customize and add special requests as much as the restaurant you order from allows you to.</div>
+                  </div>
+                </div>
+                <div class="accordion-item mb-2 rounded overflow-hidden">
+                  <h2 class="accordion-header" id="heading4"><button class="accordion-button px-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="true" aria-controls="collapse4"><span class="mb-0 text-start fs-0 text-900 fw-medium">How long does it take for my order to be delivered?</span></button></h2>
+                  <div class="accordion-collapse collapse" id="collapse4" aria-labelledby="heading4" data-bs-parent="#accordionExample">
+                    <div class="accordion-body bg-primary-gradient px-4">Since we only deliver to buidlings on campus our deliveries take 10-20 minutes.</div>
+                  </div>
+                </div>
+                <div class="accordion-item mb-2 rounded overflow-hidden">
+                  <h2 class="accordion-header" id="heading5"><button class="accordion-button px-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapse5"><span class="mb-0 text-start fs-0 text-900 fw-medium">What payment methods are accepted?</span></button></h2>
+                  <div class="accordion-collapse collapse" id="collapse5" aria-labelledby="heading5" data-bs-parent="#accordionExample">
+                    <div class="accordion-body bg-primary-gradient px-4">We accept payments through Stripe, therefore, most methods are accepted such as card, apple pay, google pay etc.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-up" data-aos-duration="2000">
+              <div class="accordion" id="accordionExample2">
+                <div class="accordion-item mb-2 rounded overflow-hidden">
+                  <h2 class="accordion-header" id="heading6"><button class="accordion-button px-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="true" aria-controls="collapse6"><span class="mb-0 text-start fs-0 text-900 fw-medium">Can I schedule orders in advance?</span></button></h2>
+                  <div class="accordion-collapse collapse" id="collapse6" aria-labelledby="heading6" data-bs-parent="#accordionExample">
+                    <div class="accordion-body bg-primary-gradient px-4">Unfortunately we do not have an option to schedule in advance.</div>
+                  </div>
+                </div>
+                <div class="accordion-item mb-2 rounded overflow-hidden">
+                  <h2 class="accordion-header" id="heading7"><button class="accordion-button px-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="true" aria-controls="collapse7"><span class="mb-0 text-start fs-0 text-900 fw-medium">What if I encounter an issue with my order?</span></button></h2>
+                  <div class="accordion-collapse collapse" id="collapse7" aria-labelledby="heading7" data-bs-parent="#accordionExample">
+                    <div class="accordion-body bg-primary-gradient px-4">We will be in contact with you through phone number therefore any issues can be discussed through text or phone call.</div>
+                  </div>
+                </div>
+                <div class="accordion-item mb-2 rounded overflow-hidden">
+                  <h2 class="accordion-header" id="heading8"><button class="accordion-button px-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="true" aria-controls="collapse8"><span class="mb-0 text-start fs-0 text-900 fw-medium">Are there any discounts or promotions available?</span></button></h2>
+                  <div class="accordion-collapse collapse" id="collapse8" aria-labelledby="heading8" data-bs-parent="#accordionExample">
+                    <div class="accordion-body bg-primary-gradient px-4">Due to our very low fixed delivery fee we currently do not offer discounts or promotions.</div>
+                  </div>
+                </div>
+                <div class="accordion-item mb-2 rounded overflow-hidden">
+                  <h2 class="accordion-header" id="heading9"><button class="accordion-button px-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="true" aria-controls="collapse9"><span class="mb-0 text-start fs-0 text-900 fw-medium">Is Dormeal available in my area?</span></button></h2>
+                  <div class="accordion-collapse collapse" id="collapse9" aria-labelledby="heading9" data-bs-parent="#accordionExample">
+                    <div class="accordion-body bg-primary-gradient px-4">We are currently only available at Northeastern Univerity and The University of Maryland.</div>
+                  </div>
+                </div>
+                <div class="accordion-item mb-2 rounded overflow-hidden">
+                  <h2 class="accordion-header" id="heading10"><button class="accordion-button px-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="true" aria-controls="collapse10"><span class="mb-0 text-start fs-0 text-900 fw-medium">How can I become a delivery driver for Dormeal?</span></button></h2>
+                  <div class="accordion-collapse collapse" id="collapse10" aria-labelledby="heading10" data-bs-parent="#accordionExample">
+                    <div class="accordion-body bg-primary-gradient px-4">Contact us at dormealservice@gmail.com and let us know which university you are located at.</div>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+
+    <!-- Start Of Footer -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row flex-center">
+          <div class="col-md-6 col-xl-8 order-0">
+            <p class="text-center text-md-start text-white">All rights Reserved © Dormeal, 2024</p>
+          </div>
+          <div class="col-md-6 col-xl-3 order-1">
+            <p class="text-center text-md-end text-xl-start text-white">Made by&nbsp;<a class="text-1000 fw-bold text-white" href="https://themewagon.com/" target="_blank">Anthony Campos and Daniel Ip</a></p>
+            <ul class="list-unstyled list-inline mb-6 mb-md-0 text-center text-md-end text-xl-start">
+              <li class="list-inline-item mr-2">
+                <a class="text-decoration-none" href="#!">
+                  <i class='bx bxl-instagram'></i>
+                </a>
+              </li>
+              <li class="list-inline-item mr-2">
+                <a class="text-decoration-none" href="#!">
+                  <i class="bx bxl-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mr-2">
+                <a class="text-decoration-none" href="#!">
+                  <i class='bx bxl-facebook'></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Of Footer -->
+
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
+      import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyC8cLIKsKjuB6BEvGNa6qJJXh3gR9nyuRM",
+
+        authDomain: "dormeal-f9344.firebaseapp.com",
+
+        projectId: "dormeal-f9344",
+
+        storageBucket: "dormeal-f9344.appspot.com",
+
+        messagingSenderId: "554597963475",
+
+        appId: "1:554597963475:web:b055361c61587a2e332626",
+
+        measurementId: "G-Y0JE1BEQ1S",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    function logger(email) {
+        const db = getDatabase();
+        const emailsRef = ref(db, "emails");
+        push(emailsRef, {
+          email: email,
+      });
+    }
+
+    document.getElementById("joinWaitlist1").addEventListener("click", function () {
+        const emailInput = document.getElementById("email1");
+        const email = emailInput.value;
+        const toastId = "toast";
+        
+        if (!email) {
+            alert("Please enter your email");
+        } else {
+            emailInput.value = "";
+            console.log(email);
+            logger(email);
+            confetti();
+        }
+    });
+
+    </script>
+
+    <script src="/static/bootstrap.min.css"></script>
+    <script src="/static/js/is.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="/static/js/fontawesome-all.min.js"></script>
+    <script src="https://themewagon.github.io/Dormealo/v1.0.0/assets/js/theme.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Rubik:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+
+    <script>
+     window.addEventListener('scroll', function() {
+      console.log(window.pageYOffset);
+      if (window.pageYOffset > 63) {
+        document.querySelector('.navbar').classList.add('navbar-fixed');
+      }
+      if (window.pageYOffset < 64) {
+        document.querySelector('.navbar').classList.remove('navbar-fixed');
+      }
+    });
+  </script>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    AOS.init();
+  </script>
+
+<script>
+  // Get all accordion buttons
+  const accordionButtons = document.querySelectorAll('.accordion-button');
+
+  // Loop through each accordion button
+  accordionButtons.forEach(button => {
+    // Add click event listener to each button
+    button.addEventListener('click', function() {
+      // Toggle the 'collapsed' class on the button
+      this.classList.toggle('collapsed');
+
+      // Get the target collapse element
+      const targetCollapseId = this.getAttribute('data-bs-target');
+      const targetCollapse = document.querySelector(targetCollapseId);
+
+      // Toggle the 'show' class on the target collapse element
+      targetCollapse.classList.toggle('show');
+
+      // Smoothly scroll to the target collapse element
+      if (targetCollapse.classList.contains('show')) {
+        targetCollapse.style.maxHeight = targetCollapse.scrollHeight + 'px';
+      } else {
+        targetCollapse.style.maxHeight = null;
+      }
+    });
+  });
+</script>
+
+
+
+
+  </body>
+</html>

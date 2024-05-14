@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Not Active</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Sorry, the service is not active right now</h1>
+        <p>We apologize for the inconvenience. The service is currently unavailable due to maintenance.</p>
+        <h2>Notify Me When Service is Active</h2>
+        <form id="notificationForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+        
+    <script>
+        // Function to send form data to the backend
+        function sendFormData(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            
+            // Create data object to send in fetch request
+            const data = {
+                email: email,
+                phone: phone
+            };
+            
+            // Send data to backend using fetch
+            fetch('/notify', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle response from backend
+                console.log('Notification sent successfully:', data);
+                alert('You will be notified when the service is active.');
+            })
+            .catch(error => {
+                // Handle any errors
+                console.error('Error sending notification:', error);
+                alert('There was an error. Please try again later.');
+            });
+        }
+
+        // Get the form element
+        const form = document.getElementById('notificationForm');
+
+        // Add event listener to the form for form submission
+        form.addEventListener('submit', sendFormData);
+    </script>
+</body>
+</html>

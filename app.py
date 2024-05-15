@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from Scripts import mvp_emailer
+from scripts import mvp_emailer
 
 active = True
 

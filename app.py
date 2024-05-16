@@ -25,6 +25,5 @@ def submit_order():
     mvp_emailer.send_email_to_multiple(email_list, str(data))
     return data
 
-if __name__ =='__main__':
->>>>>>> 4063812a4bf00372d3f2835c46df31315cc38fab
+if __name__ == '__main__':
     app.run()

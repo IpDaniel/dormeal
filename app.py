@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
+    print("home access")
     return render_template('index.html')
 
 @app.route('/order')
@@ -25,5 +26,5 @@ def submit_order():
     mvp_emailer.send_email_to_multiple(email_list, str(data))
     return data
 
-if __name__ =='__main__':
+if __name__ == '__main__':
     app.run()

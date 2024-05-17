@@ -57,7 +57,6 @@
 }
 .form {
   text-align: center;
-  border: 2px solid #FD00EA;
   padding: 20px;
   background-color: #0006;
   border-radius: 10px;
@@ -112,11 +111,27 @@ section{
   }
 }
 
-
 .accordion-collapse {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease-out;
+}
+
+#order-now {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #000; /* Pink color */
+  color: #fff; /* White text color */
+  text-decoration: none; /* Remove underline */
+  border-radius: 65px; /* Rounded corners */
+  font-size: 70px; /* Font size */
+  font-weight: bold;
+  box-shadow: 0 5px 15px #FD00EA, /* Green shadow */
+  0 -5px 15px #4FE90D;
+}
+
+#order-now:hover {
+  background-color: gray; /* Darker pink color on hover */
 }
 
 

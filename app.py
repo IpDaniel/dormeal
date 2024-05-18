@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
+    print("home access")
     return render_template('index.html')
 
 @app.route('/order')

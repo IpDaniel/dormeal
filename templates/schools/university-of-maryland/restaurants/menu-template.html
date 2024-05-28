@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .product {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+        }
+        .cart {
+            border: 1px solid #000;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        .cart-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Menu</h1>
+    <div id="products">
+        <div class="product" data-id="1" data-name="Product 1" data-price="10.00">
+            <h2>Product 1</h2>
+            <p>Price: $10.00</p>
+            <div>
+                <h3>Add-ons</h3>
+                <label>
+                    <input type="checkbox" class="addon" data-addon-name="Addon A" data-addon-price="2.00"> Addon A (+$2.00)
+                </label>
+                <label>
+                    <input type="checkbox" class="addon" data-addon-name="Addon B" data-addon-price="3.00"> Addon B (+$3.00)
+                </label>
+            </div>
+            <div>
+                <h3>Choices</h3>
+                <label>
+                    <input type="radio" name="choice-1" class="choice" data-choice-name="Choice X" data-choice-price="1.00"> Choice X (+$1.00)
+                </label>
+                <label>
+                    <input type="radio" name="choice-1" class="choice" data-choice-name="Choice Y" data-choice-price="1.50"> Choice Y (+$1.50)
+                </label>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-id="2" data-name="Product 2" data-price="20.00">
+            <h2>Product 2</h2>
+            <p>Price: $20.00</p>
+            <div>
+                <h3>Add-ons</h3>
+                <label>
+                    <input type="checkbox" class="addon" data-addon-name="Addon C" data-addon-price="4.00"> Addon C (+$4.00)
+                </label>
+                <label>
+                    <input type="checkbox" class="addon" data-addon-name="Addon D" data-addon-price="5.00"> Addon D (+$5.00)
+                </label>
+            </div>
+            <div>
+                <h3>Choices</h3>
+                <label>
+                    <input type="radio" name="choice-2" class="choice" data-choice-name="Choice Z" data-choice-price="2.00"> Choice Z (+$2.00)
+                </label>
+                <label>
+                    <input type="radio" name="choice-2" class="choice" data-choice-name="Choice W" data-choice-price="2.50"> Choice W (+$2.50)
+                </label>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+
+    <h1>Shopping Cart</h1>
+    <div class="cart" id="cart">
+        <div id="cart-items"></div>
+        <div>
+            <strong>Total:</strong> $<span id="cart-total">0.00</span>
+        </div>
+        <button id="checkout-button">Checkout</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
+    <!-- ../static/js/cart.js -->
+</body>
+</html>

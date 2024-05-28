@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Restaurant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose Your Restaurant</h1>
+    <h2>University of Maryland</h2>
+    <ul>
+      <li><a href='#'>Restaurant</a></li>
+      <li><a href='#'>Restaurant</a></li>
+        <!-- Add more restaurant links as needed -->
+    </ul>
+    <form action="/submit_request" method="POST">
+        <h2>Don't see your favorite restaurant? Put in a request here.</h2>
+        <label for="email">Your .edu Email Address:</label>
+        <input type="text" id="email" name="email" required>
+        
+        <label for="restaurant">Restaurant Name:</label>
+        <input type="text" id="restaurant" name="restaurant" required>
+        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -49,7 +49,9 @@ def create_payment_intent():
     total_amount = sum(
         (item['basePrice'] + sum(addon['price'] for addon in item['addOns']) + sum(choice['price'] for choice in item['choices'])) * item['quantity']
         for item in cart
-    )
+    ) * 1.07 + 5.00
+    print("Total Amount:")
+    print(total_amount * 100)
     intent = stripe.PaymentIntent.create(
         amount=int(total_amount * 100),  # amount in cents
         currency='usd',
@@ -72,7 +74,7 @@ def complete_order():
     print(f"{name}, {address}, {phone}, {str(total)}, {str(cart)}")
 
     email_list = mvp_emailer.order_notify_email_list
-    mvp_emailer.send_email_to_multiple(email_list, str(data))
+    #mvp_emailer.send_email_to_multiple(email_list, str(data))
 
     return jsonify({'status': 'success'})
 

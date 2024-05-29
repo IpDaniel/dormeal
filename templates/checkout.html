@@ -27,6 +27,15 @@
     <div class="checkout-summary" id="checkout-summary">
         <div id="checkout-items"></div>
         <div>
+            <strong>Subtotal:</strong> $<span id="checkout-subtotal">0.00</span>
+        </div>
+        <div>
+            <strong>Delivery Fee:</strong> $<span id="checkout-delivery">5.00</span>
+        </div>
+        <div>
+            <strong>Sales Tax:</strong> $<span id="checkout-tax">0.00</span>
+        </div>
+        <div>
             <strong>Total:</strong> $<span id="checkout-total">0.00</span>
         </div>
     </div>
@@ -57,11 +66,16 @@
         document.addEventListener('DOMContentLoaded', async () => {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const checkoutItemsContainer = document.getElementById('checkout-items');
+            const checkoutSubtotalContainer = document.getElementById('checkout-subtotal');
+            const checkoutDeliveryContainer = document.getElementById('checkout-delivery');
+            const checkoutTaxContainer = document.getElementById('checkout-tax');
             const checkoutTotalContainer = document.getElementById('checkout-total');
 
             function renderCheckout() {
                 checkoutItemsContainer.innerHTML = '';
-                let total = 0;
+                let subtotal = 0;
+                const deliveryFee = 5.00;
+                const taxRate = 0.07;
 
                 cart.forEach(item => {
                     let itemTotal = item.basePrice;
@@ -75,7 +89,7 @@
                         itemTotal += choice.price;
                         choicesText += `, ${choice.name} (+$${choice.price.toFixed(2)})`;
                     });
-                    total += itemTotal * item.quantity;
+                    subtotal += itemTotal * item.quantity;
 
                     const checkoutItem = document.createElement('div');
                     checkoutItem.classList.add('checkout-item');
@@ -85,6 +99,11 @@
                     checkoutItemsContainer.appendChild(checkoutItem);
                 });
 
+                const tax = subtotal * taxRate;
+                const total = subtotal + deliveryFee + tax;
+
+                checkoutSubtotalContainer.textContent = subtotal.toFixed(2);
+                checkoutTaxContainer.textContent = tax.toFixed(2);
                 checkoutTotalContainer.textContent = total.toFixed(2);
             }
 
@@ -102,7 +121,7 @@
                 const name = document.getElementById('name').value;
                 const address = document.getElementById('address').value;
                 const phone = document.getElementById('phone').value;
-                const total = document.getElementById('checkout-total').value;
+                const total = parseFloat(document.getElementById('checkout-total').textContent);
                 
                 const { clientSecret } = await fetch('/create-payment-intent', {
                     method: 'POST',

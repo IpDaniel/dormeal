@@ -7,6 +7,15 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin-bottom: 120px; /* Make sure there's enough space for the fixed cart */
+        }
+        .menu-section {
+            margin-bottom: 20px;
+        }
+        .menu-section h2 {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin: 0;
         }
         .product {
             border: 1px solid #ccc;
@@ -14,68 +23,162 @@
             padding: 10px;
         }
         .cart {
-            border: 1px solid #000;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            border-top: 2px solid #000;
             padding: 10px;
-            margin-top: 20px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
         }
         .cart-item {
             margin-bottom: 10px;
+        }
+        #checkout-button {
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <h1>Menu</h1>
     <div id="products">
-        <div class="product" data-id="1" data-name="Product 1" data-price="10.00">
-            <h2>Product 1</h2>
-            <p>Price: $10.00</p>
-            <div>
-                <h3>Add-ons</h3>
-                <label>
-                    <input type="checkbox" class="addon" data-addon-name="Addon A" data-addon-price="2.00"> Addon A (+$2.00)
-                </label>
-                <label>
-                    <input type="checkbox" class="addon" data-addon-name="Addon B" data-addon-price="3.00"> Addon B (+$3.00)
-                </label>
+        <div class="menu-section" id="appetizers">
+            <h2>Appetizers</h2>
+            <div class="product" data-id="1" data-name="Spring Rolls" data-price="5.00">
+                <h3>Spring Rolls</h3>
+                <p>Price: $5.00</p>
+                <div>
+                    <h4>Add-ons</h4>
+                    <label>
+                        <input type="checkbox" class="addon" data-addon-name="Extra Sauce" data-addon-price="1.00"> Extra Sauce (+$1.00)
+                    </label>
+                </div>
+                <div>
+                    <h4>Choices</h4>
+                    <label>
+                        <input type="radio" name="choice-1" class="choice" data-choice-name="Spicy" data-choice-price="0.50"> Spicy (+$0.50)
+                    </label>
+                    <label>
+                        <input type="radio" name="choice-1" class="choice" data-choice-name="Mild" data-choice-price="0.00"> Mild (+$0.00)
+                    </label>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
             </div>
-            <div>
-                <h3>Choices</h3>
-                <label>
-                    <input type="radio" name="choice-1" class="choice" data-choice-name="Choice X" data-choice-price="1.00"> Choice X (+$1.00)
-                </label>
-                <label>
-                    <input type="radio" name="choice-1" class="choice" data-choice-name="Choice Y" data-choice-price="1.50"> Choice Y (+$1.50)
-                </label>
+            <div class="product" data-id="2" data-name="Garlic Bread" data-price="3.00">
+                <h3>Garlic Bread</h3>
+                <p>Price: $3.00</p>
+                <div>
+                    <h4>Add-ons</h4>
+                    <label>
+                        <input type="checkbox" class="addon" data-addon-name="Cheese" data-addon-price="1.50"> Cheese (+$1.50)
+                    </label>
+                </div>
+                <div>
+                    <h4>Choices</h4>
+                    <label>
+                        <input type="radio" name="choice-2" class="choice" data-choice-name="Whole Wheat" data-choice-price="0.50"> Whole Wheat (+$0.50)
+                    </label>
+                    <label>
+                        <input type="radio" name="choice-2" class="choice" data-choice-name="White" data-choice-price="0.00"> White (+$0.00)
+                    </label>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
             </div>
-            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <div class="product" data-id="2" data-name="Product 2" data-price="20.00">
-            <h2>Product 2</h2>
-            <p>Price: $20.00</p>
-            <div>
-                <h3>Add-ons</h3>
-                <label>
-                    <input type="checkbox" class="addon" data-addon-name="Addon C" data-addon-price="4.00"> Addon C (+$4.00)
-                </label>
-                <label>
-                    <input type="checkbox" class="addon" data-addon-name="Addon D" data-addon-price="5.00"> Addon D (+$5.00)
-                </label>
+        <div class="menu-section" id="mains">
+            <h2>Main Courses</h2>
+            <div class="product" data-id="3" data-name="Grilled Chicken" data-price="15.00">
+                <h3>Grilled Chicken</h3>
+                <p>Price: $15.00</p>
+                <div>
+                    <h4>Add-ons</h4>
+                    <label>
+                        <input type="checkbox" class="addon" data-addon-name="Extra Chicken" data-addon-price="5.00"> Extra Chicken (+$5.00)
+                    </label>
+                </div>
+                <div>
+                    <h4>Choices</h4>
+                    <label>
+                        <input type="radio" name="choice-3" class="choice" data-choice-name="BBQ Sauce" data-choice-price="1.00"> BBQ Sauce (+$1.00)
+                    </label>
+                    <label>
+                        <input type="radio" name="choice-3" class="choice" data-choice-name="Lemon Herb" data-choice-price="0.00"> Lemon Herb (+$0.00)
+                    </label>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
             </div>
-            <div>
-                <h3>Choices</h3>
-                <label>
-                    <input type="radio" name="choice-2" class="choice" data-choice-name="Choice Z" data-choice-price="2.00"> Choice Z (+$2.00)
-                </label>
-                <label>
-                    <input type="radio" name="choice-2" class="choice" data-choice-name="Choice W" data-choice-price="2.50"> Choice W (+$2.50)
-                </label>
+            <div class="product" data-id="4" data-name="Vegetable Stir Fry" data-price="12.00">
+                <h3>Vegetable Stir Fry</h3>
+                <p>Price: $12.00</p>
+                <div>
+                    <h4>Add-ons</h4>
+                    <label>
+                        <input type="checkbox" class="addon" data-addon-name="Tofu" data-addon-price="2.00"> Tofu (+$2.00)
+                    </label>
+                </div>
+                <div>
+                    <h4>Choices</h4>
+                    <label>
+                        <input type="radio" name="choice-4" class="choice" data-choice-name="White Rice" data-choice-price="1.00"> White Rice (+$1.00)
+                    </label>
+                    <label>
+                        <input type="radio" name="choice-4" class="choice" data-choice-name="Brown Rice" data-choice-price="1.50"> Brown Rice (+$1.50)
+                    </label>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
             </div>
-            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="menu-section" id="desserts">
+            <h2>Desserts</h2>
+            <div class="product" data-id="5" data-name="Chocolate Cake" data-price="6.00">
+                <h3>Chocolate Cake</h3>
+                <p>Price: $6.00</p>
+                <div>
+                    <h4>Add-ons</h4>
+                    <label>
+                        <input type="checkbox" class="addon" data-addon-name="Whipped Cream" data-addon-price="0.50"> Whipped Cream (+$0.50)
+                    </label>
+                </div>
+                <div>
+                    <h4>Choices</h4>
+                    <label>
+                        <input type="radio" name="choice-5" class="choice" data-choice-name="Vanilla" data-choice-price="0.00"> Vanilla (+$0.00)
+                    </label>
+                    <label>
+                        <input type="radio" name="choice-5" class="choice" data-choice-name="Chocolate" data-choice-price="0.50"> Chocolate (+$0.50)
+                    </label>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-id="6" data-name="Ice Cream Sundae" data-price="5.00">
+                <h3>Ice Cream Sundae</h3>
+                <p>Price: $5.00</p>
+                <div>
+                    <h4>Add-ons</h4>
+                    <label>
+                        <input type="checkbox" class="addon" data-addon-name="Sprinkles" data-addon-price="0.50"> Sprinkles (+$0.50)
+                    </label>
+                    <label>
+                        <input type="checkbox" class="addon" data-addon-name="Nuts" data-addon-price="1.00"> Nuts (+$1.00)
+                    </label>
+                </div>
+                <div>
+                    <h4>Choices</h4>
+                    <label>
+                        <input type="radio" name="choice-6" class="choice" data-choice-name="Chocolate Sauce" data-choice-price="0.50"> Chocolate Sauce (+$0.50)
+                    </label>
+                    <label>
+                        <input type="radio" name="choice-6" class="choice" data-choice-name="Caramel Sauce" data-choice-price="0.50"> Caramel Sauce (+$0.50)
+                    </label>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
         </div>
     </div>
 
-    <h1>Shopping Cart</h1>
     <div class="cart" id="cart">
+        <h3>Shopping Cart</h3>
         <div id="cart-items"></div>
         <div>
             <strong>Total:</strong> $<span id="cart-total">0.00</span>
@@ -84,6 +187,5 @@
     </div>
 
     <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
-    <!-- ../static/js/cart.js -->
 </body>
 </html>

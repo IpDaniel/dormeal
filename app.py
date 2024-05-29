@@ -66,12 +66,13 @@ def complete_order():
     address = data.get('address')
     phone = data.get('phone')
     cart = data.get('cart')
+    restaurant = data.get('restaurant')
     total = data.get('total')
     
     # Here you can save the order to your database
     # Example: save_order(name, address, phone, cart)
     print("new order")
-    print(f"{name}, {address}, {phone}, {str(total)}, {str(cart)}")
+    print(f"{name}, {address}, {phone}, {restaurant}, {str(total)}, {str(cart)}")
 
     email_list = mvp_emailer.order_notify_email_list
     #mvp_emailer.send_email_to_multiple(email_list, str(data))
@@ -84,6 +85,18 @@ def complete_order():
 PAGE ROUTES:
 ROUTES DEALING WITH FILE STRUCTURE NAVIGATION FOR FINDING SPECIFIC RESTAURANTS AT SPECIFIC SCHOOLS
 FOR THE MVP ARE LISTED BELOW
+"""
+
+#       <---CHOOSE RESTAURANT PAGES--->
+
+#Template
+"""
+@app.route('/school-name')
+def school_name():
+    if active:
+        return render_template('schools/school-name/school-name.html')
+    else:
+        return render_template('inactive.html')
 """
 
 #Northeastern choose-restaurant page
@@ -103,6 +116,18 @@ def university_of_maryland():
     else:
         return render_template('inactive.html')
 
+
+#           <---RESTAURANT MENUS--->
+
+#Template
+"""
+@app.route('/school-name/restaurant-name')
+def school_name_restaurant_name():
+    if active:
+        return render_template('schools/school-name/restaurants/restaurant-name.html')
+    else:
+        return render_template('inactive.html')
+"""
 
 
 #runs the app

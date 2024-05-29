@@ -50,8 +50,6 @@ def create_payment_intent():
         (item['basePrice'] + sum(addon['price'] for addon in item['addOns']) + sum(choice['price'] for choice in item['choices'])) * item['quantity']
         for item in cart
     ) * 1.07 + 5.00
-    print("Total Amount:")
-    print(total_amount * 100)
     intent = stripe.PaymentIntent.create(
         amount=int(total_amount * 100),  # amount in cents
         currency='usd',
@@ -71,11 +69,10 @@ def complete_order():
     
     # Here you can save the order to your database
     # Example: save_order(name, address, phone, cart)
-    print("new order")
-    print(f"{name}, {address}, {phone}, {restaurant}, {str(total)}, {str(cart)}")
+    print(f"NEW ORDER: {name}, {address}, {phone}, {restaurant}, ${str(total)}, {str(cart)}")
 
     email_list = mvp_emailer.order_notify_email_list
-    #mvp_emailer.send_email_to_multiple(email_list, str(data))
+    mvp_emailer.send_email_to_multiple(email_list, mvp_emailer.format_order(data))
 
     return jsonify({'status': 'success'})
 

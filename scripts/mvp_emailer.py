@@ -80,12 +80,14 @@ def format_order(order):
     output.append(f"Name: {order['name']}")
     output.append(f"Address: {order['address']}")
     output.append(f"Phone: {order['phone']}")
+    output.append(f"Restaurant: {order['restaurant']}")
     output.append("Cart Items:")
 
     for item in order['cart']:
         item_details = []
+        item_details.append(f"Name: {item['name']}")
+        item_details.append(f"  Quantity: {item['quantity']}")
         item_details.append(f"  Item ID: {item['id']}")
-        item_details.append(f"  Name: {item['name']}")
         item_details.append(f"  Base Price: ${item['basePrice']:.2f}")
         
         if item['addOns']:
@@ -102,9 +104,10 @@ def format_order(order):
         else:
             item_details.append("  Choices: None")
         
-        item_details.append(f"  Quantity: {item['quantity']}")
-        
         output.append("\n".join(item_details))
+
+    output.append(f"Total: ${order['total']:.2f}")
+    output.append(f"Total Minus Delivery: ${(order['total'] - 5):.2f}")
     
     return "\n".join(output)
 
@@ -119,19 +122,21 @@ order_data = {
             'name': 'Spring Rolls',
             'basePrice': 5,
             'addOns': [{'name': 'Extra Sauce', 'price': 1}],
-            'choices': [{'name': 'Mild', 'price': 0}],
-            'quantity': 2
+            'choices': [],
+            'quantity': 1
         },
         {
-            'id': '2',
-            'name': 'Garlic Bread',
-            'basePrice': 3,
+            'id': '3',
+            'name': 'Grilled Chicken',
+            'basePrice': 15,
             'addOns': [],
-            'choices': [{'name': 'Whole Wheat', 'price': 0.5}],
-            'quantity': 1
+            'choices': [{'name': 'BBQ Sauce', 'price': 1}],
+            'quantity': 2
         }
-    ]
+    ],
+    'restaurant': 'Restaurant Name',
+    'total': 45.66
 }
 
-#formatted_order = format_order(order_data)
+formatted_order = format_order(order_data)
 #print(formatted_order)

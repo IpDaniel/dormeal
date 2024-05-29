@@ -70,6 +70,7 @@
             const checkoutDeliveryContainer = document.getElementById('checkout-delivery');
             const checkoutTaxContainer = document.getElementById('checkout-tax');
             const checkoutTotalContainer = document.getElementById('checkout-total');
+            const checkoutSummary = document.getElementById('checkout-summary');
 
             function renderCheckout() {
                 checkoutItemsContainer.innerHTML = '';
@@ -118,6 +119,9 @@
             const form = document.getElementById('payment-form');
             form.addEventListener('submit', async (event) => {
                 event.preventDefault();
+
+                form.style.display = 'none';
+                checkoutSummary.style.display = 'none';
 
                 const name = document.getElementById('name').value;
                 const address = document.getElementById('address').value;

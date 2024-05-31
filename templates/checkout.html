@@ -7,60 +7,130 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: #222;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #fff;
         }
         .checkout-summary {
-            border: 1px solid #000;
-            padding: 10px;
-            margin-top: 20px;
+            border: 1px solid #444;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background: #333;
         }
         .checkout-item {
             margin-bottom: 10px;
+            padding: 10px;
+            border-bottom: 1px solid #555;
+        }
+        .checkout-item:last-child {
+            border-bottom: none;
         }
         form {
             margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background: #555;
+            color: #fff;
+        }
+        #card-element {
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background: #555;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #FD00EA;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #ff5bf1;
+        }
+        #payment-message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            color: #00760c;
+            background: #a2ff8f;
+            display: none;
         }
     </style>
     <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
-    <h1>Checkout</h1>
-    <div class="checkout-summary" id="checkout-summary">
-        <div id="checkout-items"></div>
-        <div>
-            <strong>Subtotal:</strong> $<span id="checkout-subtotal">0.00</span>
+    <div class="container">
+        <h1>Checkout</h1>
+        <div class="checkout-summary" id="checkout-summary">
+            <div id="checkout-items"></div>
+            <div>
+                <strong>Subtotal:</strong> $<span id="checkout-subtotal">0.00</span>
+            </div>
+            <div>
+                <strong>Delivery Fee:</strong> $<span id="checkout-delivery">5.00</span>
+            </div>
+            <div>
+                <strong>Sales Tax:</strong> $<span id="checkout-tax">0.00</span>
+            </div>
+            <div>
+                <strong>Total:</strong> $<span id="checkout-total">0.00</span>
+            </div>
         </div>
-        <div>
-            <strong>Delivery Fee:</strong> $<span id="checkout-delivery">5.00</span>
-        </div>
-        <div>
-            <strong>Sales Tax:</strong> $<span id="checkout-tax">0.00</span>
-        </div>
-        <div>
-            <strong>Total:</strong> $<span id="checkout-total">0.00</span>
-        </div>
+
+        <form id="payment-form">
+            <h2>Billing Details</h2>
+            <label>
+                Name:
+                <input type="text" id="name" required>
+            </label>
+            <label>
+                Address:
+                <input type="text" id="address" required>
+            </label>
+            <label>
+                Phone:
+                <input type="text" id="phone" required>
+            </label>
+
+            <h2>Payment</h2>
+            <div id="card-element"></div>
+            <button type="submit" id="submit-button">Place Order</button>
+        </form>
+
+        <div id="payment-message">Payment Succeeded</div>
     </div>
-
-    <form id="payment-form">
-        <h2>Billing Details</h2>
-        <label>
-            Name:
-            <input type="text" id="name" required>
-        </label>
-        <label>
-            Address:
-            <input type="text" id="address" required>
-        </label>
-        <label>
-            Phone:
-            <input type="text" id="phone" required>
-        </label>
-
-        <h2>Payment</h2>
-        <div id="card-element"></div>
-        <button type="submit" id="submit-button">Pay</button>
-    </form>
-
-    <div id="payment-message"></div>
 
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
@@ -109,7 +179,7 @@
             }
 
             renderCheckout();
-            const restaurant = localStorage.getItem('restaurant')
+            const restaurant = localStorage.getItem('restaurant');
 
             const stripe = Stripe('pk_test_51PG7v4Rsh0QceLeTwmNGUI6lCGHCBNrN3gXGuZdmTUu1AsnefusHEvncUzd1iKZ1jM2KZlk06bhJWBuF7VNOGkHW00s8wMBug4');
             const elements = stripe.elements();
@@ -122,12 +192,14 @@
 
                 form.style.display = 'none';
                 checkoutSummary.style.display = 'none';
+                document.getElementById('payment-message').style.display = 'block';        
+                document.getElementById('payment-message').textContent = 'Processing. Please wait';
 
                 const name = document.getElementById('name').value;
                 const address = document.getElementById('address').value;
                 const phone = document.getElementById('phone').value;
                 const total = parseFloat(document.getElementById('checkout-total').textContent);
-                
+
                 const { clientSecret } = await fetch('/create-payment-intent', {
                     method: 'POST',
                     headers: {
@@ -159,6 +231,7 @@
                         },
                         body: JSON.stringify({ name, address, phone, cart, restaurant, total }),
                     });
+                    
                     document.getElementById('payment-message').textContent = 'Payment succeeded!';
                     localStorage.removeItem('cart');
                 }

@@ -126,6 +126,14 @@ def school_name_restaurant_name():
         return render_template('inactive.html')
 """
 
+#Northeastern Five Guys
+@app.route('/northeastern-university/five-guys')
+def school_name_restaurant_name():
+    if active:
+        return render_template('schools/northeastern-university/restaurants/five-guys.html')
+    else:
+        return render_template('inactive.html')
+
 
 #runs the app
 if __name__ == '__main__':

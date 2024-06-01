@@ -106,6 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
     checkoutButton.addEventListener('click', () => {
         localStorage.setItem('cart', JSON.stringify(cart));
         localStorage.setItem('restaurant', document.getElementById('restaurant-name').textContent)
-        window.location.href = 'checkout';
+        window.location.href = '/checkout';
     });
 });

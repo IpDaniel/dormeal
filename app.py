@@ -128,12 +128,30 @@ def school_name_restaurant_name():
 
 #Northeastern Five Guys
 @app.route('/northeastern-university/five-guys')
-def school_name_restaurant_name():
+def northeastern_university_five_guys():
     if active:
         return render_template('schools/northeastern-university/restaurants/five-guys.html')
     else:
         return render_template('inactive.html')
+    
 
+#Northeastern Wings Over
+@app.route('/northeastern-university/wings-over-boston')
+def northeastern_university_wings_over_boston():
+    if active:
+        return render_template('schools/northeastern-university/restaurants/wings-over-boston.html')
+    else:
+        return render_template('inactive.html')
+
+
+
+#Northeastern El Jefe's
+@app.route('/northeastern-university/el-jefes-taqueria')
+def northeastern_university_el_jefes_taqueria():
+    if active:
+        return render_template('schools/northeastern-university/restaurants/el-jefes-taqueria.html')
+    else:
+        return render_template('inactive.html')
 
 #runs the app
 if __name__ == '__main__':

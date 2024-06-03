@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dormeal School_Name</title>
+    <title>Dormeal Northeastern</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -99,56 +99,2391 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="#appetizers">Appetizers</a>
-        <a href="#mains">Mains</a>
+        <a href="#main-menu">Main Menu</a>
+        <a href="#specials">Specials(Sides & Appetizers)</a>
         <a href="#desserts">Desserts</a>
+        <a href="#drinks">Drinks</a>
     </div>
-    <h1 id="restaurant-name">Restaurant Name</h1>
+    <h1 id="restaurant-name">Mamcita Mexican Comida</h1>
     <div id="products">
-        <div class="menu-section" id="appetizers">
-            <h2>Appetizers</h2>
+        <div class="menu-section" id="main-menu">
+            <h2>Main Menu</h2>
             <div class="product-grid">
-                <div class="product" data-id="1" data-name="Spring Rolls" data-price="5.00">
-                    <h3>Spring Rolls</h3>
-                    <p>Price: $5.00</p>
+                <div class="product" data-id="1" data-name="Burrito" data-price="14.00">
+                    <h3>Burrito</h3>
+                    <p>Price: $14.00</p>
                     <div>
-                        <h4>Choices</h4>
+                        <h4>Protein Choice</h4>
                         <label>
-                            <input type="radio" name="choice-1" class="choice" data-choice-name="Spicy" data-choice-price="0.50"> Spicy (+$0.50)
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Chicken" data-choice-price="0.00"> Grilled Chicken
                             <br>
                         </label>
                         <label>
-                            <input type="radio" name="choice-1" class="choice" data-choice-name="Mild" data-choice-price="0.00"> Mild (+$0.00)
+                            <input type="radio" name="protein" class="choice" data-choice-name="Spicy Chicken Tinga" data-choice-price="0.00"> Spicy Chicken Tinga
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Steak" data-choice-price="3.00"> Grilled Steak (+$3.00)
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Beef Barbacoa" data-choice-price="0.00"> Beef Barbacoa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Pork Carnita" data-choice-price="0.00"> Pork Carnita
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Mexican Falafel" data-choice-price="0.00"> Mexican Falafel
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Tofu Adobo" data-choice-price="0.00"> Tofu Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Roasted Veggies" data-choice-price="0.00"> Roasted Veggies
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Ground Beef Molido" data-choice-price="0.00"> Ground Beef Molido
                             <br>
                         </label>
                     </div>
                     <div>
-                        <h4>Add-ons</h4>
+                        <h4>Sauce Choice (3 MAX)</h4>
                         <label>
-                            <input type="checkbox" class="addon" data-addon-name="Extra Sauce" data-addon-price="1.00"> Extra Sauce (+$1.00)
+                            <input type="checkbox" class="addon" data-addon-name="Sour Cream" data-addon-price="0.00"> Sour Cream
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Chipotle Aioli" data-addon-price="0.00"> Chipotle Aioli
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Tomatillo Chimichuri" data-addon-price="0.00"> Tomatillo Chimichuri
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Vinaigrette" data-addon-price="0.00"> Jalapeno Vinaigrette
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Salsa Verde" data-addon-price="0.00"> Spicy Salsa Verde
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Mojo Verde" data-addon-price="0.00"> Mojo Verde
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Toppings (7 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Guacamole" data-addon-price="0.00"> Guacamole
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Corn Adobo" data-addon-price="0.00"> Corn Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Fried Plantains" data-addon-price="0.00"> Fried Plantains
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Queso" data-addon-price="0.00"> Spicy Queso
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Cheese Blend" data-addon-price="0.00"> Shredded Cheese Blend
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Queso Fresco" data-addon-price="0.00"> Queso Fresco
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pico de Gallo" data-addon-price="0.00"> Pico de Gallo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pineapple Salsa" data-addon-price="0.00"> Pineapple Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="House Salsa" data-addon-price="0.00"> House Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Seasoned Rice" data-addon-price="0.00"> Seasoned Rice
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Black Bean" data-addon-price="0.00"> Black Bean
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Refried Beans" data-addon-price="0.00"> Refried Beans
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Cotija Spread" data-addon-price="0.00"> Jalapeno Cotija Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Poblano Bean Spread" data-addon-price="0.00"> Poblano Bean Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Jalapenos" data-addon-price="0.00"> Pickled Jalapenos
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Onion" data-addon-price="0.00"> Pickled Onion
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Curtido Slaw" data-addon-price="0.00"> Curtido Slaw
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Plantain Chips" data-addon-price="0.00"> Plantain Chips
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spring Mix" data-addon-price="0.00"> Spring Mix
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Romaine" data-addon-price="0.00"> Shredded Romaine
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Cucumber" data-addon-price="0.00"> Cucumber
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Onion/Cilantro" data-addon-price="0.00"> Onion/Cilantro
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pinto Beans" data-addon-price="0.00"> Pinto Beans
                             <br>
                         </label>
                     </div>
                     <button class="add-to-cart">Add to Cart</button>
                 </div>
-                <div class="product" data-id="2" data-name="Garlic Bread" data-price="3.00">
-                    <h3>Garlic Bread</h3>
-                    <p>Price: $3.00</p>
+                <div class="product" data-id="2" data-name="Rice Bowl" data-price="15.00">
+                    <h3>Rice Bowl</h3>
+                    <p>Price: $15.00</p>
                     <div>
-                        <h4>Choices</h4>
+                        <h4>Protein Choice</h4>
                         <label>
-                            <input type="radio" name="choice-2" class="choice" data-choice-name="Whole Wheat" data-choice-price="0.50"> Whole Wheat (+$0.50)
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Chicken" data-choice-price="0.00"> Grilled Chicken
                             <br>
                         </label>
                         <label>
-                            <input type="radio" name="choice-2" class="choice" data-choice-name="White" data-choice-price="0.00"> White (+$0.00)
+                            <input type="radio" name="protein" class="choice" data-choice-name="Spicy Chicken Tinga" data-choice-price="0.00"> Spicy Chicken Tinga
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Steak" data-choice-price="3.00"> Grilled Steak (+$3.00)
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Beef Barbacoa" data-choice-price="0.00"> Beef Barbacoa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Pork Carnita" data-choice-price="0.00"> Pork Carnita
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Mexican Falafel" data-choice-price="0.00"> Mexican Falafel
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Tofu Adobo" data-choice-price="0.00"> Tofu Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Roasted Veggies" data-choice-price="0.00"> Roasted Veggies
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Ground Beef Molido" data-choice-price="0.00"> Ground Beef Molido
                             <br>
                         </label>
                     </div>
                     <div>
-                        <h4>Add-ons</h4>
+                        <h4>Sauce Choice (3 MAX)</h4>
                         <label>
-                            <input type="checkbox" class="addon" data-addon-name="Cheese" data-addon-price="1.50"> Cheese (+$1.50)
+                            <input type="checkbox" class="addon" data-addon-name="Sour Cream" data-addon-price="0.00"> Sour Cream
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Chipotle Aioli" data-addon-price="0.00"> Chipotle Aioli
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Tomatillo Chimichuri" data-addon-price="0.00"> Tomatillo Chimichuri
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Vinaigrette" data-addon-price="0.00"> Jalapeno Vinaigrette
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Salsa Verde" data-addon-price="0.00"> Spicy Salsa Verde
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Mojo Verde" data-addon-price="0.00"> Mojo Verde
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Toppings (7 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Guacamole" data-addon-price="0.00"> Guacamole
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Corn Adobo" data-addon-price="0.00"> Corn Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Fried Plantains" data-addon-price="0.00"> Fried Plantains
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Queso" data-addon-price="0.00"> Spicy Queso
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Cheese Blend" data-addon-price="0.00"> Shredded Cheese Blend
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Queso Fresco" data-addon-price="0.00"> Queso Fresco
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pico de Gallo" data-addon-price="0.00"> Pico de Gallo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pineapple Salsa" data-addon-price="0.00"> Pineapple Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="House Salsa" data-addon-price="0.00"> House Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Seasoned Rice" data-addon-price="0.00"> Seasoned Rice
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Black Bean" data-addon-price="0.00"> Black Bean
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Refried Beans" data-addon-price="0.00"> Refried Beans
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Cotija Spread" data-addon-price="0.00"> Jalapeno Cotija Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Poblano Bean Spread" data-addon-price="0.00"> Poblano Bean Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Jalapenos" data-addon-price="0.00"> Pickled Jalapenos
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Onion" data-addon-price="0.00"> Pickled Onion
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Curtido Slaw" data-addon-price="0.00"> Curtido Slaw
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Plantain Chips" data-addon-price="0.00"> Plantain Chips
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spring Mix" data-addon-price="0.00"> Spring Mix
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Romaine" data-addon-price="0.00"> Shredded Romaine
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Cucumber" data-addon-price="0.00"> Cucumber
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Onion/Cilantro" data-addon-price="0.00"> Onion/Cilantro
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pinto Beans" data-addon-price="0.00"> Pinto Beans
+                            <br>
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="3" data-name="Quesadilla" data-price="12.00">
+                    <h3>Quesadilla</h3>
+                    <p>Price: $12.00</p>
+                    <div>
+                        <h4>Protein Choice</h4>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Chicken" data-choice-price="0.00"> Grilled Chicken
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Spicy Chicken Tinga" data-choice-price="0.00"> Spicy Chicken Tinga
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Steak" data-choice-price="3.00"> Grilled Steak (+$3.00)
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Beef Barbacoa" data-choice-price="0.00"> Beef Barbacoa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Pork Carnita" data-choice-price="0.00"> Pork Carnita
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Mexican Falafel" data-choice-price="0.00"> Mexican Falafel
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Tofu Adobo" data-choice-price="0.00"> Tofu Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Roasted Veggies" data-choice-price="0.00"> Roasted Veggies
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Ground Beef Molido" data-choice-price="0.00"> Ground Beef Molido
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Sauce Choice (3 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Sour Cream" data-addon-price="0.00"> Sour Cream
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Chipotle Aioli" data-addon-price="0.00"> Chipotle Aioli
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Tomatillo Chimichuri" data-addon-price="0.00"> Tomatillo Chimichuri
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Vinaigrette" data-addon-price="0.00"> Jalapeno Vinaigrette
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Salsa Verde" data-addon-price="0.00"> Spicy Salsa Verde
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Mojo Verde" data-addon-price="0.00"> Mojo Verde
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Toppings (7 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Guacamole" data-addon-price="0.00"> Guacamole
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Corn Adobo" data-addon-price="0.00"> Corn Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Fried Plantains" data-addon-price="0.00"> Fried Plantains
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Queso" data-addon-price="0.00"> Spicy Queso
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Cheese Blend" data-addon-price="0.00"> Shredded Cheese Blend
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Queso Fresco" data-addon-price="0.00"> Queso Fresco
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pico de Gallo" data-addon-price="0.00"> Pico de Gallo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pineapple Salsa" data-addon-price="0.00"> Pineapple Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="House Salsa" data-addon-price="0.00"> House Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Seasoned Rice" data-addon-price="0.00"> Seasoned Rice
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Black Bean" data-addon-price="0.00"> Black Bean
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Refried Beans" data-addon-price="0.00"> Refried Beans
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Cotija Spread" data-addon-price="0.00"> Jalapeno Cotija Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Poblano Bean Spread" data-addon-price="0.00"> Poblano Bean Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Jalapenos" data-addon-price="0.00"> Pickled Jalapenos
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Onion" data-addon-price="0.00"> Pickled Onion
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Curtido Slaw" data-addon-price="0.00"> Curtido Slaw
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Plantain Chips" data-addon-price="0.00"> Plantain Chips
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spring Mix" data-addon-price="0.00"> Spring Mix
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Romaine" data-addon-price="0.00"> Shredded Romaine
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Cucumber" data-addon-price="0.00"> Cucumber
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Onion/Cilantro" data-addon-price="0.00"> Onion/Cilantro
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pinto Beans" data-addon-price="0.00"> Pinto Beans
+                            <br>
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="4" data-name="Torta" data-price="12.00">
+                    <h3>Torta</h3>
+                    <p>Price: $12.00</p>
+                    <div>
+                        <h4>Protein Choice</h4>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Chicken" data-choice-price="0.00"> Grilled Chicken
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Spicy Chicken Tinga" data-choice-price="0.00"> Spicy Chicken Tinga
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Steak" data-choice-price="3.00"> Grilled Steak (+$3.00)
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Beef Barbacoa" data-choice-price="0.00"> Beef Barbacoa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Pork Carnita" data-choice-price="0.00"> Pork Carnita
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Mexican Falafel" data-choice-price="0.00"> Mexican Falafel
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Tofu Adobo" data-choice-price="0.00"> Tofu Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Roasted Veggies" data-choice-price="0.00"> Roasted Veggies
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Ground Beef Molido" data-choice-price="0.00"> Ground Beef Molido
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Sauce Choice (3 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Sour Cream" data-addon-price="0.00"> Sour Cream
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Chipotle Aioli" data-addon-price="0.00"> Chipotle Aioli
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Tomatillo Chimichuri" data-addon-price="0.00"> Tomatillo Chimichuri
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Vinaigrette" data-addon-price="0.00"> Jalapeno Vinaigrette
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Salsa Verde" data-addon-price="0.00"> Spicy Salsa Verde
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Mojo Verde" data-addon-price="0.00"> Mojo Verde
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Toppings (7 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Guacamole" data-addon-price="0.00"> Guacamole
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Corn Adobo" data-addon-price="0.00"> Corn Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Fried Plantains" data-addon-price="0.00"> Fried Plantains
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Queso" data-addon-price="0.00"> Spicy Queso
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Cheese Blend" data-addon-price="0.00"> Shredded Cheese Blend
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Queso Fresco" data-addon-price="0.00"> Queso Fresco
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pico de Gallo" data-addon-price="0.00"> Pico de Gallo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pineapple Salsa" data-addon-price="0.00"> Pineapple Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="House Salsa" data-addon-price="0.00"> House Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Seasoned Rice" data-addon-price="0.00"> Seasoned Rice
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Black Bean" data-addon-price="0.00"> Black Bean
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Refried Beans" data-addon-price="0.00"> Refried Beans
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Cotija Spread" data-addon-price="0.00"> Jalapeno Cotija Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Poblano Bean Spread" data-addon-price="0.00"> Poblano Bean Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Jalapenos" data-addon-price="0.00"> Pickled Jalapenos
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Onion" data-addon-price="0.00"> Pickled Onion
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Curtido Slaw" data-addon-price="0.00"> Curtido Slaw
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Plantain Chips" data-addon-price="0.00"> Plantain Chips
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spring Mix" data-addon-price="0.00"> Spring Mix
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Romaine" data-addon-price="0.00"> Shredded Romaine
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Cucumber" data-addon-price="0.00"> Cucumber
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Onion/Cilantro" data-addon-price="0.00"> Onion/Cilantro
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pinto Beans" data-addon-price="0.00"> Pinto Beans
+                            <br>
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="5" data-name="Salad" data-price="13.50">
+                    <h3>Salad</h3>
+                    <p>Price: $13.50</p>
+                    <div>
+                        <h4>Protein Choice</h4>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Chicken" data-choice-price="0.00"> Grilled Chicken
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Spicy Chicken Tinga" data-choice-price="0.00"> Spicy Chicken Tinga
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Steak" data-choice-price="3.00"> Grilled Steak (+$3.00)
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Beef Barbacoa" data-choice-price="0.00"> Beef Barbacoa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Pork Carnita" data-choice-price="0.00"> Pork Carnita
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Mexican Falafel" data-choice-price="0.00"> Mexican Falafel
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Tofu Adobo" data-choice-price="0.00"> Tofu Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Roasted Veggies" data-choice-price="0.00"> Roasted Veggies
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Ground Beef Molido" data-choice-price="0.00"> Ground Beef Molido
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Sauce Choice (3 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Sour Cream" data-addon-price="0.00"> Sour Cream
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Chipotle Aioli" data-addon-price="0.00"> Chipotle Aioli
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Tomatillo Chimichuri" data-addon-price="0.00"> Tomatillo Chimichuri
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Vinaigrette" data-addon-price="0.00"> Jalapeno Vinaigrette
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Salsa Verde" data-addon-price="0.00"> Spicy Salsa Verde
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Mojo Verde" data-addon-price="0.00"> Mojo Verde
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Toppings (7 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Guacamole" data-addon-price="0.00"> Guacamole
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Corn Adobo" data-addon-price="0.00"> Corn Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Fried Plantains" data-addon-price="0.00"> Fried Plantains
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Queso" data-addon-price="0.00"> Spicy Queso
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Cheese Blend" data-addon-price="0.00"> Shredded Cheese Blend
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Queso Fresco" data-addon-price="0.00"> Queso Fresco
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pico de Gallo" data-addon-price="0.00"> Pico de Gallo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pineapple Salsa" data-addon-price="0.00"> Pineapple Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="House Salsa" data-addon-price="0.00"> House Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Seasoned Rice" data-addon-price="0.00"> Seasoned Rice
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Black Bean" data-addon-price="0.00"> Black Bean
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Refried Beans" data-addon-price="0.00"> Refried Beans
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Cotija Spread" data-addon-price="0.00"> Jalapeno Cotija Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Poblano Bean Spread" data-addon-price="0.00"> Poblano Bean Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Jalapenos" data-addon-price="0.00"> Pickled Jalapenos
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Onion" data-addon-price="0.00"> Pickled Onion
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Curtido Slaw" data-addon-price="0.00"> Curtido Slaw
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Plantain Chips" data-addon-price="0.00"> Plantain Chips
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spring Mix" data-addon-price="0.00"> Spring Mix
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Romaine" data-addon-price="0.00"> Shredded Romaine
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Cucumber" data-addon-price="0.00"> Cucumber
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Onion/Cilantro" data-addon-price="0.00"> Onion/Cilantro
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pinto Beans" data-addon-price="0.00"> Pinto Beans
+                            <br>
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="6" data-name="Nachos" data-price="14.00">
+                    <h3>Nachos</h3>
+                    <p>Price: $14.00</p>
+                    <div>
+                        <h4>Protein Choice</h4>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Chicken" data-choice-price="0.00"> Grilled Chicken
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Spicy Chicken Tinga" data-choice-price="0.00"> Spicy Chicken Tinga
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Steak" data-choice-price="3.00"> Grilled Steak (+$3.00)
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Beef Barbacoa" data-choice-price="0.00"> Beef Barbacoa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Pork Carnita" data-choice-price="0.00"> Pork Carnita
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Mexican Falafel" data-choice-price="0.00"> Mexican Falafel
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Tofu Adobo" data-choice-price="0.00"> Tofu Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Roasted Veggies" data-choice-price="0.00"> Roasted Veggies
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Ground Beef Molido" data-choice-price="0.00"> Ground Beef Molido
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Sauce Choice (3 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Sour Cream" data-addon-price="0.00"> Sour Cream
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Chipotle Aioli" data-addon-price="0.00"> Chipotle Aioli
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Tomatillo Chimichuri" data-addon-price="0.00"> Tomatillo Chimichuri
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Vinaigrette" data-addon-price="0.00"> Jalapeno Vinaigrette
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Salsa Verde" data-addon-price="0.00"> Spicy Salsa Verde
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Mojo Verde" data-addon-price="0.00"> Mojo Verde
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Toppings (7 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Guacamole" data-addon-price="0.00"> Guacamole
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Corn Adobo" data-addon-price="0.00"> Corn Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Fried Plantains" data-addon-price="0.00"> Fried Plantains
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Queso" data-addon-price="0.00"> Spicy Queso
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Cheese Blend" data-addon-price="0.00"> Shredded Cheese Blend
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Queso Fresco" data-addon-price="0.00"> Queso Fresco
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pico de Gallo" data-addon-price="0.00"> Pico de Gallo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pineapple Salsa" data-addon-price="0.00"> Pineapple Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="House Salsa" data-addon-price="0.00"> House Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Seasoned Rice" data-addon-price="0.00"> Seasoned Rice
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Black Bean" data-addon-price="0.00"> Black Bean
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Refried Beans" data-addon-price="0.00"> Refried Beans
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Cotija Spread" data-addon-price="0.00"> Jalapeno Cotija Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Poblano Bean Spread" data-addon-price="0.00"> Poblano Bean Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Jalapenos" data-addon-price="0.00"> Pickled Jalapenos
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Onion" data-addon-price="0.00"> Pickled Onion
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Curtido Slaw" data-addon-price="0.00"> Curtido Slaw
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Plantain Chips" data-addon-price="0.00"> Plantain Chips
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spring Mix" data-addon-price="0.00"> Spring Mix
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Romaine" data-addon-price="0.00"> Shredded Romaine
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Cucumber" data-addon-price="0.00"> Cucumber
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Onion/Cilantro" data-addon-price="0.00"> Onion/Cilantro
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pinto Beans" data-addon-price="0.00"> Pinto Beans
+                            <br>
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="7" data-name="Taco Combo" data-price="14.50">
+                    <h3>Taco Combo</h3>
+                    <p>Price: $14.50</p>
+                    <div>
+                        <h4>Protein Choice</h4>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Chicken" data-choice-price="0.00"> Grilled Chicken
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Spicy Chicken Tinga" data-choice-price="0.00"> Spicy Chicken Tinga
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Steak" data-choice-price="3.00"> Grilled Steak (+$3.00)
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Beef Barbacoa" data-choice-price="0.00"> Beef Barbacoa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Pork Carnita" data-choice-price="0.00"> Pork Carnita
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Mexican Falafel" data-choice-price="0.00"> Mexican Falafel
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Tofu Adobo" data-choice-price="0.00"> Tofu Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Roasted Veggies" data-choice-price="0.00"> Roasted Veggies
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Ground Beef Molido" data-choice-price="0.00"> Ground Beef Molido
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Sauce Choice (3 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Sour Cream" data-addon-price="0.00"> Sour Cream
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Chipotle Aioli" data-addon-price="0.00"> Chipotle Aioli
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Tomatillo Chimichuri" data-addon-price="0.00"> Tomatillo Chimichuri
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Vinaigrette" data-addon-price="0.00"> Jalapeno Vinaigrette
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Salsa Verde" data-addon-price="0.00"> Spicy Salsa Verde
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Mojo Verde" data-addon-price="0.00"> Mojo Verde
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Toppings (4 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Guacamole" data-addon-price="0.00"> Guacamole
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Corn Adobo" data-addon-price="0.00"> Corn Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Fried Plantains" data-addon-price="0.00"> Fried Plantains
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Queso" data-addon-price="0.00"> Spicy Queso
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Cheese Blend" data-addon-price="0.00"> Shredded Cheese Blend
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Queso Fresco" data-addon-price="0.00"> Queso Fresco
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pico de Gallo" data-addon-price="0.00"> Pico de Gallo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pineapple Salsa" data-addon-price="0.00"> Pineapple Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="House Salsa" data-addon-price="0.00"> House Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Seasoned Rice" data-addon-price="0.00"> Seasoned Rice
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Black Bean" data-addon-price="0.00"> Black Bean
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Refried Beans" data-addon-price="0.00"> Refried Beans
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Cotija Spread" data-addon-price="0.00"> Jalapeno Cotija Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Poblano Bean Spread" data-addon-price="0.00"> Poblano Bean Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Jalapenos" data-addon-price="0.00"> Pickled Jalapenos
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Onion" data-addon-price="0.00"> Pickled Onion
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Curtido Slaw" data-addon-price="0.00"> Curtido Slaw
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Plantain Chips" data-addon-price="0.00"> Plantain Chips
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spring Mix" data-addon-price="0.00"> Spring Mix
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Romaine" data-addon-price="0.00"> Shredded Romaine
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Cucumber" data-addon-price="0.00"> Cucumber
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Onion/Cilantro" data-addon-price="0.00"> Onion/Cilantro
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pinto Beans" data-addon-price="0.00"> Pinto Beans
+                            <br>
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="8" data-name="Quesabirria Combo" data-price="13.50">
+                    <h3>Quesabirria Combo</h3>
+                    <p>Price: $13.50</p>
+                    <div>
+                        <h4>Protein Choice</h4>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Chicken" data-choice-price="0.00"> Grilled Chicken
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Spicy Chicken Tinga" data-choice-price="0.00"> Spicy Chicken Tinga
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Steak" data-choice-price="3.00"> Grilled Steak (+$3.00)
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Beef Barbacoa" data-choice-price="0.00"> Beef Barbacoa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Pork Carnita" data-choice-price="0.00"> Pork Carnita
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Mexican Falafel" data-choice-price="0.00"> Mexican Falafel
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Tofu Adobo" data-choice-price="0.00"> Tofu Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Roasted Veggies" data-choice-price="0.00"> Roasted Veggies
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Ground Beef Molido" data-choice-price="0.00"> Ground Beef Molido
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Sauce Choice (3 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Sour Cream" data-addon-price="0.00"> Sour Cream
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Chipotle Aioli" data-addon-price="0.00"> Chipotle Aioli
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Tomatillo Chimichuri" data-addon-price="0.00"> Tomatillo Chimichuri
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Vinaigrette" data-addon-price="0.00"> Jalapeno Vinaigrette
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Salsa Verde" data-addon-price="0.00"> Spicy Salsa Verde
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Mojo Verde" data-addon-price="0.00"> Mojo Verde
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Toppings (4 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Guacamole" data-addon-price="0.00"> Guacamole
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Corn Adobo" data-addon-price="0.00"> Corn Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Fried Plantains" data-addon-price="0.00"> Fried Plantains
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Queso" data-addon-price="0.00"> Spicy Queso
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Cheese Blend" data-addon-price="0.00"> Shredded Cheese Blend
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Queso Fresco" data-addon-price="0.00"> Queso Fresco
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pico de Gallo" data-addon-price="0.00"> Pico de Gallo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pineapple Salsa" data-addon-price="0.00"> Pineapple Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="House Salsa" data-addon-price="0.00"> House Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Seasoned Rice" data-addon-price="0.00"> Seasoned Rice
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Black Bean" data-addon-price="0.00"> Black Bean
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Refried Beans" data-addon-price="0.00"> Refried Beans
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Cotija Spread" data-addon-price="0.00"> Jalapeno Cotija Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Poblano Bean Spread" data-addon-price="0.00"> Poblano Bean Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Jalapenos" data-addon-price="0.00"> Pickled Jalapenos
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Onion" data-addon-price="0.00"> Pickled Onion
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Curtido Slaw" data-addon-price="0.00"> Curtido Slaw
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Plantain Chips" data-addon-price="0.00"> Plantain Chips
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spring Mix" data-addon-price="0.00"> Spring Mix
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Romaine" data-addon-price="0.00"> Shredded Romaine
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Cucumber" data-addon-price="0.00"> Cucumber
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Onion/Cilantro" data-addon-price="0.00"> Onion/Cilantro
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pinto Beans" data-addon-price="0.00"> Pinto Beans
+                            <br>
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="9" data-name="Enchilada Combo" data-price="13.00">
+                    <h3>Enchilada Combo</h3>
+                    <p>Price: $13.00</p>
+                    <div>
+                        <h4>Protein Choice</h4>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Chicken" data-choice-price="0.00"> Grilled Chicken
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Spicy Chicken Tinga" data-choice-price="0.00"> Spicy Chicken Tinga
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Steak" data-choice-price="3.00"> Grilled Steak (+$3.00)
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Beef Barbacoa" data-choice-price="0.00"> Beef Barbacoa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Pork Carnita" data-choice-price="0.00"> Pork Carnita
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Mexican Falafel" data-choice-price="0.00"> Mexican Falafel
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Tofu Adobo" data-choice-price="0.00"> Tofu Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Roasted Veggies" data-choice-price="0.00"> Roasted Veggies
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Ground Beef Molido" data-choice-price="0.00"> Ground Beef Molido
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Sauce Choice (3 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Sour Cream" data-addon-price="0.00"> Sour Cream
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Chipotle Aioli" data-addon-price="0.00"> Chipotle Aioli
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Tomatillo Chimichuri" data-addon-price="0.00"> Tomatillo Chimichuri
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Vinaigrette" data-addon-price="0.00"> Jalapeno Vinaigrette
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Salsa Verde" data-addon-price="0.00"> Spicy Salsa Verde
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Mojo Verde" data-addon-price="0.00"> Mojo Verde
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Toppings (4 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Guacamole" data-addon-price="0.00"> Guacamole
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Corn Adobo" data-addon-price="0.00"> Corn Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Fried Plantains" data-addon-price="0.00"> Fried Plantains
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Queso" data-addon-price="0.00"> Spicy Queso
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Cheese Blend" data-addon-price="0.00"> Shredded Cheese Blend
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Queso Fresco" data-addon-price="0.00"> Queso Fresco
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pico de Gallo" data-addon-price="0.00"> Pico de Gallo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pineapple Salsa" data-addon-price="0.00"> Pineapple Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="House Salsa" data-addon-price="0.00"> House Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Seasoned Rice" data-addon-price="0.00"> Seasoned Rice
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Black Bean" data-addon-price="0.00"> Black Bean
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Refried Beans" data-addon-price="0.00"> Refried Beans
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Cotija Spread" data-addon-price="0.00"> Jalapeno Cotija Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Poblano Bean Spread" data-addon-price="0.00"> Poblano Bean Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Jalapenos" data-addon-price="0.00"> Pickled Jalapenos
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Onion" data-addon-price="0.00"> Pickled Onion
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Curtido Slaw" data-addon-price="0.00"> Curtido Slaw
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Plantain Chips" data-addon-price="0.00"> Plantain Chips
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spring Mix" data-addon-price="0.00"> Spring Mix
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Romaine" data-addon-price="0.00"> Shredded Romaine
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Cucumber" data-addon-price="0.00"> Cucumber
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Onion/Cilantro" data-addon-price="0.00"> Onion/Cilantro
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pinto Beans" data-addon-price="0.00"> Pinto Beans
+                            <br>
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="10" data-name="Enchilada" data-price="8.00">
+                    <h3>Enchilada</h3>
+                    <p>Price: $8.00</p>
+                    <div>
+                        <h4>Protein Choice</h4>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Chicken" data-choice-price="0.00"> Grilled Chicken
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Spicy Chicken Tinga" data-choice-price="0.00"> Spicy Chicken Tinga
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Steak" data-choice-price="3.00"> Grilled Steak (+$3.00)
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Beef Barbacoa" data-choice-price="0.00"> Beef Barbacoa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Pork Carnita" data-choice-price="0.00"> Pork Carnita
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Mexican Falafel" data-choice-price="0.00"> Mexican Falafel
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Tofu Adobo" data-choice-price="0.00"> Tofu Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Roasted Veggies" data-choice-price="0.00"> Roasted Veggies
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Ground Beef Molido" data-choice-price="0.00"> Ground Beef Molido
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Sauce Choice (3 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Sour Cream" data-addon-price="0.00"> Sour Cream
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Chipotle Aioli" data-addon-price="0.00"> Chipotle Aioli
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Tomatillo Chimichuri" data-addon-price="0.00"> Tomatillo Chimichuri
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Vinaigrette" data-addon-price="0.00"> Jalapeno Vinaigrette
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Salsa Verde" data-addon-price="0.00"> Spicy Salsa Verde
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Mojo Verde" data-addon-price="0.00"> Mojo Verde
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Toppings (4 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Guacamole" data-addon-price="0.00"> Guacamole
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Corn Adobo" data-addon-price="0.00"> Corn Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Fried Plantains" data-addon-price="0.00"> Fried Plantains
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Queso" data-addon-price="0.00"> Spicy Queso
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Cheese Blend" data-addon-price="0.00"> Shredded Cheese Blend
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Queso Fresco" data-addon-price="0.00"> Queso Fresco
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pico de Gallo" data-addon-price="0.00"> Pico de Gallo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pineapple Salsa" data-addon-price="0.00"> Pineapple Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="House Salsa" data-addon-price="0.00"> House Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Seasoned Rice" data-addon-price="0.00"> Seasoned Rice
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Black Bean" data-addon-price="0.00"> Black Bean
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Refried Beans" data-addon-price="0.00"> Refried Beans
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Cotija Spread" data-addon-price="0.00"> Jalapeno Cotija Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Poblano Bean Spread" data-addon-price="0.00"> Poblano Bean Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Jalapenos" data-addon-price="0.00"> Pickled Jalapenos
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Onion" data-addon-price="0.00"> Pickled Onion
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Curtido Slaw" data-addon-price="0.00"> Curtido Slaw
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Plantain Chips" data-addon-price="0.00"> Plantain Chips
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spring Mix" data-addon-price="0.00"> Spring Mix
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Romaine" data-addon-price="0.00"> Shredded Romaine
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Cucumber" data-addon-price="0.00"> Cucumber
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Onion/Cilantro" data-addon-price="0.00"> Onion/Cilantro
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pinto Beans" data-addon-price="0.00"> Pinto Beans
+                            <br>
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="11" data-name="Double Decker Taco" data-price="4.50">
+                    <h3>Double Decker Taco</h3>
+                    <p>Price: $4.50</p>
+                    <div>
+                        <h4>Protein Choice</h4>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Chicken" data-choice-price="0.00"> Grilled Chicken
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Spicy Chicken Tinga" data-choice-price="0.00"> Spicy Chicken Tinga
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Steak" data-choice-price="3.00"> Grilled Steak (+$3.00)
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Beef Barbacoa" data-choice-price="0.00"> Beef Barbacoa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Pork Carnita" data-choice-price="0.00"> Pork Carnita
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Mexican Falafel" data-choice-price="0.00"> Mexican Falafel
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Tofu Adobo" data-choice-price="0.00"> Tofu Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Roasted Veggies" data-choice-price="0.00"> Roasted Veggies
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Ground Beef Molido" data-choice-price="0.00"> Ground Beef Molido
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Sauce Choice (3 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Sour Cream" data-addon-price="0.00"> Sour Cream
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Chipotle Aioli" data-addon-price="0.00"> Chipotle Aioli
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Tomatillo Chimichuri" data-addon-price="0.00"> Tomatillo Chimichuri
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Vinaigrette" data-addon-price="0.00"> Jalapeno Vinaigrette
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Salsa Verde" data-addon-price="0.00"> Spicy Salsa Verde
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Mojo Verde" data-addon-price="0.00"> Mojo Verde
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Toppings (4 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Guacamole" data-addon-price="0.00"> Guacamole
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Corn Adobo" data-addon-price="0.00"> Corn Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Fried Plantains" data-addon-price="0.00"> Fried Plantains
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Queso" data-addon-price="0.00"> Spicy Queso
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Cheese Blend" data-addon-price="0.00"> Shredded Cheese Blend
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Queso Fresco" data-addon-price="0.00"> Queso Fresco
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pico de Gallo" data-addon-price="0.00"> Pico de Gallo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pineapple Salsa" data-addon-price="0.00"> Pineapple Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="House Salsa" data-addon-price="0.00"> House Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Seasoned Rice" data-addon-price="0.00"> Seasoned Rice
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Black Bean" data-addon-price="0.00"> Black Bean
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Refried Beans" data-addon-price="0.00"> Refried Beans
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Cotija Spread" data-addon-price="0.00"> Jalapeno Cotija Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Poblano Bean Spread" data-addon-price="0.00"> Poblano Bean Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Jalapenos" data-addon-price="0.00"> Pickled Jalapenos
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Onion" data-addon-price="0.00"> Pickled Onion
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Curtido Slaw" data-addon-price="0.00"> Curtido Slaw
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Plantain Chips" data-addon-price="0.00"> Plantain Chips
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spring Mix" data-addon-price="0.00"> Spring Mix
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Romaine" data-addon-price="0.00"> Shredded Romaine
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Cucumber" data-addon-price="0.00"> Cucumber
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Onion/Cilantro" data-addon-price="0.00"> Onion/Cilantro
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pinto Beans" data-addon-price="0.00"> Pinto Beans
+                            <br>
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="12" data-name="Taco" data-price="5.00">
+                    <h3>Taco</h3>
+                    <p>Price: $5.00</p>
+                    <div>
+                        <h4>Protein Choice</h4>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Chicken" data-choice-price="0.00"> Grilled Chicken
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Spicy Chicken Tinga" data-choice-price="0.00"> Spicy Chicken Tinga
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Steak" data-choice-price="3.00"> Grilled Steak (+$3.00)
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Beef Barbacoa" data-choice-price="0.00"> Beef Barbacoa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Pork Carnita" data-choice-price="0.00"> Pork Carnita
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Mexican Falafel" data-choice-price="0.00"> Mexican Falafel
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Tofu Adobo" data-choice-price="0.00"> Tofu Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Roasted Veggies" data-choice-price="0.00"> Roasted Veggies
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Ground Beef Molido" data-choice-price="0.00"> Ground Beef Molido
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Sauce Choice (3 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Sour Cream" data-addon-price="0.00"> Sour Cream
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Chipotle Aioli" data-addon-price="0.00"> Chipotle Aioli
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Tomatillo Chimichuri" data-addon-price="0.00"> Tomatillo Chimichuri
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Vinaigrette" data-addon-price="0.00"> Jalapeno Vinaigrette
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Salsa Verde" data-addon-price="0.00"> Spicy Salsa Verde
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Mojo Verde" data-addon-price="0.00"> Mojo Verde
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Toppings (4 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Guacamole" data-addon-price="0.00"> Guacamole
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Corn Adobo" data-addon-price="0.00"> Corn Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Fried Plantains" data-addon-price="0.00"> Fried Plantains
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Queso" data-addon-price="0.00"> Spicy Queso
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Cheese Blend" data-addon-price="0.00"> Shredded Cheese Blend
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Queso Fresco" data-addon-price="0.00"> Queso Fresco
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pico de Gallo" data-addon-price="0.00"> Pico de Gallo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pineapple Salsa" data-addon-price="0.00"> Pineapple Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="House Salsa" data-addon-price="0.00"> House Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Seasoned Rice" data-addon-price="0.00"> Seasoned Rice
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Black Bean" data-addon-price="0.00"> Black Bean
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Refried Beans" data-addon-price="0.00"> Refried Beans
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Cotija Spread" data-addon-price="0.00"> Jalapeno Cotija Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Poblano Bean Spread" data-addon-price="0.00"> Poblano Bean Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Jalapenos" data-addon-price="0.00"> Pickled Jalapenos
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Onion" data-addon-price="0.00"> Pickled Onion
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Curtido Slaw" data-addon-price="0.00"> Curtido Slaw
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Plantain Chips" data-addon-price="0.00"> Plantain Chips
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spring Mix" data-addon-price="0.00"> Spring Mix
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Romaine" data-addon-price="0.00"> Shredded Romaine
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Cucumber" data-addon-price="0.00"> Cucumber
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Onion/Cilantro" data-addon-price="0.00"> Onion/Cilantro
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pinto Beans" data-addon-price="0.00"> Pinto Beans
+                            <br>
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="13" data-name="Quesabirria Taco" data-price="5.50">
+                    <h3>Quesabirria Taco</h3>
+                    <p>Price: $5.50</p>
+                    <div>
+                        <h4>Protein Choice</h4>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Chicken" data-choice-price="0.00"> Grilled Chicken
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Spicy Chicken Tinga" data-choice-price="0.00"> Spicy Chicken Tinga
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Steak" data-choice-price="3.00"> Grilled Steak (+$3.00)
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Beef Barbacoa" data-choice-price="0.00"> Beef Barbacoa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Pork Carnita" data-choice-price="0.00"> Pork Carnita
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Mexican Falafel" data-choice-price="0.00"> Mexican Falafel
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Tofu Adobo" data-choice-price="0.00"> Tofu Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Roasted Veggies" data-choice-price="0.00"> Roasted Veggies
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Ground Beef Molido" data-choice-price="0.00"> Ground Beef Molido
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Sauce Choice (3 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Sour Cream" data-addon-price="0.00"> Sour Cream
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Chipotle Aioli" data-addon-price="0.00"> Chipotle Aioli
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Tomatillo Chimichuri" data-addon-price="0.00"> Tomatillo Chimichuri
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Vinaigrette" data-addon-price="0.00"> Jalapeno Vinaigrette
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Salsa Verde" data-addon-price="0.00"> Spicy Salsa Verde
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Mojo Verde" data-addon-price="0.00"> Mojo Verde
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Toppings (4 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Guacamole" data-addon-price="0.00"> Guacamole
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Corn Adobo" data-addon-price="0.00"> Corn Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Fried Plantains" data-addon-price="0.00"> Fried Plantains
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Queso" data-addon-price="0.00"> Spicy Queso
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Cheese Blend" data-addon-price="0.00"> Shredded Cheese Blend
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Queso Fresco" data-addon-price="0.00"> Queso Fresco
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pico de Gallo" data-addon-price="0.00"> Pico de Gallo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pineapple Salsa" data-addon-price="0.00"> Pineapple Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="House Salsa" data-addon-price="0.00"> House Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Seasoned Rice" data-addon-price="0.00"> Seasoned Rice
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Black Bean" data-addon-price="0.00"> Black Bean
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Refried Beans" data-addon-price="0.00"> Refried Beans
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Cotija Spread" data-addon-price="0.00"> Jalapeno Cotija Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Poblano Bean Spread" data-addon-price="0.00"> Poblano Bean Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Jalapenos" data-addon-price="0.00"> Pickled Jalapenos
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Onion" data-addon-price="0.00"> Pickled Onion
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Curtido Slaw" data-addon-price="0.00"> Curtido Slaw
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Plantain Chips" data-addon-price="0.00"> Plantain Chips
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spring Mix" data-addon-price="0.00"> Spring Mix
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Romaine" data-addon-price="0.00"> Shredded Romaine
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Cucumber" data-addon-price="0.00"> Cucumber
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Onion/Cilantro" data-addon-price="0.00"> Onion/Cilantro
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pinto Beans" data-addon-price="0.00"> Pinto Beans
+                            <br>
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="14" data-name="Tostada" data-price="6.00">
+                    <h3>Tostada</h3>
+                    <p>Price: $6.00</p>
+                    <div>
+                        <h4>Protein Choice</h4>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Chicken" data-choice-price="0.00"> Grilled Chicken
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Spicy Chicken Tinga" data-choice-price="0.00"> Spicy Chicken Tinga
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Grilled Steak" data-choice-price="3.00"> Grilled Steak (+$3.00)
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Beef Barbacoa" data-choice-price="0.00"> Beef Barbacoa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Pork Carnita" data-choice-price="0.00"> Pork Carnita
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Mexican Falafel" data-choice-price="0.00"> Mexican Falafel
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Tofu Adobo" data-choice-price="0.00"> Tofu Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Roasted Veggies" data-choice-price="0.00"> Roasted Veggies
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="protein" class="choice" data-choice-name="Ground Beef Molido" data-choice-price="0.00"> Ground Beef Molido
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Sauce Choice (3 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Sour Cream" data-addon-price="0.00"> Sour Cream
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Chipotle Aioli" data-addon-price="0.00"> Chipotle Aioli
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Tomatillo Chimichuri" data-addon-price="0.00"> Tomatillo Chimichuri
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Vinaigrette" data-addon-price="0.00"> Jalapeno Vinaigrette
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Salsa Verde" data-addon-price="0.00"> Spicy Salsa Verde
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Mojo Verde" data-addon-price="0.00"> Mojo Verde
+                            <br>
+                        </label>
+                    </div>
+                    <div>
+                        <h4>Toppings (4 MAX)</h4>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Guacamole" data-addon-price="0.00"> Guacamole
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Corn Adobo" data-addon-price="0.00"> Corn Adobo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Fried Plantains" data-addon-price="0.00"> Fried Plantains
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spicy Queso" data-addon-price="0.00"> Spicy Queso
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Cheese Blend" data-addon-price="0.00"> Shredded Cheese Blend
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Queso Fresco" data-addon-price="0.00"> Queso Fresco
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pico de Gallo" data-addon-price="0.00"> Pico de Gallo
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pineapple Salsa" data-addon-price="0.00"> Pineapple Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="House Salsa" data-addon-price="0.00"> House Salsa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Seasoned Rice" data-addon-price="0.00"> Seasoned Rice
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Black Bean" data-addon-price="0.00"> Black Bean
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Refried Beans" data-addon-price="0.00"> Refried Beans
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Cotija Spread" data-addon-price="0.00"> Jalapeno Cotija Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Poblano Bean Spread" data-addon-price="0.00"> Poblano Bean Spread
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Jalapenos" data-addon-price="0.00"> Pickled Jalapenos
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pickled Onion" data-addon-price="0.00"> Pickled Onion
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Curtido Slaw" data-addon-price="0.00"> Curtido Slaw
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Plantain Chips" data-addon-price="0.00"> Plantain Chips
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Spring Mix" data-addon-price="0.00"> Spring Mix
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Shredded Romaine" data-addon-price="0.00"> Shredded Romaine
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Cucumber" data-addon-price="0.00"> Cucumber
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Onion/Cilantro" data-addon-price="0.00"> Onion/Cilantro
+                            <br>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="addon" data-addon-name="Pinto Beans" data-addon-price="0.00"> Pinto Beans
                             <br>
                         </label>
                     </div>
@@ -156,57 +2491,172 @@
                 </div>
             </div>
         </div>
-        <div class="menu-section" id="mains">
-            <h2>Main Courses</h2>
+        <div class="menu-section" id="specials">
+            <h2>Specials(Sides & Appetizers)</h2>
             <div class="product-grid">
-                <div class="product" data-id="3" data-name="Grilled Chicken" data-price="15.00">
-                    <h3>Grilled Chicken</h3>
-                    <p>Price: $15.00</p>
+                <div class="product" data-id="15" data-name="Pupusa" data-price="3.50">
+                    <h3>Pupusa</h3>
+                    <p>Price: $3.50</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="16" data-name="Fried Plantains" data-price="6.50">
+                    <h3>Fried Plantains</h3>
+                    <p>Price: $6.50</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="17" data-name="Elote" data-price="6.50">
+                    <h3>Elote</h3>
+                    <p>Price: $6.50</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="18" data-name="Mexican Falafels" data-price="5.00">
+                    <h3>Mexican Falafels</h3>
+                    <p>Price: $5.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="19" data-name="Tostada" data-price="5.00">
+                    <h3>Tostada</h3>
+                    <p>Price: $5.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="20" data-name="Chips and Salsa" data-price="5.00">
+                    <h3>Chips and Salsa</h3>
+                    <p>Price: $5.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="21" data-name="Chips and Guac" data-price="6.00">
+                    <h3>Chips and Guac</h3>
+                    <p>Price: $6.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="22" data-name="Chips and Queso" data-price="5.00">
+                    <h3>Chips and Queso</h3>
+                    <p>Price: $5.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="menu-section" id="drinks">
+            <h2>Drinks</h2>
+            <div class="product-grid">
+                <div class="product" data-id="23" data-name="Bottle Water" data-price="2.00">
+                    <h3>Bottle Water</h3>
+                    <p>Price: $2.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="24" data-name="Can Soda" data-price="2.50">
+                    <h3>Can Soda</h3>
+                    <p>Price: $2.50</p>
                     <div>
-                        <h4>Choices</h4>
+                        <h4>Options</h4>
                         <label>
-                            <input type="radio" name="choice-3" class="choice" data-choice-name="BBQ Sauce" data-choice-price="1.00"> BBQ Sauce (+$1.00)
+                            <input type="radio" name="option" class="choice" data-choice-name="Coke" data-choice-price="0.00"> Coke
                             <br>
                         </label>
                         <label>
-                            <input type="radio" name="choice-3" class="choice" data-choice-name="Lemon Herb" data-choice-price="0.00"> Lemon Herb (+$0.00)
+                            <input type="radio" name="option" class="choice" data-choice-name="Coke Zero" data-choice-price="0.00"> Coke Zero
                             <br>
                         </label>
-                    </div>
-                    <div>
-                        <h4>Add-ons</h4>
                         <label>
-                            <input type="checkbox" class="addon" data-addon-name="Extra Chicken" data-addon-price="5.00"> Extra Chicken (+$5.00)
+                            <input type="radio" name="option" class="choice" data-choice-name="Diet Coke" data-choice-price="0.00"> Diet Coke
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="option" class="choice" data-choice-name="Sprite" data-choice-price="0.00"> Sprite
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="option" class="choice" data-choice-name="Sprite Zero" data-choice-price="0.00"> Sprite Zero
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="option" class="choice" data-choice-name="Ginger Ale" data-choice-price="0.00"> Ginger Ale
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="option" class="choice" data-choice-name="Dr. Pepper" data-choice-price="0.00"> Dr. Pepper
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="option" class="choice" data-choice-name="Orange Fanta" data-choice-price="0.00"> Orange Fanta
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="option" class="choice" data-choice-name="Grape Fanta" data-choice-price="0.00"> Grape Fanta
                             <br>
                         </label>
                     </div>
                     <button class="add-to-cart">Add to Cart</button>
                 </div>
-                <div class="product" data-id="4" data-name="Vegetable Stir Fry" data-price="12.00">
-                    <h3>Vegetable Stir Fry</h3>
-                    <p>Price: $12.00</p>
+                <div class="product" data-id="25" data-name="Jarritos" data-price="4.00">
+                    <h3>Jarritos</h3>
+                    <p>Price: $4.00</p>
                     <div>
-                        <h4>Choices</h4>
+                        <h4>Options</h4>
                         <label>
-                            <input type="radio" name="choice-4" class="choice" data-choice-name="White Rice" data-choice-price="1.00"> White Rice (+$1.00)
+                            <input type="radio" name="option" class="choice" data-choice-name="Pineapple" data-choice-price="0.00"> Pineapple
                             <br>
                         </label>
                         <label>
-                            <input type="radio" name="choice-4" class="choice" data-choice-name="No Rice" data-choice-price="0.00"> No Rice (+$0.00)
+                            <input type="radio" name="option" class="choice" data-choice-name="Tamarind" data-choice-price="0.00"> Tamarind
                             <br>
                         </label>
                         <label>
-                            <input type="radio" name="choice-4" class="choice" data-choice-name="Brown Rice" data-choice-price="1.50"> Brown Rice (+$1.50)
+                            <input type="radio" name="option" class="choice" data-choice-name="Fruit Punch" data-choice-price="0.00"> Fruit Punch
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="option" class="choice" data-choice-name="Mandarin" data-choice-price="0.00"> Mandarin
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="option" class="choice" data-choice-name="Lime" data-choice-price="0.00"> Lime
                             <br>
                         </label>
                     </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="26" data-name="Juice" data-price="3.25">
+                    <h3>Juice</h3>
+                    <p>Price: $3.25</p>
                     <div>
-                        <h4>Add-ons</h4>
+                        <h4>Options</h4>
                         <label>
-                            <input type="checkbox" class="addon" data-addon-name="Tofu" data-addon-price="2.00"> Tofu (+$2.00)
+                            <input type="radio" name="option" class="choice" data-choice-name="Nectar de Fresa" data-choice-price="0.00"> Nectar de Fresa
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="option" class="choice" data-choice-name="Melocoton" data-choice-price="0.00"> Melocoton
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="option" class="choice" data-choice-name="Guayaba" data-choice-price="0.00"> Guayaba
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="option" class="choice" data-choice-name="Coctel" data-choice-price="0.00"> Coctel
+                            <br>
+                        </label>
+                        <label>
+                            <input type="radio" name="option" class="choice" data-choice-name="Coconut Juice" data-choice-price="0.00"> Coconut Juice
                             <br>
                         </label>
                     </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="27" data-name="Large Powerade" data-price="3.00">
+                    <h3>Large Powerade</h3>
+                    <p>Price: $3.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="28" data-name="Horchatas" data-price="3.00">
+                    <h3>Horchatas</h3>
+                    <p>Price: $3.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="29" data-name="Bottled Soda" data-price="2.75">
+                    <h3>Bottled Soda</h3>
+                    <p>Price: $2.75</p>
                     <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
@@ -214,54 +2664,19 @@
         <div class="menu-section" id="desserts">
             <h2>Desserts</h2>
             <div class="product-grid">
-                <div class="product" data-id="5" data-name="Chocolate Cake" data-price="6.00">
-                    <h3>Chocolate Cake</h3>
+                <div class="product" data-id="30" data-name="Tres Leches Cake" data-price="6.00">
+                    <h3>Tres Leches Cake</h3>
                     <p>Price: $6.00</p>
-                    <div>
-                        <h4>Choices</h4>
-                        <label>
-                            <input type="radio" name="choice-5" class="choice" data-choice-name="Vanilla" data-choice-price="0.00"> Vanilla (+$0.00)
-                            <br>
-                        </label>
-                        <label>
-                            <input type="radio" name="choice-5" class="choice" data-choice-name="Chocolate" data-choice-price="0.50"> Chocolate (+$0.50)
-                            <br>
-                        </label>
-                    </div>
-                    <div>
-                        <h4>Add-ons</h4>
-                        <label>
-                            <input type="checkbox" class="addon" data-addon-name="Whipped Cream" data-addon-price="0.50"> Whipped Cream (+$0.50)
-                            <br>
-                        </label>
-                    </div>
                     <button class="add-to-cart">Add to Cart</button>
                 </div>
-                <div class="product" data-id="6" data-name="Ice Cream Sundae" data-price="5.00">
-                    <h3>Ice Cream Sundae</h3>
-                    <p>Price: $5.00</p>
-                    <div>
-                        <h4>Choices</h4>
-                        <label>
-                            <input type="radio" name="choice-6" class="choice" data-choice-name="Chocolate Sauce" data-choice-price="0.50"> Chocolate Sauce (+$0.50)
-                            <br>
-                        </label>
-                        <label>
-                            <input type="radio" name="choice-6" class="choice" data-choice-name="Caramel Sauce" data-choice-price="0.50"> Caramel Sauce (+$0.50)
-                            <br>
-                        </label>
-                    </div>
-                    <div>
-                        <h4>Add-ons</h4>
-                        <label>
-                            <input type="checkbox" class="addon" data-addon-name="Sprinkles" data-addon-price="0.50"> Sprinkles (+$0.50)
-                            <br>
-                        </label>
-                        <label>
-                            <input type="checkbox" class="addon" data-addon-name="Nuts" data-addon-price="1.00"> Nuts (+$1.00)
-                            <br>
-                        </label>
-                    </div>
+                <div class="product" data-id="31" data-name="Mango Mousse Cake" data-price="6.00">
+                    <h3>Mango Mousse Cake</h3>
+                    <p>Price: $6.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="32" data-name="Churros + Cinnamon/Sugar" data-price="6.00">
+                    <h3>Churros + Cinnamon/Sugar</h3>
+                    <p>Price: $6.00</p>
                     <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>

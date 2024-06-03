@@ -152,6 +152,15 @@ def northeastern_university_el_jefes_taqueria():
         return render_template('schools/northeastern-university/restaurants/el-jefes-taqueria.html')
     else:
         return render_template('inactive.html')
+    
+
+
+@app.route('/northeastern-university/mamacita')
+def northeastern_mamacita():
+    if active:
+        return render_template('schools/northeastern-university/restaurants/mamacita.html')
+    else:
+        return render_template('inactive.html')
 
 #runs the app
 if __name__ == '__main__':

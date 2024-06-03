@@ -138,5 +138,5 @@ order_data = {
     'total': 45.66
 }
 
-formatted_order = format_order(order_data)
+#formatted_order = format_order(order_data)
 #print(formatted_order)

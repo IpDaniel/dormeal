@@ -4,7 +4,7 @@ import stripe
 
 #constants
 app = Flask(__name__)
-active = True
+active = False
 stripe.api_key = 'sk_test_51PG7v4Rsh0QceLeTZzq4QceWCZEBypE4kjqIm8460Khv5abQnuzYmbgW6VHmo9s3TIw6kF2od3pRC085fkEdGlFJ00qMyOwe2u'
 
 #returns home page at index route
@@ -24,6 +24,14 @@ def order_page():
 @app.route('/menu-template')
 def menu_template():
     return render_template('menu-template.html')
+
+#sends email to update us when someone wants to get notified if we're active
+@app.route('/notify-request')
+def notify_request():
+    data = request.json
+    contact_info = data.get('info')
+    mvp_emailer.send_email('arc.daniel42@gmail.com', str(contact_info), 'Dormeal - New Notify Request')
+    return jsonify({'status': 'success'})
     
 #route all carts to this page once they are full
 @app.route('/checkout')

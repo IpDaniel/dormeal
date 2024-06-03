@@ -4,21 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Not Active</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin-bottom: 400px; /* Make sure there's enough space for the fixed cart */
+            background-color: #000;
+            color: #fff;
+        }
+        #checkout-button {
+            margin-top: 10px;
+            background-color: #555; /* Dark button background */
+            color: #fff; /* White text */
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #checkout-button:hover {
+            background-color: #777; /* Lighter gray on hover */
+        }
+        .add-to-cart {
+            margin-top: 15px;
+            background-color: #555; /* Dark button background */
+            color: #fff; /* White text */
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .add-to-cart:hover {
+            background-color: #777; /* Lighter gray on hover */
+        }
+    
+        #confirmation-message {
+            display: none;
+        }
+    
+        /* New styles for the form */
+        .container {
+            text-align: center;
+            padding: 20px;
+            margin-top: 80px;
+        }
+        h1, h2 {
+            margin: 20px 0;
+        }
+        form {
+            display: inline-block;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+        }
+        button {
+            background-color: #555; /* Dark button background */
+            color: #fff; /* White text */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #777; /* Lighter gray on hover */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Sorry, the service is not active right now</h1>
-        <p>We apologize for the inconvenience. The service is currently unavailable due to maintenance.</p>
-        <h2>Notify Me When Service is Active</h2>
+        <h1>Sorry, Dormeal is not active right now</h1>
+        <p>We apologize for the inconvenience. Keep supporting Dormeal to allow us to increase our hours.</p>
+        <h2>Notify Me When Dormeal is Active</h2>
         <form id="notificationForm">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <br>
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" required>
-            <br>
+            <label for="info">Email Address or Phone Number:</label>
+            <input id="info" name="info" required>
             <button type="submit">Submit</button>
         </form>
+        <div id="confirmation-message">
+            <h4>You will be notified when Dormeal is active</h4>
+        </div>
     </div>
         
     <script>
@@ -28,17 +104,18 @@
             
             // Get form data
             const formData = new FormData(event.target);
-            const email = formData.get('email');
-            const phone = formData.get('phone');
+            const info = formData.get('info');
+
+            //Hide form
+            document.getElementById('notificationForm').style.display = 'none';
             
             // Create data object to send in fetch request
             const data = {
-                email: email,
-                phone: phone
+                info: info
             };
             
             // Send data to backend using fetch
-            fetch('/notify', {
+            fetch('/notify-request', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -48,8 +125,9 @@
             .then(response => response.json())
             .then(data => {
                 // Handle response from backend
-                console.log('Notification sent successfully:', data);
-                alert('You will be notified when the service is active.');
+                console.log('New Notify Request', data);
+                // alert('You will be notified when Dormeal is active.');
+                document.getElementById('confirmation-message').style.display = 'inline'
             })
             .catch(error => {
                 // Handle any errors

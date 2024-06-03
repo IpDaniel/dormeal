@@ -26,7 +26,7 @@ def menu_template():
     return render_template('menu-template.html')
 
 #sends email to update us when someone wants to get notified if we're active
-@app.route('/notify-request')
+@app.route('/notify-request', methods=['POST'])
 def notify_request():
     data = request.json
     contact_info = data.get('info')

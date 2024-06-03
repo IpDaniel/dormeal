@@ -105,6 +105,9 @@
             // Get form data
             const formData = new FormData(event.target);
             const info = formData.get('info');
+
+            //Hide form
+            document.getElementById('notificationForm').style.display = 'none';
             
             // Create data object to send in fetch request
             const data = {

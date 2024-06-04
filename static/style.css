@@ -105,9 +105,22 @@
 section{
   background-color: #000000;
 }
-@media screen and (max-width: 600px) {
-  .form{
-    margin-top: 50px;
+
+/* Styles for small screens (phones) */
+@media (max-width: 600px) {
+  .main .row.align-items-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  h1 {
+      font-size: 20px;
+      margin-top: 20px; 
+  }
+
+  #home_image {
+      margin-top: 20px; 
   }
 }
 

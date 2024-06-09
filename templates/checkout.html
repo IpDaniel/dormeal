@@ -112,11 +112,11 @@
         <form id="payment-form">
             <h2>Billing Details</h2>
             <label>
-                Name:
+                Order Name:
                 <input type="text" id="name" required>
             </label>
             <label>
-                Address:
+                Address or Name of On-Campus Building:
                 <input type="text" id="address" required>
             </label>
             <label>
@@ -181,6 +181,7 @@
             renderCheckout();
             const restaurant = localStorage.getItem('restaurant');
 
+            //stripe publishable key
             const stripe = Stripe('pk_test_51PG7v4Rsh0QceLeTwmNGUI6lCGHCBNrN3gXGuZdmTUu1AsnefusHEvncUzd1iKZ1jM2KZlk06bhJWBuF7VNOGkHW00s8wMBug4');
             const elements = stripe.elements();
             const cardElement = elements.create('card');

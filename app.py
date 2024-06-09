@@ -4,8 +4,8 @@ import stripe
 
 #constants
 app = Flask(__name__)
-active = False
-stripe.api_key = 'sk_test_51PG7v4Rsh0QceLeTZzq4QceWCZEBypE4kjqIm8460Khv5abQnuzYmbgW6VHmo9s3TIw6kF2od3pRC085fkEdGlFJ00qMyOwe2u'
+active = True
+stripe.api_key = 'sk_test_51PG7v4Rsh0QceLeTZzq4QceWCZEBypE4kjqIm8460Khv5abQnuzYmbgW6VHmo9s3TIw6kF2od3pRC085fkEdGlFJ00qMyOwe2u' # Stripe secret Key
 
 #returns home page at index route
 @app.route('/')
@@ -53,6 +53,7 @@ def submit_order():
 @app.route('/create-payment-intent', methods=['POST'])
 def create_payment_intent():
     data = request.json
+    print('creating payment intent')
     cart = data.get('cart', [])
     total_amount = sum(
         (item['basePrice'] + sum(addon['price'] for addon in item['addOns']) + sum(choice['price'] for choice in item['choices'])) * item['quantity']
@@ -134,6 +135,15 @@ def school_name_restaurant_name():
         return render_template('inactive.html')
 """
 
+#Northeastern Miscellaneous
+@app.route('/northeastern-university/restaurants/alternate-restaurants')
+def northeastern_miscellaneous():
+    if active:
+        return render_template('schools/northeastern-university/restaurants/alternate-restaurants.html')
+    else:
+        return render_template('inactive.html')
+
+
 #Northeastern Five Guys
 @app.route('/northeastern-university/five-guys')
 def northeastern_university_five_guys():
@@ -162,13 +172,42 @@ def northeastern_university_el_jefes_taqueria():
         return render_template('inactive.html')
     
 
-
+#Northeastern Mamacita
 @app.route('/northeastern-university/mamacita')
-def northeastern_mamacita():
+def northeastern_university_mamacita():
     if active:
         return render_template('schools/northeastern-university/restaurants/mamacita.html')
     else:
         return render_template('inactive.html')
+    
+
+#Northeastern Amelia's Taqueria
+@app.route('/northeastern-university/amelias-taqueria')
+def northeastern_university_amelias_taqueria():
+    if active:
+        return render_template('schools/northeastern-university/restaurants/amelias-taqueria.html')
+    else:
+        return render_template('inactive.html')
+
+
+#Northeastern Sprout
+@app.route('/northeastern-university/sprout')
+def northeastern_university_sprout():
+    if active:
+        return render_template('schools/northeastern-university/restaurants/sprout.html')
+    else:
+        return render_template('inactive.html')
+    
+
+#Northeastern Gyro scope
+@app.route('/northeastern-university/gyro-scope')
+def northeastern_university_gyro_scope():
+    if active:
+        return render_template('schools/northeastern-university/restaurants/gyro-scope.html')
+    else:
+        return render_template('inactive.html')
+    
+
 
 #runs the app
 if __name__ == '__main__':

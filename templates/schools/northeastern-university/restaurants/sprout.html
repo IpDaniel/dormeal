@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dormeal School_Name</title>
+    <title>Dormeal Northeastern</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -73,6 +73,12 @@
         .cart-item {
             margin-bottom: 10px;
         }
+        .container {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center;     /* Center vertically */
+            height: 20vh;           /* Full viewport height */
+        }
         #checkout-button {
             margin-top: 10px;
             background-color: #555; /* Dark button background */
@@ -95,15 +101,45 @@
         .add-to-cart:hover {
             background-color: #777; /* Lighter gray on hover */
         }
+        #products {
+            display: none;
+        }
+        #cart {
+            display: none;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background: #555;
+            color: #fff;
+        }
+        h3 {
+            text-align: center;    /* Center the text horizontally */
+            max-width: 600px;      /* Set the maximum width of the text */
+            margin: 20px auto;     /* Center the element horizontally and add vertical spacing */
+        }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <a href="#appetizers">Appetizers</a>
-        <a href="#mains">Mains</a>
-        <a href="#desserts">Desserts</a>
+    <h1 id="restaurant-name">Sprout</h1>
+    <h3>We haven't uploaded the menu for this restaurant yet, but we can still deliver your food if you order it for pickup and give us the name and/or number on your order.</h3>
+    <div class="container">
+        <button type="submit" id="checkout-button">Request Delivery for Sprout Order</button>
     </div>
-    <h1 id="restaurant-name">Restaurant Name</h1>
+    
+
     <div id="products">
         <div class="menu-section" id="appetizers">
             <h2>Appetizers</h2>

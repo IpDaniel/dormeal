@@ -32,6 +32,15 @@ def notify_request():
     contact_info = data.get('info')
     mvp_emailer.send_email('arc.daniel42@gmail.com', str(contact_info), 'Dormeal - New Notify Request')
     return jsonify({'status': 'success'})
+
+#sends email to update us when someone wants a new restaurant
+@app.route('/restaurant-request', methods=['POST'])
+def restaurant_request():
+    data = request.json
+    email = str(data.get('email'))
+    restaurant = str(data.get('restaurant'))
+    mvp_emailer.send_email('arc.daniel42@gmail.com', f"Email: {email}\nRestaurant: {restaurant}", 'Dormeal - New Restaurant Request')
+    return jsonify({'status': 'success'})
     
 #route all carts to this page once they are full
 @app.route('/checkout')

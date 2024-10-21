@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Restaurant</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MCWDTZ7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9MCWDTZ7CL');
+    </script>
+
+    <style>
+        #confirmation-message {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/school-page-styles.css') }}">
+</head>
+<body>
+    <h1>Choose Your Restaurant</h1>
+    <h2>Dormeal UMD</h2>
+    <ul>
+        <li>
+            <button class="order-now" onclick="location.href='/school-name/restaurant-name'">Order Now</button>
+            <a href="#">Restaurant Name</a>
+        </li>
+        <li>
+            <button class="order-now" onclick="location.href='/school-name/restaurant-name'">Order Now</button>
+            <a href="#">Restaurant Name</a>
+        </li>
+    </ul>
+    
+    <form id="restaurant-request">
+        <h2>Don't see your favorite restaurant? Put in a request here.</h2>
+        <label for="email">Your .edu Email Address:</label>
+        <input type="text" id="email" name="email" required>
+        
+        <label for="restaurant">Restaurant Name:</label>
+        <input type="text" id="restaurant" name="restaurant" required>
+        
+        <button type="submit">Submit</button>
+    </form>
+    <div id="confirmation-message">
+        <h4>Ok fine we'll add it</h4>
+    </div>
+</body>
+<script>
+    // Function to send form data to the backend
+    function sendFormData(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        // Get form data
+        const formData = new FormData(event.target);
+        const email = formData.get('email');
+        const restaurant = formData.get('restaurant');
+
+        //Hide form
+        document.getElementById('restaurant-request').style.display = 'none';
+        
+        // Create data object to send in fetch request
+        const data = {
+            email: email,
+            restaurant: restaurant
+        };
+        
+        // Send data to backend using fetch
+        fetch('/restaurant-request', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle response from backend
+            console.log('New Restaurant Request', data);
+            // alert('You will be notified when Dormeal is active.');
+            document.getElementById('confirmation-message').style.display = 'inline'
+        })
+        .catch(error => {
+            // Handle any errors
+            console.error('Error sending notification:', error);
+            alert('There was an error. Please try again later.');
+        });
+    }
+
+    // Get the form element
+    const form = document.getElementById('restaurant-request');
+
+    // Add event listener to the form for form submission
+    form.addEventListener('submit', sendFormData);
+</script>
+</html>

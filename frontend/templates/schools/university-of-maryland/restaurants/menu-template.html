@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dormeal School_Name</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MCWDTZ7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9MCWDTZ7CL');
+    </script>
+
+    <!-- Bootstrap CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" />
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333333;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 400px;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            padding: 40px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        h1, h2, h3 {
+            color: #333333;
+            font-weight: 700;
+        }
+        .navbar {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar a {
+            color: #333333;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            padding: 10px 15px;
+            border-radius: 25px;
+        }
+        .navbar a:hover, .navbar a.active {
+            background-color: #e9ecef;
+            color: #4FE90D;
+        }
+        .menu-section {
+            margin-bottom: 30px;
+        }
+        .menu-section h2 {
+            background-color: #e9ecef;
+            color: #333333;
+            padding: 15px;
+            margin: 0;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 0 0 15px 15px;
+            border: 1px solid #e0e0e0;
+        }
+        .product {
+            border: 2px solid #e0e0e0;
+            padding: 20px;
+            background-color: #ffffff;
+            color: #333333;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        .product:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+        .product h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .add-to-cart {
+            background-color: #4FE90D;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        .add-to-cart:hover {
+            background-color: #45d00b;
+            transform: scale(1.05);
+        }
+        .cart {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            border-top: 2px solid #e0e0e0;
+            padding: 20px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        #checkout-button {
+            background-color: #4FE90D;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        #checkout-button:hover {
+            background-color: #45d00b;
+            transform: scale(1.05);
+        }
+        .product .choices,
+        .product .addons {
+            margin-bottom: 15px;
+        }
+
+        .product .choice-item,
+        .product .addon-item {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .product input[type="radio"],
+        .product input[type="checkbox"] {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <a href="#appetizers" class="nav-link">Appetizers</a>
+            <a href="#mains" class="nav-link">Mains</a>
+            <a href="#desserts" class="nav-link">Desserts</a>
+        </nav>
+        <h1 id="restaurant-name" class="text-center mb-4">Restaurant Name</h1>
+        <div id="products">
+            <div class="menu-section" id="appetizers">
+                <h2>Appetizers</h2>
+                <div class="product-grid">
+                    <div class="product" data-id="1" data-name="Spring Rolls" data-price="5.00">
+                        <h3>Spring Rolls</h3>
+                        <p>Price: $5.00</p>
+                        <div class="choices">
+                            <h4>Choices</h4>
+                            <label class="choice-item">
+                                <input type="radio" name="choice-1" class="choice" data-choice-name="Spicy" data-choice-price="0.50">
+                                Spicy (+$0.50)
+                            </label>
+                            <label class="choice-item">
+                                <input type="radio" name="choice-1" class="choice" data-choice-name="Mild" data-choice-price="0.00">
+                                Mild (+$0.00)
+                            </label>
+                        </div>
+                        <div class="addons">
+                            <h4>Add-ons</h4>
+                            <label class="addon-item">
+                                <input type="checkbox" class="addon" data-addon-name="Extra Sauce" data-addon-price="1.00">
+                                Extra Sauce (+$1.00)
+                            </label>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                    <div class="product" data-id="2" data-name="Garlic Bread" data-price="3.00">
+                        <h3>Garlic Bread</h3>
+                        <p>Price: $3.00</p>
+                        <div class="choices">
+                            <h4>Choices</h4>
+                            <label class="choice-item">
+                                <input type="radio" name="choice-2" class="choice" data-choice-name="Whole Wheat" data-choice-price="0.50">
+                                Whole Wheat (+$0.50)
+                            </label>
+                            <label class="choice-item">
+                                <input type="radio" name="choice-2" class="choice" data-choice-name="White" data-choice-price="0.00">
+                                White (+$0.00)
+                            </label>
+                        </div>
+                        <div class="addons">
+                            <h4>Add-ons</h4>
+                            <label class="addon-item">
+                                <input type="checkbox" class="addon" data-addon-name="Cheese" data-addon-price="1.50">
+                                Cheese (+$1.50)
+                            </label>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-section" id="mains">
+                <h2>Main Courses</h2>
+                <div class="product-grid">
+                    <div class="product" data-id="3" data-name="Grilled Chicken" data-price="15.00">
+                        <h3>Grilled Chicken</h3>
+                        <p>Price: $15.00</p>
+                        <div class="choices">
+                            <h4>Choices</h4>
+                            <label class="choice-item">
+                                <input type="radio" name="choice-3" class="choice" data-choice-name="BBQ Sauce" data-choice-price="1.00">
+                                BBQ Sauce (+$1.00)
+                            </label>
+                            <label class="choice-item">
+                                <input type="radio" name="choice-3" class="choice" data-choice-name="Lemon Herb" data-choice-price="0.00">
+                                Lemon Herb (+$0.00)
+                            </label>
+                        </div>
+                        <div class="addons">
+                            <h4>Add-ons</h4>
+                            <label class="addon-item">
+                                <input type="checkbox" class="addon" data-addon-name="Extra Chicken" data-addon-price="5.00">
+                                Extra Chicken (+$5.00)
+                            </label>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                    <div class="product" data-id="4" data-name="Vegetable Stir Fry" data-price="12.00">
+                        <h3>Vegetable Stir Fry</h3>
+                        <p>Price: $12.00</p>
+                        <div class="choices">
+                            <h4>Choices</h4>
+                            <label class="choice-item">
+                                <input type="radio" name="choice-4" class="choice" data-choice-name="White Rice" data-choice-price="1.00">
+                                White Rice (+$1.00)
+                            </label>
+                            <label class="choice-item">
+                                <input type="radio" name="choice-4" class="choice" data-choice-name="No Rice" data-choice-price="0.00">
+                                No Rice (+$0.00)
+                            </label>
+                            <label class="choice-item">
+                                <input type="radio" name="choice-4" class="choice" data-choice-name="Brown Rice" data-choice-price="1.50">
+                                Brown Rice (+$1.50)
+                            </label>
+                        </div>
+                        <div class="addons">
+                            <h4>Add-ons</h4>
+                            <label class="addon-item">
+                                <input type="checkbox" class="addon" data-addon-name="Tofu" data-addon-price="2.00">
+                                Tofu (+$2.00)
+                            </label>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-section" id="desserts">
+                <h2>Desserts</h2>
+                <div class="product-grid">
+                    <div class="product" data-id="5" data-name="Chocolate Cake" data-price="6.00">
+                        <h3>Chocolate Cake</h3>
+                        <p>Price: $6.00</p>
+                        <div class="choices">
+                            <h4>Choices</h4>
+                            <label class="choice-item">
+                                <input type="radio" name="choice-5" class="choice" data-choice-name="Vanilla" data-choice-price="0.00">
+                                Vanilla (+$0.00)
+                            </label>
+                            <label class="choice-item">
+                                <input type="radio" name="choice-5" class="choice" data-choice-name="Chocolate" data-choice-price="0.50">
+                                Chocolate (+$0.50)
+                            </label>
+                        </div>
+                        <div class="addons">
+                            <h4>Add-ons</h4>
+                            <label class="addon-item">
+                                <input type="checkbox" class="addon" data-addon-name="Whipped Cream" data-addon-price="0.50">
+                                Whipped Cream (+$0.50)
+                            </label>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                    <div class="product" data-id="6" data-name="Ice Cream Sundae" data-price="5.00">
+                        <h3>Ice Cream Sundae</h3>
+                        <p>Price: $5.00</p>
+                        <div class="choices">
+                            <h4>Choices</h4>
+                            <label class="choice-item">
+                                <input type="radio" name="choice-6" class="choice" data-choice-name="Chocolate Sauce" data-choice-price="0.50">
+                                Chocolate Sauce (+$0.50)
+                            </label>
+                            <label class="choice-item">
+                                <input type="radio" name="choice-6" class="choice" data-choice-name="Caramel Sauce" data-choice-price="0.50">
+                                Caramel Sauce (+$0.50)
+                            </label>
+                        </div>
+                        <div class="addons">
+                            <h4>Add-ons</h4>
+                            <label class="addon-item">
+                                <input type="checkbox" class="addon" data-addon-name="Sprinkles" data-addon-price="0.50">
+                                Sprinkles (+$0.50)
+                            </label>
+                            <label class="addon-item">
+                                <input type="checkbox" class="addon" data-addon-name="Nuts" data-addon-price="1.00">
+                                Nuts (+$1.00)
+                            </label>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart" id="cart">
+        <h3>Shopping Cart</h3>
+        <div id="cart-items"></div>
+        <div>
+            <strong>Total:</strong> $<span id="cart-total">0.00</span>
+        </div>
+        <button id="checkout-button">Checkout</button>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
+    <script>
+        // Add active class to current section in navbar
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.menu-section');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 60) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

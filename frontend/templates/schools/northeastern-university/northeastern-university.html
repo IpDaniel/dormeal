@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Dormeal - Northeastern University</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MCWDTZ7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9MCWDTZ7CL');
+    </script>
+
+    <!-- Bootstrap CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333333;
+            font-family: 'Poppins', sans-serif;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            padding: 40px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        h1, h2 {
+            color: #333333;
+            font-weight: 700;
+        }
+        .restaurant-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .restaurant-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        .restaurant-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+        .order-now {
+            background-color: #4FE90D;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        .order-now:hover {
+            background-color: #45d00b;
+            transform: scale(1.05);
+        }
+        .restaurant-name {
+            font-size: 1.1em;
+            color: #333333;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .food-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+        }
+        #restaurant-request {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 2px dashed #e0e0e0;
+        }
+        #confirmation-message {
+            display: none;
+            background-color: #4FE90D;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+        .btn-primary {
+            background-color: #4FE90D;
+            border-color: #4FE90D;
+            color: white;
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #45d00b;
+            border-color: #45d00b;
+            transform: scale(1.05);
+        }
+        a {
+            color: #FD00EA;
+            transition: all 0.3s ease;
+        }
+        a:hover {
+            color: #d600c3;
+            text-decoration: none;
+        }
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+        }
+        .form-control:focus {
+            border-color: #4FE90D;
+            box-shadow: 0 0 0 0.2rem rgba(79, 233, 13, 0.25);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="text-center mb-5">
+            <h1 class="mb-3">Dormeal at Northeastern University</h1>
+            <h2 class="mb-4">Choose Your Restaurant</h2>
+        </header>
+        
+        <main>
+            <ul class="restaurant-list">
+                <li class="restaurant-item">
+                    <img src="{{ url_for('static', filename='images/icons/burger-icon.png') }}" alt="Burger Icon" class="food-icon">
+                    <button class="order-now" onclick="location.href='/northeastern-university/five-guys'">Order Now</button>
+                    <span class="restaurant-name">Five Guys</span>
+                </li>
+                <li class="restaurant-item">
+                    <img src="{{ url_for('static', filename='images/icons/wings-icon.png') }}" alt="Wings Icon" class="food-icon">
+                    <button class="order-now" onclick="location.href='/northeastern-university/wings-over-boston'">Order Now</button>
+                    <span class="restaurant-name">Wings Over Boston</span>
+                </li>
+                <li class="restaurant-item">
+                    <img src="{{ url_for('static', filename='images/icons/taco-icon.png') }}" alt="Taco Icon" class="food-icon">
+                    <button class="order-now" onclick="location.href='/northeastern-university/el-jefes-taqueria'">Order Now</button>
+                    <span class="restaurant-name">El Jefe's Taqueria</span>
+                </li>
+                <li class="restaurant-item">
+                    <img src="{{ url_for('static', filename='images/icons/burrito-icon.png') }}" alt="Burrito Icon" class="food-icon">
+                    <button class="order-now" onclick="location.href='/northeastern-university/mamacita'">Order Now</button>
+                    <span class="restaurant-name">Mamacita Boston</span>
+                </li>
+                <li class="restaurant-item">
+                    <img src="{{ url_for('static', filename='images/icons/taco-icon.png') }}" alt="Taco Icon" class="food-icon">
+                    <button class="order-now" onclick="location.href='/northeastern-university/amelias-taqueria'">Request Delivery</button>
+                    <span class="restaurant-name">Amelia's Taqueria</span>
+                </li>
+                <li class="restaurant-item">
+                    <img src="{{ url_for('static', filename='images/icons/gyro-icon.png') }}" alt="Gyro Icon" class="food-icon">
+                    <button class="order-now" onclick="location.href='/northeastern-university/gyro-scope'">Request Delivery</button>
+                    <span class="restaurant-name">Gyro Scope</span>
+                </li>
+                <li class="restaurant-item">
+                    <img src="{{ url_for('static', filename='images/icons/salad-icon.png') }}" alt="Salad Icon" class="food-icon">
+                    <button class="order-now" onclick="location.href='/northeastern-university/sprout'">Request Delivery</button>
+                    <span class="restaurant-name">Sprout</span>
+                </li>
+            </ul>
+            
+            <form id="restaurant-request" class="mt-5">
+                <h3 class="mb-3">Don't see your favorite restaurant?</h3>
+                <p class="mb-4">Request it here and we'll consider adding it to our service.</p>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Your .edu Email Address:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="restaurant" class="form-label">Restaurant Name:</label>
+                    <input type="text" class="form-control" id="restaurant" name="restaurant" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Request</button>
+            </form>
+            <div id="confirmation-message" class="mt-3">
+                <h4>Thank you for your request. We'll consider adding this restaurant to our service.</h4>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScripts -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script>
+        function sendFormData(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = {
+                email: formData.get('email'),
+                restaurant: formData.get('restaurant')
+            };
+            
+            document.getElementById('restaurant-request').style.display = 'none';
+            
+            fetch('/restaurant-request', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('New Restaurant Request', data);
+                document.getElementById('confirmation-message').style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error sending notification:', error);
+                alert('There was an error. Please try again later.');
+            });
+        }
+
+        document.getElementById('restaurant-request').addEventListener('submit', sendFormData);
+    </script>
+</body>
+</html>

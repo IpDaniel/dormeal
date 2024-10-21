@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dormeal Northeastern</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MCWDTZ7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9MCWDTZ7CL');
+    </script>
+
+    <!-- Bootstrap CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" />
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333333;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 400px;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            padding: 40px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        h1, h2, h3 {
+            color: #333333;
+            font-weight: 700;
+        }
+        .navbar {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar a {
+            color: #333333;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+
+        }
+        .navbar a:hover, .navbar a.active {
+            background-color: #e9ecef;
+            color: #4FE90D;
+        }
+        .menu-section {
+            margin-bottom: 30px;
+        }
+        .menu-section h2 {
+            background-color: #e9ecef;
+            color: #333333;
+            padding: 15px;
+            margin: 0;
+            text-align: center;
+            border-radius: 15px 15px 0 0;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 0 0 15px 15px;
+            border: 1px solid #e0e0e0;
+        }
+        .product {
+            border: 2px solid #e0e0e0;
+            padding: 20px;
+            background-color: #ffffff;
+            color: #333333;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        .product:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+        .product h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .add-to-cart {
+            background-color: #4FE90D;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        .add-to-cart:hover {
+            background-color: #45d00b;
+            transform: scale(1.05);
+        }
+        .cart {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            border-top: 2px solid #e0e0e0;
+            padding: 20px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        #checkout-button {
+            background-color: #4FE90D;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        #checkout-button:hover {
+            background-color: #45d00b;
+            transform: scale(1.05);
+        }
+        .product .choices,
+        .product .addons {
+            margin-bottom: 15px;
+        }
+
+        .product .choice-item,
+        .product .addon-item {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .product input[type="radio"],
+        .product input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .navbar a img {
+        width: 24px;  /* Adjust this value to match your icon size */
+        height: 24px; /* Adjust this value to match your icon size */
+        margin-right: 5px;
+            vertical-align: middle;
+        }
+        .product img.option-icon {
+        width: 32px;  /* Adjust this value as needed */
+        height: 32px; /* Adjust this value as needed */
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+    .restaurant-header {
+        text-align: center;
+        margin-bottom: 20px;  /* Adds some space below the header */
+    }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#burgers"><img src="{{ url_for('static', filename='images/icons/burger-icon.png') }}" alt="Burger Icon">Burgers</a>
+        <a href="#hot-dogs"><img src="{{ url_for('static', filename='images/icons/hot-dog-icon.png') }}" alt="Hot Dog Icon">Hot Dogs</a>
+        <a href="#sandwiches"><img src="{{ url_for('static', filename='images/icons/sandwich-icon.png') }}" alt="Sandwich Icon">Sandwiches</a>
+        <a href="#fries"><img src="{{ url_for('static', filename='images/icons/fries-icon.png') }}" alt="Fries Icon">Fries</a>
+        <a href="#drinks"><img src="{{ url_for('static', filename='images/icons/drink-icon.png') }}" alt="Drink Icon">Drinks</a>
+        <a href="#shakes"><img src="{{ url_for('static', filename='images/icons/shake-icon.png') }}" alt="Shake Icon">Shakes</a>
+    </div>
+    <div class="restaurant-header">
+        <h1 id="restaurant-name">Five Guys</h1>
+    </div>
+    <div id="products">
+        <div class="menu-section" id="burgers">
+            <h2>Burgers</h2>
+            <div class="product-grid">
+                <div class="product" data-id="1" data-name="Hamburger" data-price="9.39">
+                    <img src="{{ url_for('static', filename='images/icons/burger-icon.png') }}" alt="Burger Icon" class="option-icon">                   
+                    <h3>Hamburger</h3>
+                    <p>Price: $9.39</p>
+                    <div>
+                        <h4>Add-ons</h4>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mayo" data-addon-price="0.00"> Mayo
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Ketchup" data-addon-price="0.00"> Ketchup
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mustard" data-addon-price="0.00"> Mustard
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="A.1. Steak Sauce" data-addon-price="0.00"> A.1. Steak Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="BBQ Sauce" data-addon-price="0.00"> BBQ Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Relish" data-addon-price="0.00"> Relish
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Onion" data-addon-price="0.00"> Onion
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Lettuce" data-addon-price="0.00"> Lettuce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Pickles" data-addon-price="0.00"> Pickles
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Tomatoes" data-addon-price="0.00"> Tomatoes
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Peppers" data-addon-price="0.00"> Jalapeno Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Green Peppers" data-addon-price="0.00"> Green Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Mushrooms" data-addon-price="0.00"> Grilled Mushrooms
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Onions" data-addon-price="0.00"> Grilled Onions
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Patty" data-addon-price="2.10"> Add Patty (+$2.10)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Plain" data-addon-price="0.00"> Plain
+                            
+                        </label>
+                        
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun(Bowl)" data-addon-price="0.00"> No Bun(Bowl)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun (Wrapped in Lettuce)" data-addon-price="0.00"> No Bun (Wrapped in Lettuce)
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="2" data-name="Little Hamburger" data-price="6.89">
+                    <img src="{{ url_for('static', filename='images/icons/burger-icon.png') }}" alt="Burger Icon" class="option-icon">
+                    <h3>Little Hamburger</h3>
+                    <p>Price: $6.89</p>
+                    <div>
+                        <h4>Add-ons</h4>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mayo" data-addon-price="0.00"> Mayo
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Ketchup" data-addon-price="0.00"> Ketchup
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mustard" data-addon-price="0.00"> Mustard
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="A.1. Steak Sauce" data-addon-price="0.00"> A.1. Steak Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="BBQ Sauce" data-addon-price="0.00"> BBQ Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Relish" data-addon-price="0.00"> Relish
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Onion" data-addon-price="0.00"> Onion
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Lettuce" data-addon-price="0.00"> Lettuce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Pickles" data-addon-price="0.00"> Pickles
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Tomatoes" data-addon-price="0.00"> Tomatoes
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Peppers" data-addon-price="0.00"> Jalapeno Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Green Peppers" data-addon-price="0.00"> Green Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Mushrooms" data-addon-price="0.00"> Grilled Mushrooms
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Onions" data-addon-price="0.00"> Grilled Onions
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Patty" data-addon-price="2.10"> Add Patty (+$2.10)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Plain" data-addon-price="0.00"> Plain
+                            
+                        </label>
+                        
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun(Bowl)" data-addon-price="0.00"> No Bun(Bowl)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun (Wrapped in Lettuce)" data-addon-price="0.00"> No Bun (Wrapped in Lettuce)
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="3" data-name="Cheeseburger" data-price="10.19">
+                    <img src="{{ url_for('static', filename='images/icons/burger-icon.png') }}" alt="Burger Icon" class="option-icon">
+                    <h3>Cheeseburger</h3>
+                    <p>Price: $10.19</p>
+                    <div>
+                        <h4>Add-ons</h4>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mayo" data-addon-price="0.00"> Mayo
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Ketchup" data-addon-price="0.00"> Ketchup
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mustard" data-addon-price="0.00"> Mustard
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="A.1. Steak Sauce" data-addon-price="0.00"> A.1. Steak Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="BBQ Sauce" data-addon-price="0.00"> BBQ Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Relish" data-addon-price="0.00"> Relish
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Onion" data-addon-price="0.00"> Onion
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Lettuce" data-addon-price="0.00"> Lettuce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Pickles" data-addon-price="0.00"> Pickles
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Tomatoes" data-addon-price="0.00"> Tomatoes
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Peppers" data-addon-price="0.00"> Jalapeno Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Green Peppers" data-addon-price="0.00"> Green Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Mushrooms" data-addon-price="0.00"> Grilled Mushrooms
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Onions" data-addon-price="0.00"> Grilled Onions
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Patty" data-addon-price="2.10"> Add Patty (+$2.10)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Plain" data-addon-price="0.00"> Plain
+                            
+                        </label>
+                        
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun(Bowl)" data-addon-price="0.00"> No Bun(Bowl)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun (Wrapped in Lettuce)" data-addon-price="0.00"> No Bun (Wrapped in Lettuce)
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="4" data-name="Little Cheeseburger" data-price="8.09">
+                    <img src="{{ url_for('static', filename='images/icons/burger-icon.png') }}" alt="Burger Icon" class="option-icon">
+                    <h3>Little Cheeseburger</h3>
+                    <p>Price: $8.09</p>
+                    <div>
+                        <h4>Add-ons</h4>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mayo" data-addon-price="0.00"> Mayo
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Ketchup" data-addon-price="0.00"> Ketchup
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mustard" data-addon-price="0.00"> Mustard
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="A.1. Steak Sauce" data-addon-price="0.00"> A.1. Steak Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="BBQ Sauce" data-addon-price="0.00"> BBQ Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Relish" data-addon-price="0.00"> Relish
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Onion" data-addon-price="0.00"> Onion
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Lettuce" data-addon-price="0.00"> Lettuce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Pickles" data-addon-price="0.00"> Pickles
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Tomatoes" data-addon-price="0.00"> Tomatoes
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Peppers" data-addon-price="0.00"> Jalapeno Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Green Peppers" data-addon-price="0.00"> Green Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Mushrooms" data-addon-price="0.00"> Grilled Mushrooms
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Onions" data-addon-price="0.00"> Grilled Onions
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Patty" data-addon-price="2.10"> Add Patty (+$2.10)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Plain" data-addon-price="0.00"> Plain
+                            
+                        </label>
+                        
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun(Bowl)" data-addon-price="0.00"> No Bun(Bowl)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun (Wrapped in Lettuce)" data-addon-price="0.00"> No Bun (Wrapped in Lettuce)
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="5" data-name="Bacon Burger" data-price="10.69">
+                    <img src="{{ url_for('static', filename='images/icons/burger-icon.png') }}" alt="Burger Icon" class="option-icon">
+                    <h3>Bacon Burger</h3>
+                    <p>Price: $10.69</p>
+                    <div>
+                        <h4>Add-ons</h4>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mayo" data-addon-price="0.00"> Mayo
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Ketchup" data-addon-price="0.00"> Ketchup
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mustard" data-addon-price="0.00"> Mustard
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="A.1. Steak Sauce" data-addon-price="0.00"> A.1. Steak Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="BBQ Sauce" data-addon-price="0.00"> BBQ Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Relish" data-addon-price="0.00"> Relish
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Onion" data-addon-price="0.00"> Onion
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Lettuce" data-addon-price="0.00"> Lettuce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Pickles" data-addon-price="0.00"> Pickles
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Tomatoes" data-addon-price="0.00"> Tomatoes
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Peppers" data-addon-price="0.00"> Jalapeno Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Green Peppers" data-addon-price="0.00"> Green Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Mushrooms" data-addon-price="0.00"> Grilled Mushrooms
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Onions" data-addon-price="0.00"> Grilled Onions
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Patty" data-addon-price="2.10"> Add Patty (+$2.10)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Plain" data-addon-price="0.00"> Plain
+                            
+                        </label>
+                        
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun(Bowl)" data-addon-price="0.00"> No Bun(Bowl)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun (Wrapped in Lettuce)" data-addon-price="0.00"> No Bun (Wrapped in Lettuce)
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="6" data-name="Little Bacon Burger" data-price="8.59">
+                    <img src="{{ url_for('static', filename='images/icons/burger-icon.png') }}" alt="Burger Icon" class="option-icon">
+                    <h3>Little Bacon Burger</h3>
+                    <p>Price: $8.59</p>
+                    <div>
+                        <h4>Add-ons</h4>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mayo" data-addon-price="0.00"> Mayo
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Ketchup" data-addon-price="0.00"> Ketchup
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mustard" data-addon-price="0.00"> Mustard
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="A.1. Steak Sauce" data-addon-price="0.00"> A.1. Steak Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="BBQ Sauce" data-addon-price="0.00"> BBQ Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Relish" data-addon-price="0.00"> Relish
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Onion" data-addon-price="0.00"> Onion
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Lettuce" data-addon-price="0.00"> Lettuce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Pickles" data-addon-price="0.00"> Pickles
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Tomatoes" data-addon-price="0.00"> Tomatoes
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Peppers" data-addon-price="0.00"> Jalapeno Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Green Peppers" data-addon-price="0.00"> Green Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Mushrooms" data-addon-price="0.00"> Grilled Mushrooms
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Onions" data-addon-price="0.00"> Grilled Onions
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Patty" data-addon-price="2.10"> Add Patty (+$2.10)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Plain" data-addon-price="0.00"> Plain
+                            
+                        </label>
+                        
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun(Bowl)" data-addon-price="0.00"> No Bun(Bowl)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun (Wrapped in Lettuce)" data-addon-price="0.00"> No Bun (Wrapped in Lettuce)
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="7" data-name="Bacon Cheeseburger" data-price="11.39">
+                    <img src="{{ url_for('static', filename='images/icons/burger-icon.png') }}" alt="Burger Icon" class="option-icon">
+                    <h3>Bacon Cheeseburger</h3>
+                    <p>Price: $11.39</p>
+                    <div>
+                        <h4>Add-ons</h4>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mayo" data-addon-price="0.00"> Mayo
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Ketchup" data-addon-price="0.00"> Ketchup
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mustard" data-addon-price="0.00"> Mustard
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="A.1. Steak Sauce" data-addon-price="0.00"> A.1. Steak Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="BBQ Sauce" data-addon-price="0.00"> BBQ Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Relish" data-addon-price="0.00"> Relish
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Onion" data-addon-price="0.00"> Onion
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Lettuce" data-addon-price="0.00"> Lettuce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Pickles" data-addon-price="0.00"> Pickles
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Tomatoes" data-addon-price="0.00"> Tomatoes
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Peppers" data-addon-price="0.00"> Jalapeno Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Green Peppers" data-addon-price="0.00"> Green Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Mushrooms" data-addon-price="0.00"> Grilled Mushrooms
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Onions" data-addon-price="0.00"> Grilled Onions
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Patty" data-addon-price="2.10"> Add Patty (+$2.10)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Plain" data-addon-price="0.00"> Plain
+                            
+                        </label>
+                        
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun(Bowl)" data-addon-price="0.00"> No Bun(Bowl)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun (Wrapped in Lettuce)" data-addon-price="0.00"> No Bun (Wrapped in Lettuce)
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="8" data-name="Little Bacon Cheeseburger" data-price="9.39">
+                    <img src="{{ url_for('static', filename='images/icons/burger-icon.png') }}" alt="Burger Icon" class="option-icon">
+                    <h3>Little Bacon Cheeseburger</h3>
+                    <p>Price: $9.39</p>
+                    <div>
+                        <h4>Add-ons</h4>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mayo" data-addon-price="0.00"> Mayo
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Ketchup" data-addon-price="0.00"> Ketchup
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mustard" data-addon-price="0.00"> Mustard
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="A.1. Steak Sauce" data-addon-price="0.00"> A.1. Steak Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="BBQ Sauce" data-addon-price="0.00"> BBQ Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Relish" data-addon-price="0.00"> Relish
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Onion" data-addon-price="0.00"> Onion
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Lettuce" data-addon-price="0.00"> Lettuce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Pickles" data-addon-price="0.00"> Pickles
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Tomatoes" data-addon-price="0.00"> Tomatoes
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Peppers" data-addon-price="0.00"> Jalapeno Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Green Peppers" data-addon-price="0.00"> Green Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Mushrooms" data-addon-price="0.00"> Grilled Mushrooms
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Onions" data-addon-price="0.00"> Grilled Onions
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Patty" data-addon-price="2.10"> Add Patty (+$2.10)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Plain" data-addon-price="0.00"> Plain
+                            
+                        </label>
+                        
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun(Bowl)" data-addon-price="0.00"> No Bun(Bowl)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun (Wrapped in Lettuce)" data-addon-price="0.00"> No Bun (Wrapped in Lettuce)
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="menu-section" id="hot-dogs">
+            <h2>Hot Dogs</h2>
+            <div class="product-grid">
+                <div class="product" data-id="9" data-name="Hot Dog" data-price="6.59">
+                    <img src="{{ url_for('static', filename='images/icons/hot-dog-icon.png') }}" alt="Hot Dog Icon" class="option-icon">
+                    <h3>Hot Dog</h3>
+                    <p>Price: $6.59</p>
+                    <div>
+                        <h4>Add-ons</h4>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mayo" data-addon-price="0.00"> Mayo
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Ketchup" data-addon-price="0.00"> Ketchup
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mustard" data-addon-price="0.00"> Mustard
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="A.1. Steak Sauce" data-addon-price="0.00"> A.1. Steak Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="BBQ Sauce" data-addon-price="0.00"> BBQ Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Relish" data-addon-price="0.00"> Relish
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Onion" data-addon-price="0.00"> Onion
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Lettuce" data-addon-price="0.00"> Lettuce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Pickles" data-addon-price="0.00"> Pickles
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Tomatoes" data-addon-price="0.00"> Tomatoes
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Peppers" data-addon-price="0.00"> Jalapeno Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Green Peppers" data-addon-price="0.00"> Green Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Mushrooms" data-addon-price="0.00"> Grilled Mushrooms
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Onions" data-addon-price="0.00"> Grilled Onions
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Patty" data-addon-price="2.10"> Add Patty (+$2.10)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Plain" data-addon-price="0.00"> Plain
+                            
+                        </label>
+                        
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun(Bowl)" data-addon-price="0.00"> No Bun(Bowl)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun (Wrapped in Lettuce)" data-addon-price="0.00"> No Bun (Wrapped in Lettuce)
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="10" data-name="Bacon Dog" data-price="8.09">
+                    <img src="{{ url_for('static', filename='images/icons/hot-dog-icon.png') }}" alt="Hot Dog Icon" class="option-icon">
+                    <h3>Bacon Dog</h3>
+                    <p>Price: $8.09</p>
+                    <div>
+                        <h4>Add-ons</h4>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mayo" data-addon-price="0.00"> Mayo
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Ketchup" data-addon-price="0.00"> Ketchup
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mustard" data-addon-price="0.00"> Mustard
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="A.1. Steak Sauce" data-addon-price="0.00"> A.1. Steak Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="BBQ Sauce" data-addon-price="0.00"> BBQ Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Relish" data-addon-price="0.00"> Relish
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Onion" data-addon-price="0.00"> Onion
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Lettuce" data-addon-price="0.00"> Lettuce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Pickles" data-addon-price="0.00"> Pickles
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Tomatoes" data-addon-price="0.00"> Tomatoes
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Peppers" data-addon-price="0.00"> Jalapeno Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Green Peppers" data-addon-price="0.00"> Green Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Mushrooms" data-addon-price="0.00"> Grilled Mushrooms
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Onions" data-addon-price="0.00"> Grilled Onions
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Patty" data-addon-price="2.10"> Add Patty (+$2.10)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Plain" data-addon-price="0.00"> Plain
+                            
+                        </label>
+                        
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun(Bowl)" data-addon-price="0.00"> No Bun(Bowl)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun (Wrapped in Lettuce)" data-addon-price="0.00"> No Bun (Wrapped in Lettuce)
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="11" data-name="Cheese Dog" data-price="7.49">
+                    <img src="{{ url_for('static', filename='images/icons/hot-dog-icon.png') }}" alt="Hot Dog Icon" class="option-icon">
+                    <h3>Bacon Cheese Dog</h3>
+                    <p>Price: $7.49</p>
+                    <div>
+                        <h4>Add-ons</h4>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mayo" data-addon-price="0.00"> Mayo
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Ketchup" data-addon-price="0.00"> Ketchup
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mustard" data-addon-price="0.00"> Mustard
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="A.1. Steak Sauce" data-addon-price="0.00"> A.1. Steak Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="BBQ Sauce" data-addon-price="0.00"> BBQ Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Relish" data-addon-price="0.00"> Relish
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Onion" data-addon-price="0.00"> Onion
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Lettuce" data-addon-price="0.00"> Lettuce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Pickles" data-addon-price="0.00"> Pickles
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Tomatoes" data-addon-price="0.00"> Tomatoes
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Peppers" data-addon-price="0.00"> Jalapeno Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Green Peppers" data-addon-price="0.00"> Green Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Mushrooms" data-addon-price="0.00"> Grilled Mushrooms
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Onions" data-addon-price="0.00"> Grilled Onions
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Patty" data-addon-price="2.10"> Add Patty (+$2.10)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Plain" data-addon-price="0.00"> Plain
+                            
+                        </label>
+                        
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun(Bowl)" data-addon-price="0.00"> No Bun(Bowl)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun (Wrapped in Lettuce)" data-addon-price="0.00"> No Bun (Wrapped in Lettuce)
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="12" data-name="Bacon Cheese Dog" data-price="8.89">
+                    <img src="{{ url_for('static', filename='images/icons/hot-dog-icon.png') }}" alt="Hot Dog Icon" class="option-icon">
+                    <h3>Bacon Cheese Dog</h3>
+                    <p>Price: $8.89</p>
+                    <div>
+                        <h4>Add-ons</h4>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mayo" data-addon-price="0.00"> Mayo
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Ketchup" data-addon-price="0.00"> Ketchup
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mustard" data-addon-price="0.00"> Mustard
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="A.1. Steak Sauce" data-addon-price="0.00"> A.1. Steak Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="BBQ Sauce" data-addon-price="0.00"> BBQ Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Relish" data-addon-price="0.00"> Relish
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Onion" data-addon-price="0.00"> Onion
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Lettuce" data-addon-price="0.00"> Lettuce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Pickles" data-addon-price="0.00"> Pickles
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Tomatoes" data-addon-price="0.00"> Tomatoes
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Peppers" data-addon-price="0.00"> Jalapeno Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Green Peppers" data-addon-price="0.00"> Green Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Mushrooms" data-addon-price="0.00"> Grilled Mushrooms
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Onions" data-addon-price="0.00"> Grilled Onions
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Patty" data-addon-price="2.10"> Add Patty (+$2.10)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Plain" data-addon-price="0.00"> Plain
+                            
+                        </label>
+                        
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun(Bowl)" data-addon-price="0.00"> No Bun(Bowl)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="No Bun (Wrapped in Lettuce)" data-addon-price="0.00"> No Bun (Wrapped in Lettuce)
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="menu-section" id="sandwiches">
+            <h2>Sandwiches</h2>
+            <div class="product-grid">
+                <div class="product" data-id="13" data-name="Grilled Cheese Sandwich" data-price="5.99">
+                    <img src="{{ url_for('static', filename='images/icons/sandwich-icon.png') }}" alt="Sandwich Icon" class="option-icon">
+                    <h3>Grilled Cheese Sandwich</h3>
+                    <p>Price: $5.99</p>
+                    <div>
+                        <h4>Add-ons</h4>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mayo" data-addon-price="0.00"> Mayo
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Ketchup" data-addon-price="0.00"> Ketchup
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mustard" data-addon-price="0.00"> Mustard
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="A.1. Steak Sauce" data-addon-price="0.00"> A.1. Steak Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="BBQ Sauce" data-addon-price="0.00"> BBQ Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Relish" data-addon-price="0.00"> Relish
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Onion" data-addon-price="0.00"> Onion
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Lettuce" data-addon-price="0.00"> Lettuce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Pickles" data-addon-price="0.00"> Pickles
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Tomatoes" data-addon-price="0.00"> Tomatoes
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Peppers" data-addon-price="0.00"> Jalapeno Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Green Peppers" data-addon-price="0.00"> Green Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Mushrooms" data-addon-price="0.00"> Grilled Mushrooms
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Onions" data-addon-price="0.00"> Grilled Onions
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Bacon" data-addon-price="1.30"> Add Bacon (+$1.30)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Patty" data-addon-price="2.10"> Add Patty (+$2.10)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Plain" data-addon-price="0.00"> Plain
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="14" data-name="Veggie Sandwich" data-price="5.09">
+                    <img src="{{ url_for('static', filename='images/icons/sandwich-icon.png') }}" alt="Sandwich Icon" class="option-icon">
+                    <h3>Veggie Sandwich</h3>
+                    <p>Price: $5.09</p>
+                    <div>
+                        <h4>Add-ons</h4>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mayo" data-addon-price="0.00"> Mayo
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Ketchup" data-addon-price="0.00"> Ketchup
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mustard" data-addon-price="0.00"> Mustard
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="A.1. Steak Sauce" data-addon-price="0.00"> A.1. Steak Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="BBQ Sauce" data-addon-price="0.00"> BBQ Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Relish" data-addon-price="0.00"> Relish
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Onion" data-addon-price="0.00"> Onion
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Lettuce" data-addon-price="0.00" checked> Lettuce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Pickles" data-addon-price="0.00"> Pickles
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Tomatoes" data-addon-price="0.00" checked> Tomatoes
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Peppers" data-addon-price="0.00"> Jalapeno Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Green Peppers" data-addon-price="0.00" checked> Green Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Mushrooms" data-addon-price="0.00" checked> Grilled Mushrooms
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Onions" data-addon-price="0.00" checked> Grilled Onions
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Patty" data-addon-price="2.10"> Add Patty (+$2.10)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Plain" data-addon-price="0.00"> Plain
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="15" data-name="BLT Sandwich" data-price="7.19">
+                    <img src="{{ url_for('static', filename='images/icons/sandwich-icon.png') }}" alt="Sandwich Icon" class="option-icon">
+                    <h3>BLT Sandwich</h3>
+                    <p>Price: $7.19</p>
+                    <div>
+                        <h4>Add-ons</h4>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mayo" data-addon-price="0.00" checked> Mayo
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Ketchup" data-addon-price="0.00"> Ketchup
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mustard" data-addon-price="0.00"> Mustard
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="A.1. Steak Sauce" data-addon-price="0.00"> A.1. Steak Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="BBQ Sauce" data-addon-price="0.00"> BBQ Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Relish" data-addon-price="0.00"> Relish
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Onion" data-addon-price="0.00"> Onion
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Pickles" data-addon-price="0.00"> Pickles
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Peppers" data-addon-price="0.00"> Jalapeno Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Green Peppers" data-addon-price="0.00"> Green Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Mushrooms" data-addon-price="0.00"> Grilled Mushrooms
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Onions" data-addon-price="0.00"> Grilled Onions
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Cheese" data-addon-price="1.00"> Add Cheese (+$1.00)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Patty" data-addon-price="2.10"> Add Patty (+$2.10)
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="16" data-name="Veggie Sandwich with Cheese" data-price="5.89">
+                    <img src="{{ url_for('static', filename='images/icons/sandwich-icon.png') }}" alt="Sandwich Icon" class="option-icon">
+                    <h3>Veggie Sandwich With Cheese</h3>
+                    <p>Price: $5.89</p>
+                    <div>
+                        <h4>Add-ons</h4>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mayo" data-addon-price="0.00"> Mayo
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Ketchup" data-addon-price="0.00"> Ketchup
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Mustard" data-addon-price="0.00"> Mustard
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="A.1. Steak Sauce" data-addon-price="0.00"> A.1. Steak Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="BBQ Sauce" data-addon-price="0.00"> BBQ Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Hot Sauce" data-addon-price="0.00"> Hot Sauce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Relish" data-addon-price="0.00"> Relish
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Onion" data-addon-price="0.00"> Onion
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Lettuce" data-addon-price="0.00" checked> Lettuce
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Pickles" data-addon-price="0.00"> Pickles
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Tomatoes" data-addon-price="0.00" checked> Tomatoes
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Jalapeno Peppers" data-addon-price="0.00"> Jalapeno Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Green Peppers" data-addon-price="0.00" checked> Green Peppers
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Mushrooms" data-addon-price="0.00" checked> Grilled Mushrooms
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Grilled Onions" data-addon-price="0.00" checked> Grilled Onions
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Add Bacon" data-addon-price="1.30"> Add Bacon (+$1.30)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="Plain" data-addon-price="0.00"> Plain
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="menu-section" id="fries">
+            <h2>Fries</h2>
+            <div class="product-grid">
+                <div class="product" data-id="17" data-name="Little Fries" data-price="4.49">
+                    <img src="{{ url_for('static', filename='images/icons/fries-icon.png') }}" alt="Fries Icon" class="option-icon">
+                    <h3>Little Fries</h3>
+                    <p>Price: $4.49</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="18" data-name="Little Cajun Fries" data-price="4.49">
+                    <img src="{{ url_for('static', filename='images/icons/fries-icon.png') }}" alt="Fries Icon" class="option-icon">
+                    <h3>Little Cajun Fries</h3>
+                    <p>Price: $4.49</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="19" data-name="Regular Fries" data-price="5.59">
+                    <img src="{{ url_for('static', filename='images/icons/fries-icon.png') }}" alt="Fries Icon" class="option-icon">
+                    <h3>Regular Fries</h3>
+                    <p>Price: $5.59</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="20" data-name="Regular Cajun Fries" data-price="5.59">
+                    <img src="{{ url_for('static', filename='images/icons/fries-icon.png') }}" alt="Fries Icon" class="option-icon">
+                    <h3>Regular Cajun Fries</h3>
+                    <p>Price: $5.59</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="21" data-name="Large Fries" data-price="6.99">
+                    <img src="{{ url_for('static', filename='images/icons/fries-icon.png') }}" alt="Fries Icon" class="option-icon">
+                    <h3>Large Fries</h3>
+                    <p>Price: $6.99</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="22" data-name="Large Cajun Fries" data-price="6.99">
+                    <img src="{{ url_for('static', filename='images/icons/fries-icon.png') }}" alt="Fries Icon" class="option-icon">
+                    <h3>Large Cajun Fries</h3>
+                    <p>Price: $6.99</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="menu-section" id="drinks">
+            <h2>Drinks</h2>
+            <div class="product-grid">
+                <div class="product" data-id="23" data-name="Regular Drink" data-price="2.89">
+                    <img src="{{ url_for('static', filename='images/icons/drink-icon.png') }}" alt="Drink Icon" class="option-icon">
+                    <h3>Regular Drink</h3>
+                    <p>Price: $2.89</p>
+                    <div>
+                        <h4>Choices</h4>
+                        <label class="addon-item">
+                            <input type="radio" name="drink-choice" class="choice" data-choice-name="Coke" data-choice-price="0.00" checked> Coke
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="radio" name="drink-choice" class="choice" data-choice-name="Diet Coke" data-choice-price="0.00"> Diet Coke
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="radio" name="drink-choice" class="choice" data-choice-name="Sprite" data-choice-price="0.00"> Sprite
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="radio" name="drink-choice" class="choice" data-choice-name="Root Beer" data-choice-price="0.00"> Root Beer
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="radio" name="drink-choice" class="choice" data-choice-name="Lemonade" data-choice-price="0.00"> Lemonade
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="radio" name="drink-choice" class="choice" data-choice-name="Dr. Pepper" data-choice-price="0.00"> Dr. Pepper
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="24" data-name="Large Drink" data-price="3.29">
+                    <img src="{{ url_for('static', filename='images/icons/drink-icon.png') }}" alt="Drink Icon" class="option-icon">
+                    <h3>Large Drink</h3>
+                    <p>Price: $3.29</p>
+                    <div>
+                        <h4>Choices</h4>
+                        <label class="addon-item">
+                            <input type="radio" name="drink-choice" class="choice" data-choice-name="Coke" data-choice-price="0.00" checked> Coke
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="radio" name="drink-choice" class="choice" data-choice-name="Diet Coke" data-choice-price="0.00"> Diet Coke
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="radio" name="drink-choice" class="choice" data-choice-name="Sprite" data-choice-price="0.00"> Sprite
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="radio" name="drink-choice" class="choice" data-choice-name="Root Beer" data-choice-price="0.00"> Root Beer
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="radio" name="drink-choice" class="choice" data-choice-name="Lemonade" data-choice-price="0.00"> Lemonade
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="radio" name="drink-choice" class="choice" data-choice-name="Dr. Pepper" data-choice-price="0.00"> Dr. Pepper
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="25" data-name="Bottled Water" data-price="2.59">
+                    <img src="{{ url_for('static', filename='images/icons/drink-icon.png') }}" alt="Drink Icon" class="option-icon">
+                    <h3>Bottled Water</h3>
+                    <p>Price: $2.59</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="26" data-name="Simply Lemonade Bottle" data-price="3.19">
+                    <img src="{{ url_for('static', filename='images/icons/drink-icon.png') }}" alt="Drink Icon" class="option-icon">
+                    <h3>Simply Lemonade Bottle</h3>
+                    <p>Price: $3.19</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="27" data-name="Code Bottle" data-price="3.19">
+                    <img src="{{ url_for('static', filename='images/icons/drink-icon.png') }}" alt="Drink Icon" class="option-icon">
+                    <h3>Coke Bottle</h3>
+                    <p>Price: $3.19</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="28" data-name="Diet Coke Bottle" data-price="2.59">
+                    <img src="{{ url_for('static', filename='images/icons/drink-icon.png') }}" alt="Drink Icon" class="option-icon">
+                    <h3>Diet Code Bottle</h3>
+                    <p>Price: $2.59</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="29" data-name="Sprite Bottle" data-price="3.19">
+                    <img src="{{ url_for('static', filename='images/icons/drink-icon.png') }}" alt="Drink Icon" class="option-icon">
+                    <h3>Sprite Bottle</h3>
+                    <p>Price: $3.19</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="product" data-id="30" data-name="Coke Zero Sugar Bottle" data-price="2.59">
+                    <img src="{{ url_for('static', filename='images/icons/drink-icon.png') }}" alt="Drink Icon" class="option-icon">
+                    <h3>Coke Zero Sugar Bottle</h3>
+                    <p>Price: $2.59</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="menu-section" id="shakes">
+            <h2>Shakes</h2>
+            <div class="product-grid">
+                <div class="product" data-id="31" data-name="Milkshake" data-price="5.99">
+                    <img src="{{ url_for('static', filename='images/icons/shake-icon.png') }}" alt="Shake Icon" class="option-icon">
+                    <h3>Milkshake</h3>
+                    <p>Price: $5.99</p>
+                    <div>
+                        <h4>Add-ons</h4>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="bacon" data-addon-price="0.00"> Bacon
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="oreo-creme" data-addon-price="0.00"> Oreo Creme
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="oreo-cookies" data-addon-price="0.00"> Oreo Cookies
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="salted-caramel" data-addon-price="0.00"> Salted Caramel
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="peanut-butter" data-addon-price="0.00"> Peanut Butter
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="double-stuf" data-addon-price="0.00"> Double Stuf (Oreo Creme & Oreo Cookie)
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="banana" data-addon-price="0.00"> Banana
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="vanilla" data-addon-price="0.00"> Vanilla
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="chocolate" data-addon-price="0.00"> Chocolate
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="strawberry" data-addon-price="0.00"> Strawberry
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="reeses-cups" data-addon-price="0.00"> Reese's cups
+                            
+                        </label>
+                        <label class="addon-item">
+                            <input type="checkbox" class="addon" data-addon-name="whipped-creme" data-addon-price="0.00"> Whipped Cream
+                            
+                        </label>
+                    </div>
+                    <button class="add-to-cart">Add to Cart</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart" id="cart">
+        <h3>Shopping Cart</h3>
+        <div id="cart-items"></div>
+        <div>
+            <strong>Total:</strong> $<span id="cart-total">0.00</span>
+        </div>
+        <button id="checkout-button">Checkout</button>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
+    <script>
+        // Add active class to current section in navbar
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.menu-section');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 60) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

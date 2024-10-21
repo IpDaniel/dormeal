@@ -25,7 +25,8 @@ def order_page():
 def menu_template():
     return render_template('menu-template.html')
 
-#sends email to update us when someone wants to get notified if we're active
+
+# sends email to update us when someone wants to get notified if we're active
 @app.route('/notify-request', methods=['POST'])
 def notify_request():
     data = request.json
@@ -33,7 +34,8 @@ def notify_request():
     mvp_emailer.send_email('arc.daniel42@gmail.com', str(contact_info), 'Dormeal - New Notify Request')
     return jsonify({'status': 'success'})
 
-#sends email to update us when someone wants a new restaurant
+
+# sends email to update us when someone wants a new restaurant
 @app.route('/restaurant-request', methods=['POST'])
 def restaurant_request():
     data = request.json
@@ -42,12 +44,12 @@ def restaurant_request():
     mvp_emailer.send_email('arc.daniel42@gmail.com', f"Email: {email}\nRestaurant: {restaurant}", 'Dormeal - New Restaurant Request')
     return jsonify({'status': 'success'})
     
-#route all carts to this page once they are full
+# route all carts to this page once they are full
 @app.route('/checkout')
 def checkout():
     return render_template('checkout.html')
 
-#old submit-order function. Only works with the old form.
+# old submit-order function. Only works with the old form.
 # Will send out email with details from old order page.
 @app.route('/submit-order', methods=['POST'])
 def submit_order():

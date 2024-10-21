@@ -48,7 +48,7 @@ def restaurant_request():
 # route all carts to this page once they are full
 @app.route('/checkout')
 def checkout():
-    return render_template('frontend/templates/checkout.html')
+    return render_template('checkout.html')
 
 # old submit-order function. Only works with the old form.
 # Will send out email with details from old order page.

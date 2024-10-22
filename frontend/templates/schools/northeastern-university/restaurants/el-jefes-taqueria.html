@@ -193,6 +193,84 @@
             transform: scale(1.05);
             color: #333333;
         }
+        .floating-cart-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #4FE90D;
+        color: white;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+
+    .floating-cart-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .floating-cart-button img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .cart-count {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: #ff4d4d;
+        color: white;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .expandable-cart {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1000;
+    }
+
+    .expandable-cart.show {
+        display: block;
+    }
+
+    .cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    }
+
+    .close-cart {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    }
     </style>
 </head>
 <body>
@@ -5700,8 +5778,18 @@
         </div>
     </div>
 
-    <div class="cart" id="cart">
-        <h3>Shopping Cart</h3>
+     <!-- Add this floating cart button -->
+     <div class="floating-cart-button" id="floating-cart-button">
+        <img src="{{ url_for('static', filename='images/icons/cart-icon.png') }}" alt="Cart Icon">
+        <span class="cart-count" id="cart-count">0</span>
+    </div>
+
+    <!-- Add this expandable cart container -->
+    <div class="expandable-cart" id="expandable-cart">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
         <div id="cart-items"></div>
         <div>
             <strong>Total:</strong> $<span id="cart-total">0.00</span>
@@ -5713,27 +5801,68 @@
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
     <script>
-        // Add active class to current section in navbar
-        const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('.menu-section');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 60) {
-                    current = section.getAttribute('id');
+        const floatingCartButton = document.getElementById('floating-cart-button');
+        const expandableCart = document.getElementById('expandable-cart');
+        const closeCart = document.getElementById('close-cart');
+        const cartCount = document.getElementById('cart-count');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+        floatingCartButton.addEventListener('click', () => {
+            expandableCart.classList.toggle('show');
+        });
+    
+        closeCart.addEventListener('click', () => {
+            expandableCart.classList.remove('show');
+        });
+    
+        function updateCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
+            
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    ${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}
+                    <button onclick="removeItem('${item.id}')">Remove</button>
+                </div>
+            `).join('');
+            
+            cartTotal.textContent = cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+        }
+    
+        function addItem(id, name, price) {
+            const existingItem = cart.find(item => item.id === id);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ id, name, price, quantity: 1 });
+            }
+            updateCart();
+        }
+    
+        function removeItem(id) {
+            const index = cart.findIndex(item => item.id === id);
+            if (index > -1) {
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity--;
+                } else {
+                    cart.splice(index, 1);
                 }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
+                updateCart();
+            }
+        }
+    
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const product = button.closest('.product');
+                addItem(product.dataset.id, product.dataset.name, parseFloat(product.dataset.price));
             });
         });
+    
+        updateCart();
     </script>
 </body>
 </html>

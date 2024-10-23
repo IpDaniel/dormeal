@@ -129,11 +129,29 @@
             border-color: #4FE90D;
             box-shadow: 0 0 0 0.2rem rgba(79, 233, 13, 0.25);
         }
+        .back-btn {
+            background-color: #e0e0e0;
+            color: #333333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .back-btn:hover {
+            background-color: #d0d0d0;
+            transform: scale(1.05);
+            color: #333333;
+        }
     </style>
     <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
     <div class="container">
+        <a href="javascript:history.back()" class="btn btn-secondary back-btn mb-4">← Back</a>
         <h1>Checkout</h1>
         <div class="checkout-summary" id="checkout-summary">
             <div id="checkout-items"></div>
@@ -320,6 +338,13 @@
                     document.getElementById('payment-message').textContent = 'Payment succeeded!';
                     localStorage.removeItem('cart');
                 }
+            });
+
+            // Add this new code at the end of the DOMContentLoaded event listener
+            const backButton = document.querySelector('.back-btn');
+            backButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                history.back();
             });
         });
     </script>

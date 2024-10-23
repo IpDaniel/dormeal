@@ -141,7 +141,7 @@
                 <strong>Subtotal:</strong> $<span id="checkout-subtotal">0.00</span>
             </div>
             <div>
-                <strong>Delivery Fee:</strong> $<span id="checkout-delivery">5.00</span>
+                <strong>Delivery Fee:</strong> $<span id="checkout-delivery">2.00</span>
             </div>
             <div>
                 <strong>Sales Tax:</strong> $<span id="checkout-tax">0.00</span>
@@ -228,7 +228,7 @@
             function renderCheckout() {
                 checkoutItemsContainer.innerHTML = '';
                 let subtotal = 0;
-                const deliveryFee = 5.00;
+                const deliveryFee = 2.00;
                 const taxRate = 0.07;
 
                 cart.forEach(item => {

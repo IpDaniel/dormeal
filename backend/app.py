@@ -2,9 +2,9 @@ from flask import Flask, render_template, request, jsonify, send_from_directory,
 from scripts import mvp_emailer
 import stripe
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()  # Add this near the top of the file, after imports
+# load_dotenv()  # Add this near the top of the file, after imports
 
 #constants
 app = Flask(__name__, static_folder='../frontend/static', template_folder='../frontend/templates')
@@ -48,7 +48,7 @@ def restaurant_request():
 # route all carts to this page once they are full
 @app.route('/checkout')
 def checkout():
-    return render_template('frontend/templates/checkout.html')
+    return render_template('checkout.html')
 
 # old submit-order function. Only works with the old form.
 # Will send out email with details from old order page.
@@ -70,7 +70,7 @@ def create_payment_intent():
     total_amount = sum(
         (item['basePrice'] + sum(addon['price'] for addon in item['addOns']) + sum(choice['price'] for choice in item['choices'])) * item['quantity']
         for item in cart
-    ) * 1.07 + 5.00
+    ) * 1.07 + 2.00
     intent = stripe.PaymentIntent.create(
         amount=int(total_amount * 100),  # amount in cents
         currency='usd',

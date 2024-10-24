@@ -271,11 +271,48 @@
     font-size: 24px;
     cursor: pointer;
     }
+    @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .back-btn {
+                order: -1;
+                margin-bottom: 10px;
+                width: 100%;
+            }
+
+            .navbar-brand {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .navbar-links {
+                justify-content: flex-start;
+                padding-bottom: 5px;
+            }
+
+            .navbar a {
+                font-size: 0.9rem;
+                padding: 6px 10px;
+            }
+
+            .navbar a img {
+                width: 16px;
+                height: 16px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <a href="/northeastern-university" class="back-btn">← Back</a>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-top">
+                <a href="/northeastern-university" class="back-btn">← Back</a>
+                <a href="#" class="navbar-brand">El Jefe's Taqueria</a>
+            </div>
         <div class="navbar-links">
             <a href="#popular-items"><img src="{{ url_for('static', filename='images/icons/burger-icon.png') }}" alt="Burger Icon">Popular Items</a>
             <a href="#appetizers"><img src="{{ url_for('static', filename='images/icons/appetizer-icon.png') }}" alt="Appetizer Icon">Appetizers</a>
@@ -290,7 +327,8 @@
             <a href="#sides"><img src="{{ url_for('static', filename='images/icons/tortilla-icon.png') }}" alt="Tortilla Icon">Sides</a>
             <a href="#bebidas"><img src="{{ url_for('static', filename='images/icons/drink-icon.png') }}" alt="Drink Icon">Bebidas</a>
         </div>
-    </div>
+        </div>
+    </nav>
     <div class="restaurant-header">
         <h1 id="restaurant-name">El Jefe's Taqueria</h1>
     </div>

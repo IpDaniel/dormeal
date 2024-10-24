@@ -271,20 +271,58 @@
     font-size: 24px;
     cursor: pointer;
     }
+    @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .back-btn {
+                order: -1;
+                margin-bottom: 10px;
+                width: 100%;
+            }
+
+            .navbar-brand {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .navbar-links {
+                justify-content: flex-start;
+                padding-bottom: 5px;
+            }
+
+            .navbar a {
+                font-size: 0.9rem;
+                padding: 6px 10px;
+            }
+
+            .navbar a img {
+                width: 16px;
+                height: 16px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <a href="/northeastern-university" class="back-btn">← Back</a>
-        <div class="navbar-links">
-            <a href="#burgers"><img src="{{ url_for('static', filename='images/icons/burger-icon.png') }}" alt="Burger Icon">Burgers</a>
-            <a href="#hot-dogs"><img src="{{ url_for('static', filename='images/icons/hot-dog-icon.png') }}" alt="Hot Dog Icon">Hot Dogs</a>
-            <a href="#sandwiches"><img src="{{ url_for('static', filename='images/icons/sandwich-icon.png') }}" alt="Sandwich Icon">Sandwiches</a>
-            <a href="#fries"><img src="{{ url_for('static', filename='images/icons/fries-icon.png') }}" alt="Fries Icon">Fries</a>
-            <a href="#drinks"><img src="{{ url_for('static', filename='images/icons/drink-icon.png') }}" alt="Drink Icon">Drinks</a>
-            <a href="#shakes"><img src="{{ url_for('static', filename='images/icons/shake-icon.png') }}" alt="Shake Icon">Shakes</a>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-top">
+                <a href="/northeastern-university" class="back-btn">← Back</a>
+                <a href="#" class="navbar-brand">Five Guys</a>
+            </div>
+            <div class="navbar-links">
+                <a href="#burgers"><img src="{{ url_for('static', filename='images/icons/burger-icon.png') }}" alt="Burger Icon">Burgers</a>
+                <a href="#hot-dogs"><img src="{{ url_for('static', filename='images/icons/hot-dog-icon.png') }}" alt="Hot Dog Icon">Hot Dogs</a>
+                <a href="#sandwiches"><img src="{{ url_for('static', filename='images/icons/sandwich-icon.png') }}" alt="Sandwich Icon">Sandwiches</a>
+                <a href="#fries"><img src="{{ url_for('static', filename='images/icons/fries-icon.png') }}" alt="Fries Icon">Fries</a>
+                <a href="#drinks"><img src="{{ url_for('static', filename='images/icons/drink-icon.png') }}" alt="Drink Icon">Drinks</a>
+                <a href="#shakes"><img src="{{ url_for('static', filename='images/icons/shake-icon.png') }}" alt="Shake Icon">Shakes</a>
+            </div>
         </div>
-    </div>
+    </nav>
     <div class="restaurant-header">
         <h1 id="restaurant-name">Five Guys</h1>
     </div>

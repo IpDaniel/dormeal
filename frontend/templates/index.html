@@ -45,6 +45,123 @@
         --text-color: #333333;
         --light-bg: #f8f9fa;
       }
+
+      /* Add these responsive styles */
+      @media (max-width: 768px) {
+        .navbar-brand img {
+          height: 40px;
+        }
+        
+        h1 {
+          font-size: 2rem !important;
+        }
+        
+        .order-now a {
+          font-size: 0.9rem;
+          padding: 0.5rem 1rem;
+        }
+        
+        .phone-mockup-container {
+          margin-top: 2rem !important;
+        }
+        
+        #home_image {
+          max-width: 80%;
+        }
+        
+        .fs-1 {
+          font-size: 1.2rem !important;
+        }
+        
+        .accordion-button {
+          padding: 0.75rem 1rem;
+        }
+
+        /* Add these styles for the navbar */
+        .navbar {
+          padding: 0.5rem 1rem;
+        }
+
+        .navbar-brand img {
+          height: 30px;
+        }
+
+        .navbar-toggler {
+          padding: 0.25rem 0.5rem;
+          font-size: 1rem;
+        }
+
+        .navbar-nav {
+          margin-top: 1rem;
+        }
+
+        .nav-item {
+          text-align: center;
+        }
+
+        .order-now {
+          margin-top: 1rem;
+          text-align: center;
+        }
+
+        .order-now a {
+          display: inline-block;
+          width: 100%;
+          max-width: 200px;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .navbar-collapse {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background-color: white;
+          padding: 1rem;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .navbar-nav {
+          margin-bottom: 1rem;
+        }
+
+        .nav-item {
+          text-align: center;
+        }
+
+        .order-now {
+          text-align: center;
+        }
+      }
+
+      /* Add these styles for the navbar */
+      .navbar-toggler {
+        border: none;
+        padding: 0;
+      }
+
+      .navbar-toggler:focus {
+        outline: none;
+        box-shadow: none;
+      }
+
+      .navbar-toggler i {
+        font-size: 2rem;
+        color: #000;
+      }
+
+      @media (max-width: 991px) {
+        .navbar-toggler {
+          display: block;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .navbar-toggler {
+          display: none;
+        }
+      }
     </style>
 
   </head>
@@ -54,21 +171,23 @@
     <!--    Main Content-->
     <!-- ===============================================-->
     <main class="main" id="top">
-      <nav class="navbar navbar-expand-lg navbar-light fixed-top py-4 d-block">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top py-2">
         <div class="container">
           <a class="navbar-brand" href="#">
-          <img src="/static/images/logo.png" height="50" alt="..." /></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
-          <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
-            <ul class="navbar-nav m-auto pt-2 pt-lg-0 font-base">
-              <li class="nav-item px-2" data-anchor="data-anchor"><a class="nav-link fw-medium active" aria-current="page" href="#home">Home</a></li>
-              <li class="nav-item px-2" data-anchor="data-anchor"><a class="nav-link" href="#aboutUs">About us</a></li>
-              <li class="nav-item px-2" data-anchor="data-anchor"><a class="nav-link" href="#howItWorks">How It Works</a></li>
-              <li class="nav-item px-2" data-anchor="data-anchor"><a class="nav-link" href="#faq">Faq</a></li>
+          <img src="/static/images/logo.png" alt="..." /></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bx bx-menu"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+              <li class="nav-item" data-anchor="data-anchor"><a class="nav-link fw-medium active" aria-current="page" href="#home">Home</a></li>
+              <li class="nav-item" data-anchor="data-anchor"><a class="nav-link" href="#aboutUs">About us</a></li>
+              <li class="nav-item" data-anchor="data-anchor"><a class="nav-link" href="#howItWorks">How It Works</a></li>
+              <li class="nav-item" data-anchor="data-anchor"><a class="nav-link" href="#faq">Faq</a></li>
             </ul>
-            <form class="order-now"> 
-              <a href="order" style="background-color: #000000; color: #ffffff;">Order Now</a>
-            </form>
+            <div class="order-now"> 
+              <a href="order" class="btn btn-primary">Order Now</a>
+            </div>
           </div>
         </div>
       </nav>
@@ -85,11 +204,9 @@
                     <a href="order" id="order-now" class="btn btn-primary btn-lg">Order Now</a>
                 </div>
                 </div>
-                <!-- Separate container div for the image -->
-                <div class="col-md-6 col-lg-5 text-center" data-aos="fade-up" data-aos-duration="2000" style="margin-top: -25%;">
-                    <div class="phone-mockup-container">
-                      <img src="/static/images/home_image.png" alt="Home image" class="img-fluid" id="home_image">
-                    </div>
+                <!-- Modify the image container -->
+                <div class="col-md-6 col-lg-5 text-center phone-mockup-container" data-aos="fade-up" data-aos-duration="2000" style="margin-top: -25%;">
+                    <img src="/static/images/home_image.png" alt="Home image" class="img-fluid" id="home_image">
                 </div>
                 <!-- End of separate container div for the image -->
             </div>
@@ -227,7 +344,7 @@
             <p class="text-center text-md-start text-dark">All rights Reserved © Dormeal, 2024</p>
           </div>
           <div class="col-md-6 col-xl-3 order-1">
-            <p class="text-center text-md-end text-xl-start text-dark">Made by&nbsp;<a class="text-1000 fw-bold" href="https://themewagon.com/" target="_blank" style="color: var(--primary-color);">Anthony Campos and Daniel Ip</a></p>
+            <p class="text-center text-md-end text-xl-start text-dark">Made by&nbsp;<a class="text-1000 fw-bold" style="color: var(--primary-color);">Anthony Campos and Daniel Ip</a></p>
             <ul class="list-unstyled list-inline mb-6 mb-md-0 text-center text-md-end text-xl-start">
               <li class="list-inline-item mr-2">
                 <a class="text-decoration-none" href="#!" style="color: var(--secondary-color);">
@@ -394,8 +511,63 @@
   });
 </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Close mobile menu when a nav item is clicked
+      const navItems = document.querySelectorAll('.navbar-nav .nav-link');
+      const navbarToggler = document.querySelector('.navbar-toggler');
+      const navbarCollapse = document.querySelector('.navbar-collapse');
 
+      navItems.forEach(item => {
+        item.addEventListener('click', () => {
+          if (window.innerWidth < 992) {
+            navbarCollapse.classList.remove('show');
+            navbarToggler.classList.add('collapsed');
+          }
+        });
+      });
 
+      // Adjust scroll position for fixed navbar
+      const navbar = document.querySelector('.navbar');
+      const navbarHeight = navbar.offsetHeight;
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- Add this script just before the closing </body> tag -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var navbarToggler = document.querySelector('.navbar-toggler');
+      var navbarCollapse = document.querySelector('.navbar-collapse');
+
+      navbarToggler.addEventListener('click', function() {
+        navbarCollapse.classList.toggle('show');
+      });
+
+      // Close the navbar when a link is clicked
+      var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+      navLinks.forEach(function(navLink) {
+        navLink.addEventListener('click', function() {
+          navbarCollapse.classList.remove('show');
+        });
+      });
+    });
+  </script>
 
   </body>
 </html>

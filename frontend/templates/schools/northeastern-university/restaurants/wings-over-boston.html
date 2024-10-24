@@ -271,11 +271,48 @@
     font-size: 24px;
     cursor: pointer;
     }
+    @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .back-btn {
+                order: -1;
+                margin-bottom: 10px;
+                width: 100%;
+            }
+
+            .navbar-brand {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .navbar-links {
+                justify-content: flex-start;
+                padding-bottom: 5px;
+            }
+
+            .navbar a {
+                font-size: 0.9rem;
+                padding: 6px 10px;
+            }
+
+            .navbar a img {
+                width: 16px;
+                height: 16px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <a href="/northeastern-university" class="back-btn">← Back</a>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-top">
+                <a href="/northeastern-university" class="back-btn">← Back</a>
+                <a href="#" class="navbar-brand">Wings Over Boston</a>
+            </div>
         <div class="navbar-links">
             <a href="#featured-items"><img src="{{ url_for('static', filename='images/icons/featured-icon.png') }}" alt="Featured Icon" class="option-icon">Featured Items</a>
             <a href="#hand-breaded-tenders"><img src="{{ url_for('static', filename='images/icons/wings-icon.png') }}" alt="Wings Icon" class="option-icon">Hand-Breaded Tenders</a>
@@ -287,7 +324,8 @@
             <a href="#extras"><img src="{{ url_for('static', filename='images/icons/extras-icon.png') }}" alt="Extra Icon" class="option-icon">Extras</a>
             <a href="#desserts"><img src="{{ url_for('static', filename='images/icons/dessert-icon.png') }}" alt="Dessert Icon" class="option-icon">Desserts</a>
         </div>
-    </div>
+        </div>
+    </nav>
     
     <div class="restaurant-header">
         <h1 id="restaurant-name">Wings Over Boston</h1>

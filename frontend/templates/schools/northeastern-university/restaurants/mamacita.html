@@ -267,18 +267,57 @@
     font-size: 24px;
     cursor: pointer;
     }
+
+    @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .back-btn {
+                order: -1;
+                margin-bottom: 10px;
+                width: 100%;
+            }
+
+            .navbar-brand {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .navbar-links {
+                justify-content: flex-start;
+                padding-bottom: 5px;
+            }
+
+            .navbar a {
+                font-size: 0.9rem;
+                padding: 6px 10px;
+            }
+
+            .navbar a img {
+                width: 16px;
+                height: 16px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <a href="/northeastern-university" class="back-btn">← Back</a>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-top">
+                <a href="/northeastern-university" class="back-btn">← Back</a>
+                <a href="#" class="navbar-brand">Mamacita Mexican Comida</a>
+            </div>
         <div class="navbar-links">
             <a href="#main-menu"><img src="{{ url_for('static', filename='images/icons/menu-icon.png') }}" alt="Menu Icon">Main Menu</a>
             <a href="#specials"><img src="{{ url_for('static', filename='images/icons/side-icon.png') }}" alt="Side Icon">Specials(Sides & Appetizers)</a>
             <a href="#desserts"><img src="{{ url_for('static', filename='images/icons/dessert-icon.png') }}" alt="Dessert Icon">Desserts</a>
             <a href="#drinks"><img src="{{ url_for('static', filename='images/icons/drink-icon.png') }}" alt="Drink Icon">Drinks</a>
         </div>
-    </div>
+        </div>
+    </nav>
     <div class="restaurant-header">
         <h1 id="restaurant-name">Mamacita Mexican Comida</h1>
     </div>

@@ -94,8 +94,8 @@
                     <input type="text" class="form-control" id="name" name="name" required>
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Your .edu Email Address:</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
+                    <label for="phone" class="form-label">Your Phone Number:</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" required>
                 </div>
                 <div class="mb-3">
                     <label for="order-number" class="form-label">Order Number (if available):</label>
@@ -119,10 +119,21 @@
     <script>
         document.getElementById('delivery-request').addEventListener('submit', function(event) {
             event.preventDefault();
-            // Here you would typically send the form data to your server
-            // For now, we'll just show the confirmation message
-            document.getElementById('delivery-request').style.display = 'none';
-            document.getElementById('confirmation-message').style.display = 'block';
+            
+            // Collect form data
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                orderNumber: document.getElementById('order-number').value,
+                additionalInfo: document.getElementById('additional-info').value,
+                restaurant: "Gyro Scope"
+            };
+            
+            // Store form data in local storage
+            localStorage.setItem('deliveryRequest', JSON.stringify(formData));
+            
+            // Redirect to checkout page
+            window.location.href = '/delivery-only-checkout';
         });
     </script>
 </body>

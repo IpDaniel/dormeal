@@ -50,6 +50,11 @@ def restaurant_request():
 def checkout():
     return render_template('checkout.html')
 
+#route for delivery-only checkout
+@app.route('/delivery-only-checkout')
+def delivery_only_checkout():
+    return render_template('delivery-only-checkout.html')
+
 # old submit-order function. Only works with the old form.
 # Will send out email with details from old order page.
 @app.route('/submit-order', methods=['POST'])
@@ -65,16 +70,34 @@ def submit_order():
 @app.route('/create-payment-intent', methods=['POST'])
 def create_payment_intent():
     data = request.json
-    print('creating payment intent')
-    cart = data.get('cart', [])
-    total_amount = sum(
-        (item['basePrice'] + sum(addon['price'] for addon in item['addOns']) + sum(choice['price'] for choice in item['choices'])) * item['quantity']
-        for item in cart
-    ) * 1.07 + 2.00
-    intent = stripe.PaymentIntent.create(
-        amount=int(total_amount * 100),  # amount in cents
-        currency='usd',
-    )
+    if 'deliveryRequest' in data:
+        print('creating delivery-only payment intent')
+        # Handle delivery-only request
+        delivery_request = data['deliveryRequest']
+        amount = data['amount']  # Amount in cents
+        intent = stripe.PaymentIntent.create(
+            amount=200,
+            currency='usd',
+            metadata={
+                'name': delivery_request['name'],
+                'phone': delivery_request['phone'],
+                'restaurant': delivery_request['restaurant'],
+                'orderNumber': delivery_request['orderNumber'],
+                'additionalInfo': delivery_request['additionalInfo'],
+                'type': 'delivery_only'
+            }
+        )
+    else:
+        print('creating normal cart payment intent')
+        cart = data.get('cart', [])
+        total_amount = sum(
+            (item['basePrice'] + sum(addon['price'] for addon in item['addOns']) + sum(choice['price'] for choice in item['choices'])) * item['quantity']
+            for item in cart
+        ) * 1.07 + 2.00
+        intent = stripe.PaymentIntent.create(
+            amount=int(total_amount * 100),  # amount in cents
+            currency='usd',
+        )
     return jsonify(clientSecret=intent.client_secret)
 
 #processes the order on an existing payment intent
@@ -94,6 +117,20 @@ def complete_order():
 
     email_list = mvp_emailer.order_notify_email_list
     mvp_emailer.send_email_to_multiple(email_list, mvp_emailer.format_order(data))
+
+    return jsonify({'status': 'success'})
+
+@app.route('/complete-delivery-order', methods=['POST'])
+def complete_delivery_order():
+    data = request.json
+    delivery_request = data.get('deliveryRequest', {})
+    total = data.get('total', 0)
+
+    # Here you can save the order to your database or process it as needed
+    print(f"NEW DELIVERY ORDER: {delivery_request['name']}, {delivery_request['phone']}, {delivery_request['restaurant']}, ${total}, Order Number: {delivery_request['orderNumber']}")
+
+    email_list = mvp_emailer.order_notify_email_list
+    mvp_emailer.send_email_to_multiple(email_list, mvp_emailer.format_delivery_order(data))
 
     return jsonify({'status': 'success'})
 

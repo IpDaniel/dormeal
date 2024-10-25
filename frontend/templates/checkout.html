@@ -335,7 +335,7 @@
                         body: JSON.stringify({ name, address, phone, cart, restaurant, total }),
                     });
                     
-                    document.getElementById('payment-message').textContent = 'Payment succeeded!';
+                    document.getElementById('payment-message').textContent = 'Payment succeeded! Your carrier will contact you shortly further details.';
                     localStorage.removeItem('cart');
                 }
             });

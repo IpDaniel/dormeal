@@ -108,7 +108,7 @@ def format_order(order):
         output.append("\n".join(item_details))
 
     output.append(f"Total: ${order['total']:.2f}")
-    output.append(f"Total Minus Delivery: ${(order['total'] - 5):.2f}")
+    output.append(f"Total Minus Delivery: ${(order['total'] - 2):.2f}")
     
     return "\n".join(output)
 
@@ -121,7 +121,7 @@ def format_delivery_order(data):
     message = f"""
     New Delivery Order:
     
-    Name: {delivery_request['name']}
+    Name on Order: {delivery_request['name']}
     Phone: {delivery_request['phone']}
     Restaurant: {delivery_request['restaurant']}
     Order Number: {delivery_request['orderNumber']}

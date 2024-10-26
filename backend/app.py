@@ -86,7 +86,7 @@ def create_payment_intent():
                 'additionalInfo': delivery_request['additionalInfo'],
                 'type': 'delivery_only'
             },
-            statement_descriptor='Dormeal' + delivery_request['restaurant']
+            statement_descriptor='Dormeal - ' + delivery_request['restaurant']
         )
     else:
         print('creating normal cart payment intent')

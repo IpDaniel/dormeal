@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service Not Active</title>
+    <title>Service Not Active - Dormeal</title>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MCWDTZ7CL"></script>
@@ -11,121 +11,110 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-9MCWDTZ7CL');
     </script>
 
+    <!-- Bootstrap CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin-bottom: 400px; /* Make sure there's enough space for the fixed cart */
-            background-color: #000;
-            color: #fff;
+            background-color: #f8f9fa;
+            color: #333333;
+            font-family: 'Poppins', sans-serif;
         }
-        #checkout-button {
-            margin-top: 10px;
-            background-color: #555; /* Dark button background */
-            color: #fff; /* White text */
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-        #checkout-button:hover {
-            background-color: #777; /* Lighter gray on hover */
-        }
-        .add-to-cart {
-            margin-top: 15px;
-            background-color: #555; /* Dark button background */
-            color: #fff; /* White text */
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-        .add-to-cart:hover {
-            background-color: #777; /* Lighter gray on hover */
-        }
-    
-        #confirmation-message {
-            display: none;
-        }
-    
-        /* New styles for the form */
         .container {
-            text-align: center;
-            padding: 20px;
-            margin-top: 80px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            padding: 40px;
+            margin-top: 50px;
+            margin-bottom: 50px;
         }
         h1, h2 {
-            margin: 20px 0;
+            color: #333333;
+            font-weight: 700;
         }
-        form {
-            display: inline-block;
-            background-color: #222;
+        #notificationForm {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 2px dashed #e0e0e0;
+        }
+        #confirmation-message {
+            display: none;
+            background-color: #4FE90D;
+            color: white;
             padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+        .btn-primary {
+            background-color: #4FE90D;
+            border-color: #4FE90D;
+            color: white;
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #45d00b;
+            border-color: #45d00b;
+            transform: scale(1.05);
+        }
+        .form-control {
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            border: 2px solid #e0e0e0;
         }
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-        input {
-            width: 80%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #555;
-            border-radius: 5px;
-            background-color: #333;
-            color: #fff;
-        }
-        button {
-            background-color: #555; /* Dark button background */
-            color: #fff; /* White text */
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #777; /* Lighter gray on hover */
+        .form-control:focus {
+            border-color: #4FE90D;
+            box-shadow: 0 0 0 0.2rem rgba(79, 233, 13, 0.25);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Sorry, Dormeal is not active right now</h1>
-        <p>We apologize for the inconvenience. Keep supporting Dormeal to allow us to increase our hours.</p>
-        <h2>Notify Me When Dormeal is Active</h2>
-        <form id="notificationForm">
-            <label for="info">Email Address or Phone Number:</label>
-            <input id="info" name="info" required>
-            <button type="submit">Submit</button>
-        </form>
-        <div id="confirmation-message">
-            <h4>You will be notified when Dormeal is active</h4>
-        </div>
+        <header class="text-center mb-5">
+            <h1 class="mb-3">Sorry, Dormeal is not active right now</h1>
+            <p class="mb-4">We apologize for the inconvenience. Keep supporting Dormeal to allow us to increase our hours.</p>
+        </header>
+        
+        <main>
+            <form id="notificationForm">
+                <h2 class="mb-4">Notify Me When Dormeal is Active</h2>
+                <div class="mb-3">
+                    <label for="info" class="form-label">Email Address or Phone Number:</label>
+                    <input type="text" class="form-control" id="info" name="info" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <div id="confirmation-message" class="mt-3">
+                <h4>You will be notified when Dormeal is active</h4>
+            </div>
+        </main>
     </div>
         
+    <!-- JavaScripts -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <script>
-        // Function to send form data to the backend
         function sendFormData(event) {
-            event.preventDefault(); // Prevent default form submission
+            event.preventDefault();
             
-            // Get form data
             const formData = new FormData(event.target);
             const info = formData.get('info');
 
-            //Hide form
             document.getElementById('notificationForm').style.display = 'none';
             
-            // Create data object to send in fetch request
             const data = {
                 info: info
             };
             
-            // Send data to backend using fetch
             fetch('/notify-request', {
                 method: 'POST',
                 headers: {
@@ -135,23 +124,16 @@
             })
             .then(response => response.json())
             .then(data => {
-                // Handle response from backend
                 console.log('New Notify Request', data);
-                // alert('You will be notified when Dormeal is active.');
-                document.getElementById('confirmation-message').style.display = 'inline'
+                document.getElementById('confirmation-message').style.display = 'block';
             })
             .catch(error => {
-                // Handle any errors
                 console.error('Error sending notification:', error);
                 alert('There was an error. Please try again later.');
             });
         }
 
-        // Get the form element
-        const form = document.getElementById('notificationForm');
-
-        // Add event listener to the form for form submission
-        form.addEventListener('submit', sendFormData);
+        document.getElementById('notificationForm').addEventListener('submit', sendFormData);
     </script>
 </body>
 </html>

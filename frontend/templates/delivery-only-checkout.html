@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
+    <title>Delivery-Only Checkout</title>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MCWDTZ7CL"></script>
@@ -152,27 +152,13 @@
 <body>
     <div class="container">
         <a href="javascript:history.back()" class="btn btn-secondary back-btn mb-4">← Back</a>
-        <h1>Checkout</h1>
-        <div class="checkout-summary" id="checkout-summary">
-            <div id="checkout-items"></div>
-            <div>
-                <strong>Subtotal:</strong> $<span id="checkout-subtotal">0.00</span>
-            </div>
-            <div>
-                <strong>Delivery Fee:</strong> $<span id="checkout-delivery">2.00</span>
-            </div>
-            <div>
-                <strong>Sales Tax:</strong> $<span id="checkout-tax">0.00</span>
-            </div>
-            <div>
-                <strong>Total:</strong> $<span id="checkout-total">0.00</span>
-            </div> 
-        </div>
+        <h1>Delivery-Only Checkout</h1>
+        <div id="order-summary"></div>
 
         <form id="payment-form">
-            <h2>Billing Details</h2>
+            <h2>Delivery Details</h2>
             <label>
-                Name:
+                Name on Order:
                 <input type="text" id="name" required>
             </label>
             <label>
@@ -235,91 +221,54 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const checkoutItemsContainer = document.getElementById('checkout-items');
-            const checkoutSubtotalContainer = document.getElementById('checkout-subtotal');
-            const checkoutDeliveryContainer = document.getElementById('checkout-delivery');
-            const checkoutTaxContainer = document.getElementById('checkout-tax');
-            const checkoutTotalContainer = document.getElementById('checkout-total');
-            const checkoutSummary = document.getElementById('checkout-summary');
-
-            function renderCheckout() {
-                checkoutItemsContainer.innerHTML = '';
-                let subtotal = 0;
-                const deliveryFee = 2.00;
-                const taxRate = 0.07;
-
-                cart.forEach(item => {
-                    let itemTotal = item.basePrice;
-                    let addOnsText = '';
-                    item.addOns.forEach(addon => {
-                        itemTotal += addon.price;
-                        addOnsText += `, ${addon.name} (+$${addon.price.toFixed(2)})`;
-                    });
-                    let choicesText = '';
-                    item.choices.forEach(choice => {
-                        itemTotal += choice.price;
-                        choicesText += `, ${choice.name} (+$${choice.price.toFixed(2)})`;
-                    });
-                    subtotal += itemTotal * item.quantity;
-
-                    const checkoutItem = document.createElement('div');
-                    checkoutItem.classList.add('checkout-item');
-                    checkoutItem.innerHTML = `
-                        <span>${item.name} - $${item.basePrice.toFixed(2)}${addOnsText}${choicesText} x ${item.quantity}</span>
-                    `;
-                    checkoutItemsContainer.appendChild(checkoutItem);
-                });
-
-                const tax = subtotal * taxRate;
-                const total = subtotal + deliveryFee + tax;
-
-                checkoutSubtotalContainer.textContent = subtotal.toFixed(2);
-                checkoutTaxContainer.textContent = tax.toFixed(2);
-                checkoutTotalContainer.textContent = total.toFixed(2);
-            }
-
-            renderCheckout();
-            const restaurant = localStorage.getItem('restaurant');
-
-            //stripe publishable key
+            const orderSummaryContainer = document.getElementById('order-summary');
+            const form = document.getElementById('payment-form');
             const stripe = Stripe('pk_test_51PG7v4Rsh0QceLeTwmNGUI6lCGHCBNrN3gXGuZdmTUu1AsnefusHEvncUzd1iKZ1jM2KZlk06bhJWBuF7VNOGkHW00s8wMBug4');
             const elements = stripe.elements();
             const cardElement = elements.create('card');
             cardElement.mount('#card-element');
 
-            const form = document.getElementById('payment-form');
+            const storedDeliveryRequest = localStorage.getItem('deliveryRequest');
+            if (!storedDeliveryRequest) {
+                window.location.href = '/'; // Redirect to home if no delivery request
+                return;
+            }
+
+            const deliveryRequest = JSON.parse(storedDeliveryRequest);
+            renderDeliveryOnlyOrder(deliveryRequest);
+
+            function renderDeliveryOnlyOrder(request) {
+                orderSummaryContainer.innerHTML = `
+                    <h2>Delivery-Only Order Summary</h2>
+                    <p><strong>Restaurant:</strong> ${request.restaurant}</p>
+                    <p><strong>Name:</strong> ${request.name}</p>
+                    <p><strong>Phone:</strong> ${request.phone}</p>
+                    <p><strong>Order Number:</strong> ${request.orderNumber || 'N/A'}</p>
+                    <p><strong>Additional Info:</strong> ${request.additionalInfo || 'N/A'}</p>
+                    <p><strong>Delivery Fee:</strong> $2.00</p>
+                    <p><strong>Total:</strong> $2.00</p>
+                `;
+            }
+
             form.addEventListener('submit', async (event) => {
                 event.preventDefault();
-
-                form.style.display = 'none';
-                checkoutSummary.style.display = 'none';
-                document.getElementById('payment-message').style.display = 'block';        
-                document.getElementById('payment-message').textContent = 'Processing. Please wait';
 
                 const name = document.getElementById('name').value;
                 const address = document.getElementById('address').value;
                 const phone = document.getElementById('phone').value;
-                const total = parseFloat(document.getElementById('checkout-total').textContent);
 
-                const { clientSecret } = await fetch('/create-payment-intent', {
+                const amount = 200; // $2.00 in cents
+                const response = await fetch('/create-payment-intent', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ cart }),
-                }).then(response => response.json());
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ deliveryRequest, amount }),
+                });
+                const { clientSecret } = await response.json();
 
                 const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
                     payment_method: {
                         card: cardElement,
-                        billing_details: {
-                            name: name,
-                            address: {
-                                line1: address,
-                            },
-                            phone: phone,
-                        },
+                        billing_details: { name, address: { line1: address }, phone },
                     },
                 });
 
@@ -327,24 +276,27 @@
                     document.getElementById('payment-message').textContent = `Error: ${error.message}`;
                     document.getElementById('payment-message').style.backgroundColor = '#ff3860';
                 } else if (paymentIntent.status === 'succeeded') {
-                    await fetch('/complete-order', {
+                    await fetch('/complete-delivery-order', {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ name, address, phone, cart, restaurant, total }),
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            deliveryRequest: {
+                                ...deliveryRequest,
+                                name,
+                                address,
+                                phone
+                            }, 
+                            total: 2.00 
+                        }),
                     });
                     
-                    document.getElementById('payment-message').textContent = 'Payment succeeded! Your carrier will contact you shortly further details.';
-                    localStorage.removeItem('cart');
+                    document.getElementById('payment-message').textContent = 'Payment succeeded!';
+                    localStorage.removeItem('deliveryRequest');
                 }
-            });
 
-            // Add this new code at the end of the DOMContentLoaded event listener
-            const backButton = document.querySelector('.back-btn');
-            backButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                history.back();
+                form.style.display = 'none';
+                orderSummaryContainer.style.display = 'none';
+                document.getElementById('payment-message').style.display = 'block';
             });
         });
     </script>

@@ -98,6 +98,7 @@ def create_payment_intent():
         intent = stripe.PaymentIntent.create(
             amount=int(total_amount * 100),  # amount in cents
             currency='usd',
+            statement_descriptor='Dormeal - ' + data['restaurant']
         )
     return jsonify(clientSecret=intent.client_secret)
 

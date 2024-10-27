@@ -86,7 +86,6 @@ def create_payment_intent():
                 'additionalInfo': delivery_request['additionalInfo'],
                 'type': 'delivery_only'
             },
-            statement_descriptor='Dormeal - ' + delivery_request['restaurant']
         )
     else:
         print('creating normal cart payment intent')
@@ -98,7 +97,6 @@ def create_payment_intent():
         intent = stripe.PaymentIntent.create(
             amount=int(total_amount * 100),  # amount in cents
             currency='usd',
-            statement_descriptor='Dormeal - ' + data['restaurant']
         )
     return jsonify(clientSecret=intent.client_secret)
 

@@ -197,6 +197,10 @@
 
             form.addEventListener('submit', async (event) => {
                 event.preventDefault();
+                
+                // Disable the submit button to prevent double clicks
+                const submitButton = document.getElementById('submit-button');
+                submitButton.disabled = true;
 
                 const amount = 200; // $2.00 in cents
                 const response = await fetch('/create-payment-intent', {
@@ -218,30 +222,45 @@
                 });
 
                 if (error) {
-                    document.getElementById('payment-message').textContent = `Error: ${error.message}`;
-                    document.getElementById('payment-message').style.backgroundColor = '#ff3860';
+                    const messageElement = document.getElementById('payment-message');
+                    messageElement.textContent = `Error: ${error.message}`;
+                    messageElement.style.backgroundColor = '#ff3860';
+                    messageElement.style.display = 'block';
+                    submitButton.disabled = false;
                 } else if (paymentIntent.status === 'succeeded') {
-                    await fetch('/complete-delivery-order', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ 
-                            deliveryRequest: {
-                                ...deliveryRequest,
-                                name: deliveryRequest.name,
-                                address: { line1: deliveryRequest.building },
-                                phone: deliveryRequest.phone
-                            }, 
-                            total: 2.00 
-                        }),
-                    });
-                    
-                    document.getElementById('payment-message').textContent = 'Payment succeeded!';
-                    localStorage.removeItem('deliveryRequest');
+                    try {
+                        await fetch('/complete-delivery-order', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ 
+                                deliveryRequest: {
+                                    ...deliveryRequest,
+                                    name: deliveryRequest.name,
+                                    address: { line1: deliveryRequest.building },
+                                    phone: deliveryRequest.phone
+                                }, 
+                                total: 2.00 
+                            }),
+                        });
+                        
+                        const messageElement = document.getElementById('payment-message');
+                        messageElement.textContent = 'Payment succeeded!';
+                        messageElement.style.backgroundColor = '#4FE90D';
+                        messageElement.style.display = 'block';
+                        
+                        // Hide the form and order summary
+                        form.style.display = 'none';
+                        orderSummaryContainer.style.display = 'none';
+                        
+                        localStorage.removeItem('deliveryRequest');
+                    } catch (error) {
+                        console.error('Error completing order:', error);
+                        const messageElement = document.getElementById('payment-message');
+                        messageElement.textContent = 'Payment succeeded but there was an error completing your order. Please contact support.';
+                        messageElement.style.backgroundColor = '#ff3860';
+                        messageElement.style.display = 'block';
+                    }
                 }
-
-                form.style.display = 'none';
-                orderSummaryContainer.style.display = 'none';
-                document.getElementById('payment-message').style.display = 'block';
             });
         });
     </script>

@@ -69,36 +69,43 @@ def submit_order():
 #creates stripe payment intent when user is directed to the checkout page
 @app.route('/create-payment-intent', methods=['POST'])
 def create_payment_intent():
-    data = request.json
-    if 'deliveryRequest' in data:
-        print('creating delivery-only payment intent')
-        # Handle delivery-only request
-        delivery_request = data['deliveryRequest']
-        amount = data['amount']  # Amount in cents
-        intent = stripe.PaymentIntent.create(
-            amount=200,
-            currency='usd',
-            metadata={
-                'name': delivery_request['name'],
-                'phone': delivery_request['phone'],
-                'restaurant': delivery_request['restaurant'],
-                'orderNumber': delivery_request['orderNumber'],
-                'additionalInfo': delivery_request['additionalInfo'],
-                'type': 'delivery_only'
-            },
-        )
-    else:
-        print('creating normal cart payment intent')
-        cart = data.get('cart', [])
-        total_amount = sum(
-            (item['basePrice'] + sum(addon['price'] for addon in item['addOns']) + sum(choice['price'] for choice in item['choices'])) * item['quantity']
-            for item in cart
-        ) * 1.07 + 2.00
-        intent = stripe.PaymentIntent.create(
-            amount=int(total_amount * 100),  # amount in cents
-            currency='usd',
-        )
-    return jsonify(clientSecret=intent.client_secret)
+    try:
+        data = request.json
+        if 'deliveryRequest' in data:
+            print('creating delivery-only payment intent')
+            # Handle delivery-only request
+            delivery_request = data['deliveryRequest']
+            amount = data['amount']  # Amount in cents
+            
+            intent = stripe.PaymentIntent.create(
+                amount=amount,  # Use the amount from the request
+                currency='usd',
+                metadata={
+                    'name': delivery_request.get('name', ''),
+                    'phone': delivery_request.get('phone', ''),
+                    'building': delivery_request.get('building', ''),
+                    'restaurant': delivery_request.get('restaurant', ''),
+                    'orderNumber': delivery_request.get('orderNumber', ''),
+                    'additionalInfo': delivery_request.get('additionalInfo', ''),
+                    'type': 'delivery_only'
+                }
+            )
+            return jsonify({'clientSecret': intent.client_secret})
+        else:
+            print('creating normal cart payment intent')
+            cart = data.get('cart', [])
+            total_amount = sum(
+                (item['basePrice'] + sum(addon['price'] for addon in item['addOns']) + sum(choice['price'] for choice in item['choices'])) * item['quantity']
+                for item in cart
+            ) * 1.07 + 2.00
+            intent = stripe.PaymentIntent.create(
+                amount=int(total_amount * 100),  # amount in cents
+                currency='usd',
+            )
+            return jsonify(clientSecret=intent.client_secret)
+    except Exception as e:
+        print(f"Error creating payment intent: {str(e)}")
+        return jsonify({'error': str(e)}), 400
 
 #processes the order on an existing payment intent
 @app.route('/complete-order', methods=['POST'])

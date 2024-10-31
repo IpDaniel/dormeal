@@ -184,64 +184,94 @@
 
             function renderDeliveryOnlyOrder(request) {
                 orderSummaryContainer.innerHTML = `
-                    <h2>Delivery-Only Order Summary</h2>
-                    <p><strong>Restaurant:</strong> ${request.restaurant}</p>
-                    <p><strong>Name:</strong> ${request.name}</p>
-                    <p><strong>Phone:</strong> ${request.phone}</p>
-                    <p><strong>Order Number:</strong> ${request.orderNumber || 'N/A'}</p>
-                    <p><strong>Additional Info:</strong> ${request.additionalInfo || 'N/A'}</p>
-                    <p><strong>Delivery Fee:</strong> $2.00</p>
-                    <p><strong>Total:</strong> $2.00</p>
+                    <div class="checkout-summary">
+                        <h2>Delivery-Only Order Summary</h2>
+                        <div class="checkout-item">
+                            <p><strong>Restaurant:</strong> ${request.restaurant}</p>
+                            <p><strong>Name:</strong> ${request.name}</p>
+                            <p><strong>Phone:</strong> ${request.phone}</p>
+                            <p><strong>Building:</strong> ${request.building}</p>
+                            <p><strong>Order Number:</strong> ${request.orderNumber || 'N/A'}</p>
+                            <p><strong>Additional Info:</strong> ${request.additionalInfo || 'N/A'}</p>
+                            <p><strong>Delivery Fee:</strong> $2.00</p>
+                            <p><strong>Total:</strong> $2.00</p>
+                        </div>
+                    </div>
                 `;
             }
 
             form.addEventListener('submit', async (event) => {
                 event.preventDefault();
+                
+                // Disable the submit button to prevent double clicks
+                const submitButton = document.getElementById('submit-button');
+                submitButton.disabled = true;
 
                 const amount = 200; // $2.00 in cents
-                const response = await fetch('/create-payment-intent', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ deliveryRequest, amount }),
-                });
-                const { clientSecret } = await response.json();
-
-                const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-                    payment_method: {
-                        card: cardElement,
-                        billing_details: { 
-                            name: deliveryRequest.name, 
-                            address: { line1: deliveryRequest.building }, 
-                            phone: deliveryRequest.phone 
-                        },
-                    },
-                });
-
-                if (error) {
-                    document.getElementById('payment-message').textContent = `Error: ${error.message}`;
-                    document.getElementById('payment-message').style.backgroundColor = '#ff3860';
-                } else if (paymentIntent.status === 'succeeded') {
-                    await fetch('/complete-delivery-order', {
+                try {
+                    const response = await fetch('/create-payment-intent', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ 
-                            deliveryRequest: {
-                                ...deliveryRequest,
-                                name: deliveryRequest.name,
-                                address: { line1: deliveryRequest.building },
-                                phone: deliveryRequest.phone
-                            }, 
-                            total: 2.00 
+                            deliveryRequest: deliveryRequest,
+                            amount: amount 
                         }),
                     });
                     
-                    document.getElementById('payment-message').textContent = 'Payment succeeded!';
-                    localStorage.removeItem('deliveryRequest');
-                }
+                    if (!response.ok) {
+                        throw new Error('Failed to create payment intent');
+                    }
+                    
+                    const { clientSecret } = await response.json();
 
-                form.style.display = 'none';
-                orderSummaryContainer.style.display = 'none';
-                document.getElementById('payment-message').style.display = 'block';
+                    const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+                        payment_method: {
+                            card: cardElement,
+                            billing_details: { 
+                                name: deliveryRequest.name,
+                                phone: deliveryRequest.phone,
+                                address: {
+                                    line1: deliveryRequest.building
+                                }
+                            },
+                        },
+                    });
+
+                    if (error) {
+                        document.getElementById('payment-message').textContent = `Error: ${error.message}`;
+                        document.getElementById('payment-message').style.backgroundColor = '#ff3860';
+                        document.getElementById('payment-message').style.display = 'block';
+                        submitButton.disabled = false;
+                        return;
+                    }
+
+                    if (paymentIntent.status === 'succeeded') {
+                        const completeResponse = await fetch('/complete-delivery-order', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ 
+                                deliveryRequest: deliveryRequest,
+                                total: 2.00 
+                            }),
+                        });
+
+                        if (!completeResponse.ok) {
+                            throw new Error('Failed to complete order');
+                        }
+
+                        document.getElementById('payment-message').textContent = 'Payment succeeded!';
+                        document.getElementById('payment-message').style.backgroundColor = '#4FE90D';
+                        localStorage.removeItem('deliveryRequest');
+                        form.style.display = 'none';
+                        orderSummaryContainer.style.display = 'none';
+                        document.getElementById('payment-message').style.display = 'block';
+                    }
+                } catch (err) {
+                    document.getElementById('payment-message').textContent = `Error: ${err.message}`;
+                    document.getElementById('payment-message').style.backgroundColor = '#ff3860';
+                    document.getElementById('payment-message').style.display = 'block';
+                    submitButton.disabled = false;
+                }
             });
         });
     </script>

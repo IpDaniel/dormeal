@@ -98,6 +98,11 @@
                     <input type="tel" class="form-control" id="phone" name="phone" required>
                 </div>
                 <div class="mb-3">
+                    <label for="building" class="form-label">Building Location:</label>
+                    <input type="text" class="form-control" id="building" name="building" required 
+                           placeholder="e.g., International Village, West Village H, etc.">
+                </div>
+                <div class="mb-3">
                     <label for="order-number" class="form-label">Order Number (if available):</label>
                     <input type="text" class="form-control" id="order-number" name="order-number">
                 </div>
@@ -124,6 +129,7 @@
             const formData = {
                 name: document.getElementById('name').value,
                 phone: document.getElementById('phone').value,
+                building: document.getElementById('building').value,
                 orderNumber: document.getElementById('order-number').value,
                 additionalInfo: document.getElementById('additional-info').value,
                 restaurant: "Gyro Scope"

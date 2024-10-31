@@ -123,6 +123,7 @@ def format_delivery_order(data):
     
     Name on Order: {delivery_request['name']}
     Phone: {delivery_request['phone']}
+    Building Location: {delivery_request['building']}
     Restaurant: {delivery_request['restaurant']}
     Order Number: {delivery_request['orderNumber']}
     Additional Info: {delivery_request['additionalInfo']}

@@ -156,6 +156,61 @@
         <div id="order-summary"></div>
 
         <form id="payment-form">
+            <h2>Delivery Details</h2>
+            <label>
+                Name on Order:
+                <input type="text" id="name" required>
+            </label>
+            <label>
+                Building:
+                <select id="address" required>
+                    <option value="">Select a location</option>
+                    <option value="10 Coventry">10 Coventry</option>
+                    <option value="106 St. Stephen Street">106 St. Stephen Street</option>
+                    <option value="110 St. Stephen Street">110 St. Stephen Street</option>
+                    <option value="116 St. Stephen Street">116 St. Stephen Street</option>
+                    <option value="122 St. Stephen Street">122 St. Stephen Street</option>
+                    <option value="144 Hemenway St">144 Hemenway St</option>
+                    <option value="319 Huntington Ave">319 Huntington Ave</option>
+                    <option value="337 Huntington Ave">337 Huntington Ave</option>
+                    <option value="407 Huntington Ave">407 Huntington Ave</option>
+                    <option value="768 Columbus">768 Columbus</option>
+                    <option value="780 Columbus">780 Columbus</option>
+                    <option value="Burstein Hall">Burstein Hall</option>
+                    <option value="Davenport Commons A &amp; B">Davenport Commons A &amp; B</option>
+                    <option value="East Village">East Village</option>
+                    <option value="Leased Properties">Leased Properties</option>
+                    <option value="Loftman Hall">Loftman Hall</option>
+                    <option value="Rubenstein Hall">Rubenstein Hall</option>
+                    <option value="West Village A">West Village A</option>
+                    <option value="West Village B">West Village B</option>
+                    <option value="West Village C">West Village C</option>
+                    <option value="West Village E">West Village E</option>
+                    <option value="West Village F">West Village F</option>
+                    <option value="West Village G">West Village G</option>
+                    <option value="West Village H">West Village H</option>
+                    <option value="Willis Hall">Willis Hall</option>
+                    <option value="153 Hemenway Street">153 Hemenway Street</option>
+                    <option value="60 Belvidere Street">60 Belvidere Street</option>
+                    <option value="International Village">International Village</option>
+                    <option value="Kennedy Hall">Kennedy Hall</option>
+                    <option value="Midtown Hotel">Midtown Hotel</option>
+                    <option value="Hastings Hall">Hastings Hall</option>
+                    <option value="Kerr Hall">Kerr Hall</option>
+                    <option value="Light Hall">Light Hall</option>
+                    <option value="Melvin Hall">Melvin Hall</option>
+                    <option value="Smith Hall">Smith Hall</option>
+                    <option value="Speare Hall">Speare Hall</option>
+                    <option value="Stetson Hall East">Stetson Hall East</option>
+                    <option value="Stetson Hall West">Stetson Hall West</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </label>
+            <label>
+                Phone:
+                <input type="text" id="phone" required>
+            </label>
+
             <h2>Payment</h2>
             <div id="card-element"></div>
             <button type="submit" id="submit-button">Place Order</button>
@@ -184,94 +239,64 @@
 
             function renderDeliveryOnlyOrder(request) {
                 orderSummaryContainer.innerHTML = `
-                    <div class="checkout-summary">
-                        <h2>Delivery-Only Order Summary</h2>
-                        <div class="checkout-item">
-                            <p><strong>Restaurant:</strong> ${request.restaurant}</p>
-                            <p><strong>Name:</strong> ${request.name}</p>
-                            <p><strong>Phone:</strong> ${request.phone}</p>
-                            <p><strong>Building:</strong> ${request.building}</p>
-                            <p><strong>Order Number:</strong> ${request.orderNumber || 'N/A'}</p>
-                            <p><strong>Additional Info:</strong> ${request.additionalInfo || 'N/A'}</p>
-                            <p><strong>Delivery Fee:</strong> $2.00</p>
-                            <p><strong>Total:</strong> $2.00</p>
-                        </div>
-                    </div>
+                    <h2>Delivery-Only Order Summary</h2>
+                    <p><strong>Restaurant:</strong> ${request.restaurant}</p>
+                    <p><strong>Name:</strong> ${request.name}</p>
+                    <p><strong>Phone:</strong> ${request.phone}</p>
+                    <p><strong>Order Number:</strong> ${request.orderNumber || 'N/A'}</p>
+                    <p><strong>Additional Info:</strong> ${request.additionalInfo || 'N/A'}</p>
+                    <p><strong>Delivery Fee:</strong> $2.00</p>
+                    <p><strong>Total:</strong> $2.00</p>
                 `;
             }
 
             form.addEventListener('submit', async (event) => {
                 event.preventDefault();
-                
-                // Disable the submit button to prevent double clicks
-                const submitButton = document.getElementById('submit-button');
-                submitButton.disabled = true;
+
+                const name = document.getElementById('name').value;
+                const address = document.getElementById('address').value;
+                const phone = document.getElementById('phone').value;
 
                 const amount = 200; // $2.00 in cents
-                try {
-                    const response = await fetch('/create-payment-intent', {
+                const response = await fetch('/create-payment-intent', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ deliveryRequest, amount }),
+                });
+                const { clientSecret } = await response.json();
+
+                const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+                    payment_method: {
+                        card: cardElement,
+                        billing_details: { name, address: { line1: address }, phone },
+                    },
+                });
+
+                if (error) {
+                    document.getElementById('payment-message').textContent = `Error: ${error.message}`;
+                    document.getElementById('payment-message').style.backgroundColor = '#ff3860';
+                } else if (paymentIntent.status === 'succeeded') {
+                    await fetch('/complete-delivery-order', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ 
-                            deliveryRequest: deliveryRequest,
-                            amount: amount 
+                            deliveryRequest: {
+                                ...deliveryRequest,
+                                name,
+                                address,
+                                phone
+                            }, 
+                            total: 2.00 
                         }),
                     });
                     
-                    if (!response.ok) {
-                        throw new Error('Failed to create payment intent');
-                    }
-                    
-                    const { clientSecret } = await response.json();
-
-                    const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-                        payment_method: {
-                            card: cardElement,
-                            billing_details: { 
-                                name: deliveryRequest.name,
-                                phone: deliveryRequest.phone,
-                                address: {
-                                    line1: deliveryRequest.building
-                                }
-                            },
-                        },
-                    });
-
-                    if (error) {
-                        document.getElementById('payment-message').textContent = `Error: ${error.message}`;
-                        document.getElementById('payment-message').style.backgroundColor = '#ff3860';
-                        document.getElementById('payment-message').style.display = 'block';
-                        submitButton.disabled = false;
-                        return;
-                    }
-
-                    if (paymentIntent.status === 'succeeded') {
-                        const completeResponse = await fetch('/complete-delivery-order', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ 
-                                deliveryRequest: deliveryRequest,
-                                total: 2.00 
-                            }),
-                        });
-
-                        if (!completeResponse.ok) {
-                            throw new Error('Failed to complete order');
-                        }
-
-                        document.getElementById('payment-message').textContent = 'Payment succeeded!';
-                        document.getElementById('payment-message').style.backgroundColor = '#4FE90D';
-                        localStorage.removeItem('deliveryRequest');
-                        form.style.display = 'none';
-                        orderSummaryContainer.style.display = 'none';
-                        document.getElementById('payment-message').style.display = 'block';
-                    }
-                } catch (err) {
-                    document.getElementById('payment-message').textContent = `Error: ${err.message}`;
-                    document.getElementById('payment-message').style.backgroundColor = '#ff3860';
-                    document.getElementById('payment-message').style.display = 'block';
-                    submitButton.disabled = false;
+                    document.getElementById('payment-message').textContent = 'Payment succeeded!';
+                    localStorage.removeItem('deliveryRequest');
                 }
+
+                form.style.display = 'none';
+                orderSummaryContainer.style.display = 'none';
+                document.getElementById('payment-message').style.display = 'block';
             });
         });
     </script>

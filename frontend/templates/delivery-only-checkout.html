@@ -156,61 +156,6 @@
         <div id="order-summary"></div>
 
         <form id="payment-form">
-            <h2>Delivery Details</h2>
-            <label>
-                Name on Order:
-                <input type="text" id="name" required>
-            </label>
-            <label>
-                Building:
-                <select id="address" required>
-                    <option value="">Select a location</option>
-                    <option value="10 Coventry">10 Coventry</option>
-                    <option value="106 St. Stephen Street">106 St. Stephen Street</option>
-                    <option value="110 St. Stephen Street">110 St. Stephen Street</option>
-                    <option value="116 St. Stephen Street">116 St. Stephen Street</option>
-                    <option value="122 St. Stephen Street">122 St. Stephen Street</option>
-                    <option value="144 Hemenway St">144 Hemenway St</option>
-                    <option value="319 Huntington Ave">319 Huntington Ave</option>
-                    <option value="337 Huntington Ave">337 Huntington Ave</option>
-                    <option value="407 Huntington Ave">407 Huntington Ave</option>
-                    <option value="768 Columbus">768 Columbus</option>
-                    <option value="780 Columbus">780 Columbus</option>
-                    <option value="Burstein Hall">Burstein Hall</option>
-                    <option value="Davenport Commons A &amp; B">Davenport Commons A &amp; B</option>
-                    <option value="East Village">East Village</option>
-                    <option value="Leased Properties">Leased Properties</option>
-                    <option value="Loftman Hall">Loftman Hall</option>
-                    <option value="Rubenstein Hall">Rubenstein Hall</option>
-                    <option value="West Village A">West Village A</option>
-                    <option value="West Village B">West Village B</option>
-                    <option value="West Village C">West Village C</option>
-                    <option value="West Village E">West Village E</option>
-                    <option value="West Village F">West Village F</option>
-                    <option value="West Village G">West Village G</option>
-                    <option value="West Village H">West Village H</option>
-                    <option value="Willis Hall">Willis Hall</option>
-                    <option value="153 Hemenway Street">153 Hemenway Street</option>
-                    <option value="60 Belvidere Street">60 Belvidere Street</option>
-                    <option value="International Village">International Village</option>
-                    <option value="Kennedy Hall">Kennedy Hall</option>
-                    <option value="Midtown Hotel">Midtown Hotel</option>
-                    <option value="Hastings Hall">Hastings Hall</option>
-                    <option value="Kerr Hall">Kerr Hall</option>
-                    <option value="Light Hall">Light Hall</option>
-                    <option value="Melvin Hall">Melvin Hall</option>
-                    <option value="Smith Hall">Smith Hall</option>
-                    <option value="Speare Hall">Speare Hall</option>
-                    <option value="Stetson Hall East">Stetson Hall East</option>
-                    <option value="Stetson Hall West">Stetson Hall West</option>
-                    <!-- Add more options as needed -->
-                </select>
-            </label>
-            <label>
-                Phone:
-                <input type="text" id="phone" required>
-            </label>
-
             <h2>Payment</h2>
             <div id="card-element"></div>
             <button type="submit" id="submit-button">Place Order</button>
@@ -256,10 +201,10 @@
 
             form.addEventListener('submit', async (event) => {
                 event.preventDefault();
-
-                const name = document.getElementById('name').value;
-                const address = document.getElementById('address').value;
-                const phone = document.getElementById('phone').value;
+                
+                // Disable the submit button to prevent double clicks
+                const submitButton = document.getElementById('submit-button');
+                submitButton.disabled = true;
 
                 const amount = 200; // $2.00 in cents
                 const response = await fetch('/create-payment-intent', {
@@ -272,35 +217,54 @@
                 const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
                     payment_method: {
                         card: cardElement,
-                        billing_details: { name, address: { line1: address }, phone },
+                        billing_details: { 
+                            name: deliveryRequest.name,
+                            phone: deliveryRequest.phone,
+                            address: { line1: deliveryRequest.building }
+                        },
                     },
                 });
 
                 if (error) {
-                    document.getElementById('payment-message').textContent = `Error: ${error.message}`;
-                    document.getElementById('payment-message').style.backgroundColor = '#ff3860';
+                    const messageElement = document.getElementById('payment-message');
+                    messageElement.textContent = `Error: ${error.message}`;
+                    messageElement.style.backgroundColor = '#ff3860';
+                    messageElement.style.display = 'block';
+                    submitButton.disabled = false;
                 } else if (paymentIntent.status === 'succeeded') {
-                    await fetch('/complete-delivery-order', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ 
-                            deliveryRequest: {
-                                ...deliveryRequest,
-                                name,
-                                address,
-                                phone
-                            }, 
-                            total: 2.00 
-                        }),
-                    });
-                    
-                    document.getElementById('payment-message').textContent = 'Payment succeeded!';
-                    localStorage.removeItem('deliveryRequest');
+                    try {
+                        await fetch('/complete-delivery-order', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ 
+                                deliveryRequest: {
+                                    ...deliveryRequest,
+                                    name: deliveryRequest.name,
+                                    address: { line1: deliveryRequest.building },
+                                    phone: deliveryRequest.phone
+                                }, 
+                                total: 2.00 
+                            }),
+                        });
+                        
+                        const messageElement = document.getElementById('payment-message');
+                        messageElement.textContent = 'Payment succeeded!';
+                        messageElement.style.backgroundColor = '#4FE90D';
+                        messageElement.style.display = 'block';
+                        
+                        // Hide the form and order summary
+                        form.style.display = 'none';
+                        orderSummaryContainer.style.display = 'none';
+                        
+                        localStorage.removeItem('deliveryRequest');
+                    } catch (error) {
+                        console.error('Error completing order:', error);
+                        const messageElement = document.getElementById('payment-message');
+                        messageElement.textContent = 'Payment succeeded but there was an error completing your order. Please contact support.';
+                        messageElement.style.backgroundColor = '#ff3860';
+                        messageElement.style.display = 'block';
+                    }
                 }
-
-                form.style.display = 'none';
-                orderSummaryContainer.style.display = 'none';
-                document.getElementById('payment-message').style.display = 'block';
             });
         });
     </script>

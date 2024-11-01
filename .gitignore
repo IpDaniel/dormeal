@@ -50,6 +50,7 @@ Thumbs.db
 
 # Project specific
 Dormeal.iml
+to-do.txt
 
 # Add this line at the end of the file
 backend/.env

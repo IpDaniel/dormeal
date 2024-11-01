@@ -1,0 +1,10 @@
+github access key: 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
+
+
+daniel todo 10/31	notes
+Create a togglable test mode	
+connect the app to a virtual environment
+    push previous changes. force if i have to.
+add statement descriptors
+make it arc.daniel again	
+store actions in csv files	

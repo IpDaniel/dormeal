@@ -223,7 +223,11 @@
         document.addEventListener('DOMContentLoaded', async () => {
             const orderSummaryContainer = document.getElementById('order-summary');
             const form = document.getElementById('payment-form');
-            const stripe = Stripe('pk_test_51PG7v4Rsh0QceLeTwmNGUI6lCGHCBNrN3gXGuZdmTUu1AsnefusHEvncUzd1iKZ1jM2KZlk06bhJWBuF7VNOGkHW00s8wMBug4');
+            const testModeResponse = await fetch('/test-mode');
+            const { test_mode } = await testModeResponse.json();
+            const stripe = Stripe(test_mode ? 
+                'pk_test_51PG7v4Rsh0QceLeTwmNGUI6lCGHCBNrN3gXGuZdmTUu1AsnefusHEvncUzd1iKZ1jM2KZlk06bhJWBuF7VNOGkHW00s8wMBug4' :
+                'pk_live_51PG7v4Rsh0QceLeTNRhvSowMtYut5C48ZVfPDL7ScMV6sJYYrGS93Cx42iImhnvdhMpuC7xQS3qG4wCAL09bfcdj00y4Sliyee');
             const elements = stripe.elements();
             const cardElement = elements.create('card');
             cardElement.mount('#card-element');

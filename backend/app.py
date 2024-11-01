@@ -9,12 +9,21 @@ import os
 #constants
 app = Flask(__name__, static_folder='../frontend/static', template_folder='../frontend/templates')
 active = True
-stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')  # Stripe secret Key
+test_mode = True
+
+if test_mode:
+    stripe.api_key = 'sk_test_51PG7v4Rsh0QceLeTZzq4QceWCZEBypE4kjqIm8460Khv5abQnuzYmbgW6VHmo9s3TIw6kF2od3pRC085fkEdGlFJ00qMyOwe2u'
+else:
+    stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')  # Stripe secret Key
 
 #returns home page at index route
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/test-mode')
+def get_test_mode():
+    return jsonify({'test_mode': test_mode})
 
 #renders the old order page. No longer useful
 @app.route('/order')
@@ -86,7 +95,7 @@ def create_payment_intent():
                 'additionalInfo': delivery_request['additionalInfo'],
                 'type': 'delivery_only'
             },
-            statement_descriptor='Dormeal - ' + delivery_request['restaurant']
+            # statement_descriptor='Dormeal - ' + delivery_request['restaurant']
         )
     else:
         print('creating normal cart payment intent')
@@ -98,7 +107,7 @@ def create_payment_intent():
         intent = stripe.PaymentIntent.create(
             amount=int(total_amount * 100),  # amount in cents
             currency='usd',
-            statement_descriptor='Dormeal - ' + data['restaurant']
+            # statement_descriptor='Dormeal - ' + data['restaurant']
         )
     return jsonify(clientSecret=intent.client_secret)
 

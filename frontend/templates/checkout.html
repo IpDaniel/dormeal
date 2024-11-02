@@ -146,6 +146,27 @@
             transform: scale(1.05);
             color: #333333;
         }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        button:disabled:hover {
+            background-color: #cccccc;
+            transform: none;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        
+        .acknowledgment-container {
+            margin: 30px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+        }
     </style>
     <script src="https://js.stripe.com/v3/"></script>
 </head>
@@ -227,7 +248,13 @@
 
             <h2>Payment</h2>
             <div id="card-element"></div>
-            <button type="submit" id="submit-button">Place Order</button>
+            <div class="acknowledgment-container">
+                <label style="margin: 0;">
+                    <input type="checkbox" id="acknowledgment-checkbox" required>
+                    I acknowledge that Dormeal holds no responsibility for orders once 30 minutes have passed following the confirmation of delivery, which is verified through an image.
+                </label>
+            </div>
+            <button type="submit" id="submit-button" disabled>Place Order</button>
         </form>
 
         <div id="payment-message">Payment Succeeded</div>
@@ -345,6 +372,14 @@
             backButton.addEventListener('click', (e) => {
                 e.preventDefault();
                 history.back();
+            });
+
+            // Add checkbox functionality
+            const checkbox = document.getElementById('acknowledgment-checkbox');
+            const submitButton = document.getElementById('submit-button');
+            
+            checkbox.addEventListener('change', function() {
+                submitButton.disabled = !this.checked;
             });
         });
     </script>

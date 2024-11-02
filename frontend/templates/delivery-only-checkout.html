@@ -213,7 +213,13 @@
 
             <h2>Payment</h2>
             <div id="card-element"></div>
-            <button type="submit" id="submit-button">Place Order</button>
+            <div class="acknowledgment-container">
+                <label style="margin: 0;">
+                    <input type="checkbox" id="acknowledgment-checkbox" required>
+                    I acknowledge that Dormeal holds no responsibility for orders once 30 minutes have passed following the confirmation of delivery, which is verified through an image.
+                </label>
+            </div>
+            <button type="submit" id="submit-button" disabled>Place Order</button>
         </form>
 
         <div id="payment-message">Payment Succeeded</div>
@@ -297,6 +303,14 @@
                 form.style.display = 'none';
                 orderSummaryContainer.style.display = 'none';
                 document.getElementById('payment-message').style.display = 'block';
+            });
+
+            // Add checkbox functionality
+            const checkbox = document.getElementById('acknowledgment-checkbox');
+            const submitButton = document.getElementById('submit-button');
+            
+            checkbox.addEventListener('change', function() {
+                submitButton.disabled = !this.checked;
             });
         });
     </script>

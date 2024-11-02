@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
+    <link href="{{ url_for('static', filename='images/logo.ico') }}" rel="icon">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MCWDTZ7CL"></script>
@@ -305,13 +306,17 @@
                 const address = document.getElementById('address').value;
                 const phone = document.getElementById('phone').value;
                 const total = parseFloat(document.getElementById('checkout-total').textContent);
+                const restaurant = localStorage.getItem('restaurant');
 
                 const { clientSecret } = await fetch('/create-payment-intent', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ cart }),
+                    body: JSON.stringify({ 
+                        cart,
+                        restaurant 
+                    }),
                 }).then(response => response.json());
 
                 const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {

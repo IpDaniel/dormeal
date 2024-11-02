@@ -9,7 +9,7 @@ import os
 #constants
 app = Flask(__name__, static_folder='../frontend/static', template_folder='../frontend/templates')
 active = True
-test_mode = False
+test_mode = True
 
 if test_mode:
     stripe.api_key = 'sk_test_51PG7v4Rsh0QceLeTZzq4QceWCZEBypE4kjqIm8460Khv5abQnuzYmbgW6VHmo9s3TIw6kF2od3pRC085fkEdGlFJ00qMyOwe2u'
@@ -95,7 +95,7 @@ def create_payment_intent():
                 'additionalInfo': delivery_request['additionalInfo'],
                 'type': 'delivery_only'
             },
-            statement_descriptor_suffix=delivery_request['restaurant'][:22].upper()
+            statement_descriptor_suffix=''.join(char for char in delivery_request['restaurant'][:22] if char.isalnum()).upper()
         )
     else:
         print('creating normal cart payment intent')
@@ -108,7 +108,7 @@ def create_payment_intent():
         intent = stripe.PaymentIntent.create(
             amount=int(total_amount * 100),  # amount in cents
             currency='usd',
-            statement_descriptor_suffix=restaurant[:22].upper()
+            statement_descriptor_suffix=''.join(char for char in restaurant[:22] if char.isalnum()).upper()
         )
     return jsonify(clientSecret=intent.client_secret)
 

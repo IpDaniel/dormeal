@@ -147,11 +147,19 @@
             transform: scale(1.05);
             color: #333333;
         }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        button:disabled:hover {
+            background-color: #cccccc;
+            transform: none;
+        }
         input[type="checkbox"] {
             margin-right: 10px;
             transform: scale(1.2);
         }
-        
         .acknowledgment-container {
             margin: 30px 0;
             padding: 15px;

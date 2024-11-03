@@ -11,7 +11,7 @@ import pandas as pd
 #constants
 app = Flask(__name__, static_folder='../frontend/static', template_folder='../frontend/templates')
 active = True
-test_mode = True
+test_mode = False
 
 if test_mode:
     stripe.api_key = 'sk_test_51PG7v4Rsh0QceLeTZzq4QceWCZEBypE4kjqIm8460Khv5abQnuzYmbgW6VHmo9s3TIw6kF2od3pRC085fkEdGlFJ00qMyOwe2u'

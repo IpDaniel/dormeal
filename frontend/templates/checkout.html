@@ -342,7 +342,12 @@
                     },
                     body: JSON.stringify({ 
                         cart,
-                        restaurant 
+                        restaurant,
+                        name,
+                        phone,
+                        orderNumber: null, // Default to null, will be generated server-side
+                        additionalInfo: '', 
+                        type: 'regular_order'
                     }),
                 }).then(response => response.json());
 

@@ -162,3 +162,31 @@ order_data = {
 
 #formatted_order = format_order(order_data)
 #print(formatted_order)
+
+def format_cart(cart):
+    output = ["Cart Items:"]
+    
+    for item in cart:
+        item_details = []
+        item_details.append(f"Name: {item['name']}")
+        item_details.append(f"  Quantity: {item['quantity']}")
+        item_details.append(f"  Item ID: {item['id']}")
+        item_details.append(f"  Base Price: ${item['basePrice']:.2f}")
+        
+        if item['addOns']:
+            item_details.append("  Add-Ons:")
+            for addon in item['addOns']:
+                item_details.append(f"    - {addon['name']}: ${addon['price']:.2f}")
+        else:
+            item_details.append("  Add-Ons: None")
+        
+        if item['choices']:
+            item_details.append("  Choices:")
+            for choice in item['choices']:
+                item_details.append(f"    - {choice['name']}: ${choice['price']:.2f}")
+        else:
+            item_details.append("  Choices: None")
+        
+        output.append("\n".join(item_details))
+    
+    return "\n".join(output)

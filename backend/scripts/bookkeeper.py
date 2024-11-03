@@ -48,6 +48,7 @@ def log_order_data(metadata, amount):
         
     except Exception as e:
         print(f"Error logging order metadata: {str(e)}")
+        raise Exception(f"Error logging order metadata: {str(e)}")
 
 
 # logs complete order data from the complete_order endpoint
@@ -92,6 +93,7 @@ def log_complete_order(data):
         
     except Exception as e:
         print(f"Error logging complete order data: {str(e)}")
+        raise Exception(f"Error logging order metadata: {str(e)}")
 
 
 # logs delivery order data from the complete_delivery_order endpoint
@@ -140,4 +142,5 @@ def log_complete_delivery_order(data):
         
     except Exception as e:
         print(f"Error logging complete delivery order data: {str(e)}")
+        raise Exception(f"Error logging order metadata: {str(e)}")
 

@@ -32,15 +32,22 @@ def index():
             'access_time': [access_time]
         })
         
+        # Define data directory path
+        data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
+        # Create data directory if it doesn't exist
+        os.makedirs(data_dir, exist_ok=True)
+        
+        file_path = os.path.join(data_dir, 'root_access.xlsx')
+        
         # Try to read existing file or create new one if it doesn't exist
         try:
-            df = pd.read_excel('data/root_access.xlsx')
+            df = pd.read_excel(file_path)
             df = pd.concat([df, new_record], ignore_index=True)
         except FileNotFoundError:
             df = new_record
             
         # Save updated records
-        df.to_excel('data/root_access.xlsx', index=False)
+        df.to_excel(file_path, index=False)
     except Exception as e:
         print(f"Error logging access: {str(e)}")
     return render_template('index.html')

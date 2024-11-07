@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, jsonify, send_from_directory, redirect, url_for
-from scripts import mvp_emailer
+from scripts.mvp_emailer import format_cart, format_order, format_delivery_order, send_email_to_multiple, send_email, order_notify_email_list
+from scripts.bookkeeper import log_order_data, log_complete_order, log_complete_delivery_order
 import stripe
 import os
+import pandas as pd
 # from dotenv import load_dotenv
 
 # load_dotenv()  # Add this near the top of the file, after imports
@@ -9,7 +11,7 @@ import os
 #constants
 app = Flask(__name__, static_folder='../frontend/static', template_folder='../frontend/templates')
 active = True
-test_mode = True
+test_mode = False
 
 if test_mode:
     stripe.api_key = 'sk_test_51PG7v4Rsh0QceLeTZzq4QceWCZEBypE4kjqIm8460Khv5abQnuzYmbgW6VHmo9s3TIw6kF2od3pRC085fkEdGlFJ00qMyOwe2u'
@@ -19,6 +21,35 @@ else:
 #returns home page at index route
 @app.route('/')
 def index():
+    # Log access to root endpoint
+    try:
+        ip_address = request.remote_addr
+        access_time = pd.Timestamp.now()
+        
+        # Create DataFrame with new access record
+        new_record = pd.DataFrame({
+            'ip_address': [ip_address],
+            'access_time': [access_time]
+        })
+        
+        # Define data directory path
+        data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
+        # Create data directory if it doesn't exist
+        os.makedirs(data_dir, exist_ok=True)
+        
+        file_path = os.path.join(data_dir, 'root_access.xlsx')
+        
+        # Try to read existing file or create new one if it doesn't exist
+        try:
+            df = pd.read_excel(file_path)
+            df = pd.concat([df, new_record], ignore_index=True)
+        except FileNotFoundError:
+            df = new_record
+            
+        # Save updated records
+        df.to_excel(file_path, index=False)
+    except Exception as e:
+        print(f"Error logging access: {str(e)}")
     return render_template('index.html')
 
 @app.route('/test-mode')
@@ -41,7 +72,7 @@ def menu_template():
 def notify_request():
     data = request.json
     contact_info = data.get('info')
-    mvp_emailer.send_email('arc.daniel42@gmail.com', str(contact_info), 'Dormeal - New Notify Request')
+    send_email('arc.daniel42@gmail.com', str(contact_info), 'Dormeal - New Notify Request')
     return jsonify({'status': 'success'})
 
 
@@ -51,7 +82,7 @@ def restaurant_request():
     data = request.json
     email = str(data.get('email'))
     restaurant = str(data.get('restaurant'))
-    mvp_emailer.send_email('arc.daniel42@gmail.com', f"Email: {email}\nRestaurant: {restaurant}", 'Dormeal - New Restaurant Request')
+    send_email('arc.daniel42@gmail.com', f"Email: {email}\nRestaurant: {restaurant}", 'Dormeal - New Restaurant Request')
     return jsonify({'status': 'success'})
     
 # route all carts to this page once they are full
@@ -71,8 +102,9 @@ def submit_order():
     data = request.json
     print('New Order Placed:')
     print(data)
-    email_list = mvp_emailer.order_notify_email_list
-    mvp_emailer.send_email_to_multiple(email_list, str(data))
+    print("datatype: " + type(data))
+    email_list = order_notify_email_list
+    send_email_to_multiple(email_list, str(data))
     return data
 
 #creates stripe payment intent when user is directed to the checkout page
@@ -101,13 +133,27 @@ def create_payment_intent():
         print('creating normal cart payment intent')
         cart = data.get('cart', [])
         restaurant = data.get('restaurant', '')
+        name = data.get('name', '')
+        phone = data.get('phone', '')
+        additional_info = data.get('additionalInfo', '')
+        
         total_amount = sum(
             (item['basePrice'] + sum(addon['price'] for addon in item['addOns']) + sum(choice['price'] for choice in item['choices'])) * item['quantity']
             for item in cart
         ) * 1.07 + 2.00
+        
         intent = stripe.PaymentIntent.create(
             amount=int(total_amount * 100),  # amount in cents
             currency='usd',
+            metadata={
+                'name': name,
+                'phone': phone,
+                'restaurant': restaurant,
+                'additionalInfo': additional_info,
+                'orderNumber': None,
+                'type': 'regular_order',
+                'cart': format_cart(cart)  # Converting cart to string since metadata must be string values
+            },
             statement_descriptor_suffix=''.join(char for char in restaurant[:22] if char.isalnum()).upper()
         )
     return jsonify(clientSecret=intent.client_secret)
@@ -123,12 +169,13 @@ def complete_order():
     restaurant = data.get('restaurant')
     total = data.get('total')
     
-    # Here you can save the order to your database
-    # Example: save_order(name, address, phone, cart)
+    # Log the order data
+    log_complete_order(data)
+    
     print(f"NEW ORDER: {name}, {address}, {phone}, {restaurant}, ${str(total)}, {str(cart)}")
 
-    email_list = mvp_emailer.order_notify_email_list
-    mvp_emailer.send_email_to_multiple(email_list, mvp_emailer.format_order(data))
+    email_list = order_notify_email_list
+    send_email_to_multiple(email_list, format_order(data))
 
     return jsonify({'status': 'success'})
 
@@ -141,8 +188,10 @@ def complete_delivery_order():
     # Here you can save the order to your database or process it as needed
     print(f"NEW DELIVERY ORDER: {delivery_request['name']}, {delivery_request['phone']}, {delivery_request['restaurant']}, ${total}, Order Number: {delivery_request['orderNumber']}")
 
-    email_list = mvp_emailer.order_notify_email_list
-    mvp_emailer.send_email_to_multiple(email_list, mvp_emailer.format_delivery_order(data))
+    email_list = order_notify_email_list
+    send_email_to_multiple(email_list, format_delivery_order(data))
+
+    log_complete_delivery_order(data)
 
     return jsonify({'status': 'success'})
 

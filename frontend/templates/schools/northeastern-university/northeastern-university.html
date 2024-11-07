@@ -148,6 +148,23 @@
             transform: scale(1.05);
             color: #333333;
         }
+        .order-now.closed {
+            background-color: #808080;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .closed-label {
+            color: #808080;
+            font-size: 0.9em;
+            margin-left: 10px;
+            font-style: italic;
+        }
+        .status-note {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
@@ -159,6 +176,8 @@
             <h1 class="mb-3">Dormeal at Northeastern University</h1>
             <h2 class="mb-4">Choose Your Restaurant</h2>
         </header>
+        
+        <p class="status-note">Note: Grayed out buttons indicate that the restaurant is currently closed.</p>
         
         <main>
             <ul class="restaurant-list">
@@ -250,6 +269,79 @@
         }
 
         document.getElementById('restaurant-request').addEventListener('submit', sendFormData);
+    </script>
+    <script>
+        function isRestaurantOpen(openTime, closeTime) {
+            const now = new Date();
+            const est = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+            const currentHour = est.getHours();
+            const currentMinute = est.getMinutes();
+            const currentTime = currentHour * 60 + currentMinute;
+
+            // Parse opening time
+            let [openHour, openMinute, openPeriod] = openTime.match(/(\d+):(\d+)\s*(AM|PM)/).slice(1);
+            openHour = parseInt(openHour);
+            openMinute = parseInt(openMinute);
+            if (openPeriod === 'PM' && openHour !== 12) openHour += 12;
+            if (openPeriod === 'AM' && openHour === 12) openHour = 0;
+            const openMinutes = openHour * 60 + openMinute;
+
+            // Parse closing time
+            let [closeHour, closeMinute, closePeriod] = closeTime.match(/(\d+):(\d+)\s*(AM|PM)/).slice(1);
+            closeHour = parseInt(closeHour);
+            closeMinute = parseInt(closeMinute);
+            if (closePeriod === 'PM' && closeHour !== 12) closeHour += 12;
+            if (closePeriod === 'AM' && closeHour === 12) closeHour = 0;
+            let closeMinutes = closeHour * 60 + closeMinute;
+
+            // Adjust for closing times after midnight
+            if (closePeriod === 'AM') {
+                closeMinutes += 24 * 60; // Add 24 hours worth of minutes
+                if (currentTime < openMinutes) {
+                    // If we're after midnight but before opening, add 24 hours to current time
+                    currentTime += 24 * 60;
+                }
+            }
+
+            return currentTime >= openMinutes && currentTime <= closeMinutes;
+        }
+
+        function updateRestaurantStatus() {
+            const restaurants = [
+                { id: 'five-guys', open: '11:00 AM', close: '10:00 PM' },
+                { id: 'wings-over-boston', open: '11:00 AM', close: closeTimeForWings() },
+                { id: 'el-jefes-taqueria', open: '8:00 AM', close: '2:40 AM' },
+                { id: 'mamacita', open: '11:00 AM', close: '11:00 PM' },
+                { id: 'amelias-taqueria', open: '10:00 AM', close: '10:00 PM' },
+                { id: 'gyro-scope', open: '11:00 AM', close: '10:00 PM' },
+                { id: 'sprout', open: '11:00 AM', close: '9:00 PM' }
+            ];
+
+            restaurants.forEach(restaurant => {
+                const button = document.querySelector(`button[onclick*="${restaurant.id}"]`);
+                if (button) {
+                    const isOpen = isRestaurantOpen(restaurant.open, restaurant.close);
+                    if (!isOpen) {
+                        button.classList.add('closed');
+                        const span = document.createElement('span');
+                        span.className = 'closed-label';
+                        span.textContent = '(Closed)';
+                        button.parentElement.appendChild(span);
+                    }
+                }
+            });
+        }
+
+        function closeTimeForWings() {
+            const day = new Date().getDay();
+            // Thursday(4), Friday(5), Saturday(6)
+            return [4, 5, 6].includes(day) ? '2:00 AM' : '12:00 AM';
+        }
+
+        // Update status when page loads
+        updateRestaurantStatus();
+        // Update status every minute
+        setInterval(updateRestaurantStatus, 60000);
     </script>
 </body>
 </html>

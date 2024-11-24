@@ -188,8 +188,9 @@
                 </li>
                 <li class="restaurant-item">
                     <img src="{{ url_for('static', filename='images/icons/wings-icon.png') }}" alt="Wings Icon" class="food-icon">
-                    <button class="order-now" onclick="location.href='/northeastern-university/wings-over-boston'">Order Now</button>
+                    <button class="order-now closed" onclick="location.href='/northeastern-university/wings-over-boston'" disabled>Order Now</button>
                     <span class="restaurant-name">Wings Over Boston</span>
+                    <span class="closed-label">(Temporarily Disabled)</span>
                 </li>
                 <li class="restaurant-item">
                     <img src="{{ url_for('static', filename='images/icons/taco-icon.png') }}" alt="Taco Icon" class="food-icon">
@@ -309,7 +310,8 @@
         function updateRestaurantStatus() {
             const restaurants = [
                 { id: 'five-guys', open: '11:00 AM', close: '10:00 PM' },
-                { id: 'wings-over-boston', open: '11:00 AM', close: closeTimeForWings() },
+                // Remove or comment out Wings Over Boston
+                // { id: 'wings-over-boston', open: '11:00 AM', close: closeTimeForWings() },
                 { id: 'el-jefes-taqueria', open: '8:00 AM', close: '2:40 AM' },
                 { id: 'mamacita', open: '11:00 AM', close: '11:00 PM' },
                 { id: 'amelias-taqueria', open: '10:00 AM', close: '10:00 PM' },
